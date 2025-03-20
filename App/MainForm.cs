@@ -20,5 +20,13 @@ namespace App
         {
             this.Close();
         }
+
+        private void btnSale_Click(object sender, EventArgs e)
+        {
+            Sale mainForm = new Sale();
+          
+            mainForm.ShowDialog();
+           
+        }
     }
 }

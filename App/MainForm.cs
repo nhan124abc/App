@@ -24,9 +24,9 @@ namespace App
         private void btnSale_Click(object sender, EventArgs e)
         {
             Sale mainForm = new Sale();
-          
+            this.Hide();
             mainForm.ShowDialog();
-           
+           this.Show();
         }
     }
 }

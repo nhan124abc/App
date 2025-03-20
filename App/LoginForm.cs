@@ -38,6 +38,8 @@ namespace App
             {
                 MessageBox.Show("Invalid username or password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            txtPassword.Text = "";
+            txtUsername.Text = "";
         }
 
         private void InitializeComponent()

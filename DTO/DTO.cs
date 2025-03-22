@@ -11,4 +11,14 @@ namespace DTO
         public string Username { get; set; }
         public string Password { get; set; }
     }
+    public class  HoaDTO
+    {
+        public int MaHoa { get; set; }
+        public string TenHoa { get; set; }
+        public int SoLuong { get; set; }
+        public int DonGia { get; set; }
+        public string MauSac { get; set; }
+        public string HinhAnh { get; set; }
+        public string MoTa { get; set; }
+    }
 }

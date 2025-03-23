@@ -16,11 +16,23 @@ namespace BUS
         {
             return userDAO.CheckLogin(user);
         }
-        private HoaDAO hoaDTO = new HoaDAO();
-        //Dữ liệu Hoa
+        public bool ValidateEditNV(UserDTO user)
+        {
+            return userDAO.EditNV(user);
+        }
+        public DataTable LoadNV()
+        {
+            return userDAO.LoadNV();
+        }
+       
+         
+    }
+    public class HoaBUS
+    {
+        private HoaDAO hoaDAO = new HoaDAO();
         public DataTable LoadDataFlower()
         {
-            return hoaDTO.LoadDataFlower();
+            return hoaDAO.LoadDataFlower();
         }
     }
 }

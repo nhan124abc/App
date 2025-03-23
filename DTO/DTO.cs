@@ -10,6 +10,14 @@ namespace DTO
     {
         public string Username { get; set; }
         public string Password { get; set; }
+        public string Email { get; set; }
+        public string SDT { get; set; }
+        public string DiaChi { get; set; }
+        public string TenNV { get; set; }
+        public string ChucVu { get; set; }
+        public int MaNV { get; set; }
+        public int GioiTinh { get; set; }
+        public DateTime NgaySinh { get; set; }
     }
     public class  HoaDTO
     {
@@ -21,4 +29,5 @@ namespace DTO
         public string HinhAnh { get; set; }
         public string MoTa { get; set; }
     }
+    
 }

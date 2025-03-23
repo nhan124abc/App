@@ -14,7 +14,8 @@ namespace App
 {
     public partial class Sale : Form
     {
-        private UserBUS userBUS = new UserBUS();
+       
+        private HoaBUS hoaBUS = new HoaBUS();
         public Sale()
         {
             InitializeComponent();
@@ -28,7 +29,7 @@ namespace App
         private void Sale_Load(object sender, EventArgs e)
         {
            // UserDTO user = new UserDTO { Username = txtUsername.Text, Password = txtPassword.Text };
-            DataTable dt = userBUS.LoadDataFlower();
+            DataTable dt = hoaBUS.LoadDataFlower();
             cbTen.DataSource = dt;
             cbTen.DisplayMember = "TenHoa"; 
             cbTen.ValueMember = "MaHoa";
@@ -67,7 +68,7 @@ namespace App
                 {
                     cbMa.SelectedValue = ten;
                 }
-                DataTable data = userBUS.LoadDataFlower();
+                DataTable data = hoaBUS.LoadDataFlower();
               
                 string tenhoa = rowview["TenHoa"].ToString();
                 DataRow[] row = data.Select($"TenHoa = '{ten}'");

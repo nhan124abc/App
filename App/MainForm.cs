@@ -28,5 +28,13 @@ namespace App
             mainForm.ShowDialog();
            this.Show();
         }
+
+        private void btnQLNV_Click(object sender, EventArgs e)
+        {
+            QLNV mainForm = new QLNV();
+            this.Hide();
+            mainForm.ShowDialog();
+            this.Show();
+        }
     }
 }

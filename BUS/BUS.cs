@@ -24,8 +24,12 @@ namespace BUS
         {
             return userDAO.LoadNV();
         }
-       
-         
+        public bool ValidateAdmin(UserDTO user)
+        {
+            return userDAO.CheckAdmin(user);
+        }
+
+
     }
     public class HoaBUS
     {

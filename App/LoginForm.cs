@@ -29,10 +29,20 @@ namespace App
             UserDTO user = new UserDTO { Username = txtUsername.Text, Password = txtPassword.Text };
             if (userBUS.ValidateLogin(user))
             {
-                MainForm mainForm = new MainForm();
-                this.Hide();
-                mainForm.ShowDialog();
-                this.Show();
+                if (userBUS.ValidateAdmin(user))
+                {
+                    MainForm mainForm = new MainForm();
+                    this.Hide();
+                    mainForm.ShowDialog();
+                    this.Show();
+                }
+                else
+                {
+                    Sale sale = new Sale();
+                    this.Hide();
+                    sale.ShowDialog();
+                    this.Close();
+                }
             }
             else
             {

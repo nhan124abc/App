@@ -62,7 +62,7 @@
             this.TenTK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnThem = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnXoa = new System.Windows.Forms.Button();
             this.btnEditNV = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
@@ -408,15 +408,17 @@
             this.btnThem.TabIndex = 3;
             this.btnThem.Text = "Thêm Nhân Viên";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
-            // button2
+            // btnXoa
             // 
-            this.button2.Location = new System.Drawing.Point(587, 43);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(106, 67);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Xóa Nhân Viên";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnXoa.Location = new System.Drawing.Point(587, 43);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(106, 67);
+            this.btnXoa.TabIndex = 4;
+            this.btnXoa.Text = "Xóa Nhân Viên";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnEditNV
             // 
@@ -456,7 +458,7 @@
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnEditNV);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.dgvNV);
             this.Controls.Add(this.groupBox1);
@@ -490,7 +492,7 @@
         private System.Windows.Forms.TextBox txtQuyenhan;
         private System.Windows.Forms.DataGridView dgvNV;
         private System.Windows.Forms.Button btnThem;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnEditNV;
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.TextBox txtMaNV;

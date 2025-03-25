@@ -25,7 +25,19 @@ namespace BUS
             return userDAO.LoadNV();
         }
        
-         
+        public bool ValidateAdmin(UserDTO user)
+        {
+            return userDAO.CheckAdmin(user);
+        }
+
+        public bool ValidateAddEmployee(UserDTO user) 
+        { 
+            return userDAO.AddEmployee(user);
+        }
+        public bool ValidateDeleteEmployee(UserDTO user)
+        {
+            return userDAO.DeleteEmployee(user);
+        }
     }
     public class HoaBUS
     {

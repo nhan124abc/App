@@ -13,7 +13,8 @@ namespace DAO
 {
     public class UserDAO
     {
-        private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
+        //private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
+        private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangBanHoa;Integrated Security=True";
         public bool CheckLogin(UserDTO user)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -51,8 +52,8 @@ namespace DAO
                 return count > 0;
             }
         }
-            public DataTable LoadNV()
-            {
+        public DataTable LoadNV()
+        {
                 string query = "SELECT MaNV, TenNV, ChucVu, SoDienThoai, Email, DiaChi, " + "CASE WHEN GioiTinh = 1 THEN N'Nam' ELSE N'Nữ' END AS GioiTinh," + "NgaySinh,TenTK,MK FROM NhanVien";
                 SqlConnection conn = new SqlConnection(connectionString);
                 conn.Open();
@@ -61,6 +62,53 @@ namespace DAO
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
                 return dt;
+        }
+            public bool CheckAdmin(UserDTO user)
+            {
+                SqlConnection conn = new SqlConnection(connectionString);
+                conn.Open();
+                string query = "SELECT COUNT(*) FROM NhanVien WHERE TenTK=@Username AND MK=@Password AND ChucVu=N'Quản Lý'";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Username", user.Username);
+                        cmd.Parameters.AddWithValue("@Password", user.Password);
+                        int count = (int)cmd.ExecuteScalar();
+                        return count > 0;
+                    }
+
+            }
+
+        public bool AddEmployee(UserDTO user)
+         {
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+            string query = "insert into NhanVien(TenNV, ChucVu, SoDienThoai, Email, TenTK, MK, DiaChi, GioiTinh, NgaySinh) values(@tennv, @chucvu, @sdt, @email, @tentk, @matkhau, @diachi, @gioitinh, @ngsinh)";
+            using (SqlCommand command = new SqlCommand(query, conn))
+            {
+                command.Parameters.AddWithValue("@tennv", user.TenNV);
+                command.Parameters.AddWithValue("@chucvu", user.ChucVu);
+                command.Parameters.AddWithValue("@sdt", user.SDT);
+                command.Parameters.AddWithValue("@email", user.Email);
+                command.Parameters.AddWithValue("@tentk", user.Username);
+                command.Parameters.AddWithValue("@matkhau", user.Password);
+                command.Parameters.AddWithValue("@diachi", user.DiaChi);
+                command.Parameters.AddWithValue("@gioitinh", user.GioiTinh);
+                command.Parameters.AddWithValue("@ngsinh", user.NgaySinh);
+                int count = (int)command.ExecuteNonQuery();
+                return count > 0;
+            }
+        }
+        
+        public bool DeleteEmployee(UserDTO user)
+        {
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+            string query = "delete from NhanVien where MaNV = @manv";
+            using (SqlCommand command = new SqlCommand(query, conn))
+            {
+                command.Parameters.AddWithValue("@manv", user.MaNV);
+                int count = (int)command.ExecuteNonQuery();
+                return count > 0;
             }
         public bool CheckAdmin(UserDTO user)
         {
@@ -77,14 +125,15 @@ namespace DAO
                     int count = (int)cmd.ExecuteScalar(); // Dùng ExecuteScalar
                     return count > 0;
                 }
-            }
-        }
-
+        
     }
-    public class HoaDAO
+        public class HoaDAO
+    
+    
         {
-            private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
-            public DataTable LoadDataFlower()
+        //private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
+        private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangBanHoa;Integrated Security=True";
+        public DataTable LoadDataFlower()
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {

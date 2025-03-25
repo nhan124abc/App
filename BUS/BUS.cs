@@ -24,11 +24,12 @@ namespace BUS
         {
             return userDAO.LoadNV();
         }
-       
+
         public bool ValidateAdmin(UserDTO user)
         {
             return userDAO.CheckAdmin(user);
         }
+
 
         public bool ValidateAddEmployee(UserDTO user) 
         { 
@@ -38,6 +39,7 @@ namespace BUS
         {
             return userDAO.DeleteEmployee(user);
         }
+
     }
     public class HoaBUS
     {

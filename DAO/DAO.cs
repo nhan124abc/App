@@ -110,11 +110,26 @@ namespace DAO
                 int count = (int)command.ExecuteNonQuery();
                 return count > 0;
             }
-        }
+        public bool CheckAdmin(UserDTO user)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT COUNT(*) FROM NhanVien WHERE TenTK=@Username AND MK=@Password AND LTRIM(RTRIM(ChucVu)) = N'Quản Lý'";
 
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Username", user.Username);
+                    cmd.Parameters.AddWithValue("@Password", user.Password);
 
+                    int count = (int)cmd.ExecuteScalar(); // Dùng ExecuteScalar
+                    return count > 0;
+                }
+        
     }
         public class HoaDAO
+    
+    
         {
         //private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
         private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangBanHoa;Integrated Security=True";

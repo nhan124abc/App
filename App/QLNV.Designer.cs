@@ -66,6 +66,8 @@
             this.btnEditNV = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNV)).BeginInit();
             this.SuspendLayout();
@@ -312,7 +314,7 @@
             this.QuyenHan,
             this.TenTK,
             this.MK});
-            this.dgvNV.Location = new System.Drawing.Point(437, 192);
+            this.dgvNV.Location = new System.Drawing.Point(437, 260);
             this.dgvNV.Name = "dgvNV";
             this.dgvNV.RowHeadersWidth = 51;
             this.dgvNV.RowTemplate.Height = 24;
@@ -450,11 +452,29 @@
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(474, 161);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(184, 22);
+            this.textBox1.TabIndex = 21;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(709, 147);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(106, 67);
+            this.button1.TabIndex = 22;
+            this.button1.Text = "Tìm Kiếm";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // QLNV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1355, 564);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnEditNV);
@@ -469,6 +489,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNV)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -512,5 +533,7 @@
         private System.Windows.Forms.TextBox txtMK;
         private System.Windows.Forms.TextBox txtTK;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button1;
     }
 }

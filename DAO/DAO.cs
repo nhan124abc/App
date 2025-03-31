@@ -14,7 +14,7 @@ namespace DAO
     public class UserDAO
     {
         //private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
-        private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangBanHoa;Integrated Security=True";
+        private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
         public bool CheckLogin(UserDTO user)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -114,49 +114,100 @@ namespace DAO
 
 
     }
-        public class HoaDAO
-        {
+    public class HoaDAO
+    {
         //private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
-        private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangBanHoa;Integrated Security=True";
+        private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
         public DataTable LoadDataFlower()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                conn.Open();
+                string query = "SELECT MaHoa, TenHoa, Gia, SoLuongTon, MoTa, HSD FROM Hoa WHERE TrangThai = 1";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    conn.Open();
-                    string query = "SELECT * FROM Hoa";
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                     {
-                        using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
-                        {
-                            DataTable ds = new DataTable();
-                            adapter.Fill(ds);
-                            return ds;
-                        }
-                    }
-                }
-            }
-            public DataTable LoadDataFlowerinput(HoaDTO hoa)
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-                    string query = "SELECT * FROM Hoa WHERE MaHoa=@Mahoa AND TenHoa=@tenhoa";
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@Mahoa", hoa.MaHoa);
-                        cmd.Parameters.AddWithValue("@tenhoa", hoa.TenHoa);
-
-                        using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
-                        {
-                            DataTable ds = new DataTable();
-
-                            adapter.Fill(ds);
-                            return ds;
-                        }
+                        DataTable ds = new DataTable();
+                        adapter.Fill(ds);
+                        return ds;
                     }
                 }
             }
         }
+        public DataTable LoadDataFlowerinput(HoaDTO hoa)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT * FROM Hoa WHERE MaHoa=@Mahoa AND TenHoa=@tenhoa";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Mahoa", hoa.MaHoa);
+                    cmd.Parameters.AddWithValue("@tenhoa", hoa.TenHoa);
 
-    } 
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        DataTable ds = new DataTable();
+
+                        adapter.Fill(ds);
+                        return ds;
+                    }
+                }
+            }
+        }
+        public bool AddFlower(HoaDTO flowers)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "insert into Hoa (TenHoa, MoTa) values (@tenhoa, @mota)";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@tenhoa", flowers.TenHoa);
+                    cmd.Parameters.AddWithValue("@mota", flowers.MoTa);
+
+                    int count = cmd.ExecuteNonQuery();
+                    return count > 0;
+                }
+            }
+        }
+
+        public bool DeleteFlower(HoaDTO flowers)
+        {
+            using ( SqlConnection conn = new SqlConnection( connectionString))
+            {
+                conn.Open();
+                string query = "update Hoa set TrangThai = 0  where MaHoa = @mahoa";
+                using(SqlCommand cmd = new SqlCommand(query,conn))
+                {
+                    cmd.Parameters.AddWithValue("@mahoa", flowers.MaHoa);
+                    int count = (int)cmd.ExecuteNonQuery();
+                    return count > 0;
+                }
+            }
+        }
+
+        public bool InsertFlower(HoaDTO flowers)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "update Hoa set TenHoa = @tenhoa, Gia = @giaban, SoLuongTon = @soluong, MoTa = @mota where MaHoa = @mahoa";
+                using( SqlCommand cmd = new SqlCommand(query,conn))
+                {
+                    cmd.Parameters.AddWithValue("@mahoa", flowers.MaHoa);
+                    cmd.Parameters.AddWithValue("@tenhoa", flowers.TenHoa);
+                    cmd.Parameters.AddWithValue("@giaban", flowers.DonGia);
+                    cmd.Parameters.AddWithValue("@soluong", flowers.SoLuong);
+                    cmd.Parameters.AddWithValue("@mota", flowers.MoTa);
+
+                    int count = cmd.ExecuteNonQuery();
+                    return count > 0;
+                }
+            }
+        }
+    }
+
+} 
 

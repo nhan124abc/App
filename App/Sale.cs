@@ -28,7 +28,6 @@ namespace App
 
         private void Sale_Load(object sender, EventArgs e)
         {
-           // UserDTO user = new UserDTO { Username = txtUsername.Text, Password = txtPassword.Text };
             DataTable dt = hoaBUS.LoadDataFlower();
             cbTen.DataSource = dt;
             cbTen.DisplayMember = "TenHoa"; 
@@ -52,7 +51,6 @@ namespace App
                     cbTen.SelectedValue = ma;
                 }
             }
-
 
         }
 
@@ -88,5 +86,6 @@ namespace App
           
             txtTongTien.Text = (soluong * dongia).ToString();
         }
+
     }
 }

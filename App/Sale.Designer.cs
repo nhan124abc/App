@@ -66,6 +66,8 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.gbInfo = new System.Windows.Forms.GroupBox();
+            this.btnTinh = new System.Windows.Forms.Button();
+            this.cbMa = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.txtTongTien = new System.Windows.Forms.TextBox();
@@ -77,8 +79,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.cbMa = new System.Windows.Forms.ComboBox();
-            this.btnTinh = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -468,6 +468,27 @@
             this.gbInfo.TabStop = false;
             this.gbInfo.Text = "Thông Tin";
             // 
+            // btnTinh
+            // 
+            this.btnTinh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnTinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTinh.Location = new System.Drawing.Point(812, 49);
+            this.btnTinh.Name = "btnTinh";
+            this.btnTinh.Size = new System.Drawing.Size(62, 51);
+            this.btnTinh.TabIndex = 9;
+            this.btnTinh.Text = "Tính";
+            this.btnTinh.UseVisualStyleBackColor = true;
+            this.btnTinh.Click += new System.EventHandler(this.btnTinh_Click);
+            // 
+            // cbMa
+            // 
+            this.cbMa.FormattingEnabled = true;
+            this.cbMa.Location = new System.Drawing.Point(122, 35);
+            this.cbMa.Name = "cbMa";
+            this.cbMa.Size = new System.Drawing.Size(140, 28);
+            this.cbMa.TabIndex = 12;
+            this.cbMa.SelectedIndexChanged += new System.EventHandler(this.cbMa_SelectedIndexChanged);
+            // 
             // label20
             // 
             this.label20.AutoSize = true;
@@ -566,27 +587,6 @@
             this.label1.Size = new System.Drawing.Size(110, 18);
             this.label1.TabIndex = 0;
             this.label1.Text = "Mã Sản Phẩm: ";
-            // 
-            // cbMa
-            // 
-            this.cbMa.FormattingEnabled = true;
-            this.cbMa.Location = new System.Drawing.Point(122, 35);
-            this.cbMa.Name = "cbMa";
-            this.cbMa.Size = new System.Drawing.Size(140, 28);
-            this.cbMa.TabIndex = 12;
-            this.cbMa.SelectedIndexChanged += new System.EventHandler(this.cbMa_SelectedIndexChanged);
-            // 
-            // btnTinh
-            // 
-            this.btnTinh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnTinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTinh.Location = new System.Drawing.Point(812, 49);
-            this.btnTinh.Name = "btnTinh";
-            this.btnTinh.Size = new System.Drawing.Size(62, 51);
-            this.btnTinh.TabIndex = 9;
-            this.btnTinh.Text = "Tính";
-            this.btnTinh.UseVisualStyleBackColor = true;
-            this.btnTinh.Click += new System.EventHandler(this.btnTinh_Click);
             // 
             // Sale
             // 

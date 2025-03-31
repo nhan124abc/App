@@ -16,7 +16,11 @@ namespace App
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+<<<<<<< HEAD
             Application.Run(new QLNV());
+=======
+            Application.Run(new Sale());
+>>>>>>> 928356e (1)
         }
     }
 }

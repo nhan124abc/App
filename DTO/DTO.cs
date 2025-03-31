@@ -25,9 +25,29 @@ namespace DTO
         public string TenHoa { get; set; }
         public int SoLuong { get; set; }
         public int DonGia { get; set; }
-        public string MauSac { get; set; }
         public string HinhAnh { get; set; }
         public string MoTa { get; set; }
     }
-    
+    public class KHDTO
+    {
+        public int MaKH { get; set; }
+        public string TenKH { get; set; }
+        public string SDT { get; set; }
+    }
+    public class CTHDDTO
+    {
+        public int MaHD { get; set; }
+        public int MaCTHD { get; set; }
+        public int MaHoa { get; set; }
+        public int SoLuong { get; set; }
+        public int DonGia { get; set; }
+    }
+    public class HDBanDTO
+    {
+        public int MaHD { get; set; }
+        public int MaKH { get; set; }
+        public DateTime NgayBan { get; set; }
+        public int TongTien { get; set; }
+        public string TrangThai { get; set; }
+    }
 }

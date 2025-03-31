@@ -72,7 +72,7 @@ namespace App
                 txtTK.Text = "";
                 dtpNgaysinh.Value = DateTime.Now;
             }
-           
+
         }
 
         private void btnEditNV_Click(object sender, EventArgs e)
@@ -110,6 +110,70 @@ namespace App
                 MessageBox.Show("Sửa thông tin nhân viên thất bại", "Thông báo", MessageBoxButtons.OK);
             }
 
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            UserDTO user = new UserDTO
+            {
+                TenNV = txtHoten.Text,
+                ChucVu = txtQuyenhan.Text,
+                SDT = txtSdt.Text,
+                Email = txtEmail.Text,
+                Username = txtTK.Text,
+                Password = txtMK.Text,
+                DiaChi = txtDiachi.Text,
+                GioiTinh = rNam.Checked ? 1 : 0,
+                NgaySinh = dtpNgaysinh.Value
+            };
+            if(userBUS.ValidateAddEmployee(user))
+            {
+                MessageBox.Show("Thêm nhân viên thành công", "Thông báo", MessageBoxButtons.OK);
+            }
+            else
+            {
+                MessageBox.Show("Thêm nhân viên thất bại", "Thông báo", MessageBoxButtons.OK);
+            }
+
+            txtHoten.Text = string.Empty;
+            txtQuyenhan.Text = string.Empty;
+            txtSdt.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+            txtTK.Text = string.Empty;
+            txtMK.Text = string.Empty;
+            txtDiachi.Text = string.Empty;
+            rNam.Checked = true;
+            dtpNgaysinh.Value = DateTime.Now;
+
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            UserDTO user = new UserDTO
+            {
+                MaNV = Convert.ToInt32(txtMaNV.Text)
+            };
+
+            if (userBUS.ValidateDeleteEmployee(user))
+            {
+                MessageBox.Show("Xóa nhân viên thành công", "Thông báo", MessageBoxButtons.OK);
+            }
+            else
+            {
+                MessageBox.Show("Xóa nhân viên thất bại", "Thông báo", MessageBoxButtons.OK);
+            }
+            txtMaNV.Text = string.Empty;
+            txtHoten.Text = string.Empty;
+            txtQuyenhan.Text = string.Empty;
+            txtSdt.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+            txtTK.Text = string.Empty;
+            txtMK.Text = string.Empty;
+            txtDiachi.Text = string.Empty;
+            rNam.Checked = true;
+            dtpNgaysinh.Value = DateTime.Now;
+            DataTable dt = userBUS.LoadNV();
+            dgvNV.DataSource = dt;
         }
     }
 }

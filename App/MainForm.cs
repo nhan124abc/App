@@ -18,7 +18,11 @@ namespace App
         }
         private void btnLogout_Click(object sender, EventArgs e)
         {
+            LoginForm loginForm = new LoginForm();
+            this.Hide();
+            loginForm.ShowDialog();
             this.Close();
+
         }
 
         private void btnSale_Click(object sender, EventArgs e)
@@ -37,6 +41,12 @@ namespace App
             this.Show();
         }
 
-  
+        private void btnSP_Click(object sender, EventArgs e)
+        {
+            QLSP mainForm = new QLSP();
+            this.Hide();
+            mainForm.ShowDialog();
+            this.Show();
+        }
     }
 }

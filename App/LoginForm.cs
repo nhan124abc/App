@@ -36,7 +36,7 @@ namespace App
                     MainForm mainForm = new MainForm();
                     this.Hide();
                     mainForm.ShowDialog();
-                    this.Show();
+                    this.Close();
                 }
                 else
                 {

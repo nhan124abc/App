@@ -24,11 +24,12 @@ namespace BUS
         {
             return userDAO.LoadNV();
         }
-       
+
         public bool ValidateAdmin(UserDTO user)
         {
             return userDAO.CheckAdmin(user);
         }
+
 
         public bool ValidateAddEmployee(UserDTO user) 
         { 
@@ -38,6 +39,7 @@ namespace BUS
         {
             return userDAO.DeleteEmployee(user);
         }
+
     }
     public class HoaBUS
     {
@@ -46,6 +48,7 @@ namespace BUS
         {
             return hoaDAO.LoadDataFlower();
         }
+
         public bool AddDataFlower(HoaDTO fl)
         {
             return hoaDAO.AddFlower(fl);
@@ -56,7 +59,62 @@ namespace BUS
         }
         public bool InsertDataFlower(HoaDTO fl)
         {
-            return hoaDAO.InsertFlower(fl);
+            return hoaDAO.EditFlower(fl);
         }
+
+
+    }
+    public class KHBUS
+    {
+        private KHDAO khDAO = new KHDAO();
+        public DataTable LoadDataKHInput(KHDTO kh)
+        {
+           return khDAO.LoadDataKH(kh);
+        }
+        public bool ValidateAddKH(KHDTO kh)
+        {
+            return khDAO.AddKH(kh);
+        }
+    }
+    public class HDBanBUS
+    {   
+        private DONHANGDAO hdDAO = new DONHANGDAO();
+        public int ValidateAddHDBan(HDBanDTO hd)
+        {
+            return hdDAO.AddHD(hd);
+        }
+        //public DataTable LoadDataHDBan()
+        //{
+        //    return hdDAO.LoadDataHDBan();
+        //}
+        //public bool ValidateEditHDBan(HDBanDTO hd)
+        //{
+        //    return hdDAO.EditHDBan(hd);
+        //}
+        //public bool ValidateDeleteHDBan(HDBanDTO hd)
+        //{
+        //    return hdDAO.DeleteHDBan(hd);
+        //}
+    }
+    public class CTHDBUS
+    {
+        private CTHDDAO cthdDAO = new CTHDDAO();
+        public bool ValidateAddCTHD(CTHDDTO cthd)
+        {
+            return cthdDAO.AddCTHD(cthd);
+        }
+        //public DataTable LoadDataCTHD()
+        //{
+        //    return cthdDAO.LoadDataCTHD();
+        //}
+        //public bool ValidateEditCTHD(CTHDDTO cthd)
+        //{
+        //    return cthdDAO.EditCTHD(cthd);
+        //}
+        //public bool ValidateDeleteCTHD(CTHDDTO cthd)
+        //{
+        //    return cthdDAO.DeleteCTHD(cthd);
+        //}
+
     }
 }

@@ -16,6 +16,11 @@ namespace App
     {
        
         private HoaBUS hoaBUS = new HoaBUS();
+        private KHBUS khBUS = new KHBUS();
+        private HDBanBUS hdBUS = new HDBanBUS();
+        private CTHDBUS cthdBUS = new CTHDBUS();
+        private double tongtien = 0;
+
         public Sale()
         {
             InitializeComponent();
@@ -35,6 +40,7 @@ namespace App
             cbMa.DataSource = dt;
             cbMa.DisplayMember = "MaHoa";
             cbMa.ValueMember = "TenHoa";
+           
             
         }
 
@@ -77,14 +83,121 @@ namespace App
             }
         }
 
-        
+
 
         private void btnTinh_Click(object sender, EventArgs e)
         {
-            int soluong = Convert.ToInt32(txtSoLuong.Text);
-            float dongia = float.Parse(txtDonGia.Text);
-          
-            txtTongTien.Text = (soluong * dongia).ToString();
+           
+            if (txtTenkh.Text == "")
+            {
+                MessageBox.Show("Vui lòng nhập thông tin khách hàng");
+                return;
+            }
+            int.TryParse(cbMa.SelectedValue.ToString(), out int maHoa);
+            DataTable dt = hoaBUS.LoadDataFlower();
+            int data = dt.Rows.Count > 0 ? Convert.ToInt32(dt.Rows[0]["SoLuongTon"]) : 0;
+            int soluong = (int)txtSoluong.Value;
+            if (soluong > data)
+            {
+                MessageBox.Show("Số lượng hoa chỉ còn " + data);
+                return;
+            }
+            else
+            {
+                if (soluong <= 0)
+                {
+                    MessageBox.Show("Số lượng hoa phải lớn hơn 0");
+                    return;
+                }
+                else
+                {
+                    float dongia = float.Parse(txtDonGia.Text);
+
+                    txtTongTien.Text = (soluong * dongia).ToString();
+
+                }
+
+            }
+            int flag = 0;
+            if(txtTongTien.Text != "")
+            {
+                tongtien += Convert.ToDouble(txtTongTien.Text);
+            }
+           
+            txtTongHD.Text = tongtien.ToString();
+            if (dgvDH.RowCount>1)
+            {
+              
+                foreach (DataGridViewRow row in dgvDH.Rows)
+                {
+                    if (row.Cells["colMaSP"].Value != null && cbTen.SelectedValue != null &&
+                        row.Cells["colMaSP"].Value.ToString() == cbTen.SelectedValue.ToString())
+                    {
+                        int.TryParse(txtSoluong.Value.ToString(), out int number);
+
+                        int a = Convert.ToInt32(row.Cells["colSoLuong"].Value) + number;
+                        float b =a * float.Parse(txtDonGia.Text);
+                        row.Cells["colSoLuong"].Value = a;
+                        row.Cells["colTongTien"].Value = b;
+                        flag = 1;
+                    }
+                    tongtien += Convert.ToDouble(row.Cells["colTongTien"].Value);
+                }
+
+                if (flag == 0)
+                {
+                    dgvDH.Rows.Add(cbTen.SelectedValue.ToString(), cbMa.SelectedValue.ToString(), txtSoluong.Value, txtDonGia.Text, txtTongTien.Text);
+                }
+
+            }
+            else
+            {
+                dgvDH.Rows.Add(cbTen.SelectedValue.ToString(), cbMa.SelectedValue.ToString(), txtSoluong.Value, txtDonGia.Text, txtTongTien.Text);
+            }
+            
+        }
+
+        private void txtsdt_TextChanged(object sender, EventArgs e)
+        {
+            KHDTO kh = new KHDTO { SDT = txtsdt.Text, TenKH = txtTenkh.Text };
+            DataTable dt = khBUS.LoadDataKHInput(kh);
+            if (dt.Rows.Count > 0)
+            {
+                txtTenkh.Text = dt.Rows[0]["TenKH"].ToString();
+                txtMKH.Text = dt.Rows[0]["MaKH"].ToString();
+            }
+            else
+            {
+                //Them khach hang vao
+
+            }
+
+        }
+
+        private void btnThanhToan_Click(object sender, EventArgs e)
+        {
+            
+            HDBanDTO hd = new HDBanDTO { MaKH = Convert.ToInt32(txtMKH.Text), NgayBan = DateTime.Now, TongTien = Convert.ToInt32(txtTongTien.Text), TrangThai = "Đã Thanh Toán" };
+            CTHDDTO cthd = new CTHDDTO();
+            
+            if (hdBUS.ValidateAddHDBan(hd)!=0)
+            {
+                int a=hdBUS.ValidateAddHDBan(hd);
+                foreach (DataGridViewRow row in dgvDH.Rows)
+                {
+                    cthd.MaHD = a;
+                    cthd.MaHoa = Convert.ToInt32(row.Cells["colMaSP"].Value);
+                    cthd.SoLuong = Convert.ToInt32(row.Cells["colSoLuong"].Value);
+                    cthd.DonGia = Convert.ToInt32(row.Cells["colDonGia"].Value);
+                    cthdBUS.ValidateAddCTHD(cthd);
+                }
+                MessageBox.Show("Thanh toán thành công");
+            }
+            else
+            {
+                MessageBox.Show("Thanh toán thất bại");
+                MessageBox.Show("Thanh toán thất bại"+ hdBUS.ValidateAddHDBan(hd));
+            }
         }
 
     }

@@ -32,7 +32,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btnQLNV = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnSP = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -75,14 +75,15 @@
             this.btnQLNV.UseVisualStyleBackColor = true;
             this.btnQLNV.Click += new System.EventHandler(this.btnQLNV_Click);
             // 
-            // button4
+            // btnSP
             // 
-            this.button4.Location = new System.Drawing.Point(129, 226);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(139, 71);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "Quản Lí Sản Phẩm";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnSP.Location = new System.Drawing.Point(129, 226);
+            this.btnSP.Name = "btnSP";
+            this.btnSP.Size = new System.Drawing.Size(139, 71);
+            this.btnSP.TabIndex = 4;
+            this.btnSP.Text = "Quản Lí Sản Phẩm";
+            this.btnSP.UseVisualStyleBackColor = true;
+            this.btnSP.Click += new System.EventHandler(this.btnSP_Click);
             // 
             // button5
             // 
@@ -99,7 +100,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.btnSP);
             this.Controls.Add(this.btnQLNV);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -116,7 +117,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnQLNV;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnSP;
         private System.Windows.Forms.Button button5;
     }
 }

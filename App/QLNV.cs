@@ -36,7 +36,7 @@ namespace App
 
         private void dgvNV_SelectionChanged(object sender, EventArgs e)
         {
-            txtMaNV.Text=dgvNV.CurrentRow.Cells["MaNV"].Value.ToString();
+            txtMaNV.Text= dgvNV.CurrentRow.Cells["MaNV"].Value.ToString();
             txtHoten.Text = dgvNV.CurrentRow.Cells["TenNV"].Value.ToString();
             txtQuyenhan.Text = dgvNV.CurrentRow.Cells["QuyenHan"].Value.ToString();
             txtDiachi.Text = dgvNV.CurrentRow.Cells["DiaChi"].Value.ToString();
@@ -144,7 +144,8 @@ namespace App
             txtDiachi.Text = string.Empty;
             rNam.Checked = true;
             dtpNgaysinh.Value = DateTime.Now;
-
+            DataTable dt = userBUS.LoadNV();
+            dgvNV.DataSource = dt;
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -153,7 +154,6 @@ namespace App
             {
                 MaNV = Convert.ToInt32(txtMaNV.Text)
             };
-
             if (userBUS.ValidateDeleteEmployee(user))
             {
                 MessageBox.Show("Xóa nhân viên thành công", "Thông báo", MessageBoxButtons.OK);

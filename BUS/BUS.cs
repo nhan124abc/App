@@ -48,7 +48,21 @@ namespace BUS
         {
             return hoaDAO.LoadDataFlower();
         }
-        
+
+        public bool AddDataFlower(HoaDTO fl)
+        {
+            return hoaDAO.AddFlower(fl);
+        }
+        public bool DeleteDataFlower(HoaDTO fl)
+        {
+            return hoaDAO.DeleteFlower(fl);
+        }
+        public bool InsertDataFlower(HoaDTO fl)
+        {
+            return hoaDAO.EditFlower(fl);
+        }
+
+
     }
     public class KHBUS
     {
@@ -101,5 +115,6 @@ namespace BUS
         //{
         //    return cthdDAO.DeleteCTHD(cthd);
         //}
+
     }
 }

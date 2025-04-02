@@ -66,9 +66,7 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.gbInfo = new System.Windows.Forms.GroupBox();
-
             this.txtSoluong = new System.Windows.Forms.NumericUpDown();
-
             this.btnTinh = new System.Windows.Forms.Button();
             this.cbMa = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
@@ -491,13 +489,16 @@
             this.gbInfo.TabStop = false;
             this.gbInfo.Text = "Thông Tin";
             // 
-
+            // txtSoluong
+            // 
             this.txtSoluong.Location = new System.Drawing.Point(362, 32);
             this.txtSoluong.Name = "txtSoluong";
             this.txtSoluong.Size = new System.Drawing.Size(140, 27);
             this.txtSoluong.TabIndex = 13;
+            this.txtSoluong.ValueChanged += new System.EventHandler(this.txtSoluong_ValueChanged);
             // 
-
+            // btnTinh
+            // 
             this.btnTinh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnTinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTinh.Location = new System.Drawing.Point(812, 49);

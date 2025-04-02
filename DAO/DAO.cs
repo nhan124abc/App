@@ -14,8 +14,8 @@ namespace DAO
 
     public class UserDAO
     {
-        //private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
-        private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
+        private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
+       // private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
         public bool CheckLogin(UserDTO user)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -140,8 +140,8 @@ namespace DAO
 
 
 
-        //private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
-        private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
+        private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
+       // private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
         public DataTable LoadDataFlower()
 
         {
@@ -159,6 +159,21 @@ namespace DAO
                         adapter.Fill(ds);
                         return ds;
                     }
+                }
+            }
+        }
+        public int GetMaHoa(int hoa)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT top 1 MaHoa from Hoa where MaHoa=@mahoa order by MaHoa DESC";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@mahoa",hoa);
+                    object result = cmd.ExecuteScalar();
+                    int maHoa = result != DBNull.Value ? Convert.ToInt32(result) : 0; // Trả về 0 nếu là DBNull
+                    return maHoa;
                 }
             }
         }
@@ -269,7 +284,7 @@ namespace DAO
     public class CTHDDAO
     {
         private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
-        public bool AddCTHD(CTHDDTO user)
+        public bool AddCTHD(CTHDDTO cthd)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -279,14 +294,17 @@ namespace DAO
                 string query = "INSERT INTO ChiTietDonHang VALUES(@mahd,@mahoa,@soluong,@dongia)";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@mahd", user.MaHD);
-                    cmd.Parameters.AddWithValue("@mahoa", user.MaHoa);
-                    cmd.Parameters.AddWithValue("@soluong", user.SoLuong);
-                    cmd.Parameters.AddWithValue("@dongia", user.DonGia);
-                    int count = cmd.ExecuteNonQuery();
+                    cmd.Parameters.AddWithValue("@mahd", cthd.MaHD);
+                    cmd.Parameters.AddWithValue("@mahoa", cthd.MaHoa);
+                    cmd.Parameters.AddWithValue("@soluong", cthd.SoLuong);
+                    cmd.Parameters.AddWithValue("@dongia", cthd.DonGia);
+                   
+
+                    int count = (int)cmd.ExecuteNonQuery();
                     return count > 0;
                 }
             }
+
         }
 
 
@@ -298,27 +316,44 @@ namespace DAO
     public class DONHANGDAO
     {
         private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
-        public int AddHD(HDBanDTO user)
+        public bool AddHD(HDBanDTO user)
         {
-            SqlConnection conn = new SqlConnection(connectionString);
-            string query = "INSERT INTO DonHang VALUES(@makh,@ngayban,@tongtien,@trangthai)";
-            using (SqlCommand cmd = new SqlCommand(query, conn))
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                cmd.Parameters.AddWithValue("@makh", user.MaKH);
-                cmd.Parameters.AddWithValue("@ngayban", user.NgayBan);
-                cmd.Parameters.AddWithValue("@tongtien", user.TongTien);
-                cmd.Parameters.AddWithValue("@trangthai", user.TrangThai);
-                cmd.ExecuteScalar();
-
+                conn.Open();
+                string query = "INSERT INTO DonHang VALUES(@makh,@ngayban,@tongtien,@trangthai)";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@makh", user.MaKH);
+                    cmd.Parameters.AddWithValue("@ngayban", user.NgayBan);
+                    cmd.Parameters.AddWithValue("@tongtien", user.TongTien);
+                    cmd.Parameters.AddWithValue("@trangthai", user.TrangThai);
+                    int count=(int)cmd.ExecuteNonQuery();
+                    return count > 0;
+                }
+                //string query1 = "SELECT SCOPE_IDENTITY() AS MaHD;";
+                //using (SqlCommand cmd1 = new SqlCommand(query1, conn))
+                //{
+                //    object result = cmd1.ExecuteScalar();
+                //    int maHD = Convert.ToInt32(result);
+                //    return maHD;
+                //}
             }
-            string query1 = "SELECT SCOPE_IDENTITY() AS MaHD;";
-            using (SqlCommand cmd1 = new SqlCommand(query1, conn))
+        }
+        public int GetMAHD()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                object result = cmd1.ExecuteScalar();
-                int maHD = Convert.ToInt32(result);
-                return maHD;
+                conn.Open();
+                string query = "SELECT top 1 MaDH from DonHang order by MaDH DESC";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    object result = cmd.ExecuteScalar();
+                    int maHD = result != DBNull.Value ? Convert.ToInt32(result) : 0; // Trả về 0 nếu là DBNull
+                    
+                    return maHD;
+                }
             }
-
         }
         public DataTable LoadHD()
         {

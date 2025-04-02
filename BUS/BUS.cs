@@ -62,7 +62,10 @@ namespace BUS
             return hoaDAO.EditFlower(fl);
         }
 
-
+        public int GetMaHoa(int mahoa)
+        {
+            return hoaDAO.GetMaHoa(mahoa);
+        }
     }
     public class KHBUS
     {
@@ -79,9 +82,13 @@ namespace BUS
     public class HDBanBUS
     {   
         private DONHANGDAO hdDAO = new DONHANGDAO();
-        public int ValidateAddHDBan(HDBanDTO hd)
+        public bool ValidateAddHDBan(HDBanDTO hd)
         {
             return hdDAO.AddHD(hd);
+        }
+        public int ValidateGetMaHD()
+        {
+            return hdDAO.GetMAHD();
         }
         //public DataTable LoadDataHDBan()
         //{

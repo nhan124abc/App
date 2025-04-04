@@ -19,6 +19,7 @@ namespace App
         private HDBanBUS hdBUS = new HDBanBUS();
         private CTHDBUS cthdBUS = new CTHDBUS();
         private double tongtien = 0;
+        private bool KH= false;
 
         public Sale()
         {
@@ -41,10 +42,18 @@ namespace App
             cbMa.ValueMember = "TenHoa";
             txtTongTien.Text = "0";
             txtTongHD.Text = "0";
+            txtTienNhan.Text = "0";
+            txtTienThua.Text = "0";
+           
         }
 
         private void cbMa_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (dgvDH.SelectedRows.Count > 0)
+            {
+                cbMa.Enabled = false;
+                return;
+            }
             var rowview = cbMa.SelectedItem as DataRowView;
             if (cbMa.SelectedValue != null)
             {
@@ -60,30 +69,46 @@ namespace App
 
         private void cbTen_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var rowview = cbTen.SelectedItem as DataRowView;
-            if (cbTen.SelectedValue != null)
-            {
-                string ten = rowview["TenHoa"].ToString();
-                DataTable dt = (DataTable)cbTen.DataSource;
-                DataRow[] rows = dt.Select($"TenHoa = '{ten}'");
-                if (rows.Length > 0)
+
+                if (dgvDH.SelectedRows.Count > 0)
                 {
-                    cbMa.SelectedValue = ten;
+                cbTen.Enabled = false;
+                return;
                 }
-                DataTable data = hoaBUS.LoadDataFlower();
+                var rowview = cbTen.SelectedItem as DataRowView;
+                if (cbTen.SelectedValue != null)
+                {
+                    string ten = rowview["TenHoa"].ToString();
+                    DataTable dt = (DataTable)cbTen.DataSource;
+                    DataRow[] rows = dt.Select($"TenHoa = '{ten}'");
+                    if (rows.Length > 0)
+                    {
+                        cbMa.SelectedValue = ten;
+                    }
+                    DataTable data = hoaBUS.LoadDataFlower();
 
-                string tenhoa = rowview["TenHoa"].ToString();
-                DataRow[] row = data.Select($"TenHoa = '{ten}'");
+                    string tenhoa = rowview["TenHoa"].ToString();
+                    DataRow[] row = data.Select($"TenHoa = '{ten}'");
 
-                decimal donGiaDecimal = Convert.ToDecimal(row[0]["Gia"]);
-                float dongia = (float)donGiaDecimal;
-                txtDonGia.Text = dongia.ToString();
-            }
+                    decimal donGiaDecimal = Convert.ToDecimal(row[0]["Gia"]);
+                    float dongia = (float)donGiaDecimal;
+                    txtDonGia.Text = dongia.ToString();
+                
+                }
+            
         }
 
         private void btnTinh_Click(object sender, EventArgs e)
         {
-            if (txtTenkh.Text == "")
+            if (dgvDH.SelectedRows.Count > 0)
+            {
+                MessageBox.Show("Vui lòng chọn chức năng sửa. ");
+                tongtien+=Convert.ToDouble( dgvDH.CurrentRow.Cells["colTongTien"].Value.ToString());
+                txtTongHD.Text = tongtien.ToString();
+                dgvDH.ClearSelection();
+                return;
+            }
+            if (txtTenkh.Text == ""||txtsdt.Text=="")
             {
                 MessageBox.Show("Vui lòng nhập thông tin khách hàng");
                 return;
@@ -142,6 +167,7 @@ namespace App
             txtTongHD.Text = tongtien.ToString();
             txtSoluong.Value = 0;
             txtTongTien.Text = "0";
+            dgvDH.ClearSelection();
         }
 
         private void txtsdt_TextChanged(object sender, EventArgs e)
@@ -152,21 +178,25 @@ namespace App
             {
                 txtTenkh.Text = dt.Rows[0]["TenKH"].ToString();
                 txtMKH.Text = dt.Rows[0]["MaKH"].ToString();
+                KH = true;
             }
-            else
-            {
-                // Them khach hang vao
-            }
+            
         }
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
-            HDBanDTO hd = new HDBanDTO { MaKH = Convert.ToInt32(txtMKH.Text), NgayBan = DateTime.Now, TongTien = Convert.ToInt32(txtTongHD.Text), TrangThai = "Đã Thanh Toán" };
+            KHDTO kh = new KHDTO { SDT = txtsdt.Text, TenKH = txtTenkh.Text };
+            if (KH==false)
+            {
+                khBUS.ValidateAddKH(kh);
+            }
+            int MAKH=khBUS.ValidateGetMaKH(kh);
+            HDBanDTO hd = new HDBanDTO { MaKH = MAKH, NgayBan = DateTime.Now, TongTien = Convert.ToInt32(txtTongHD.Text), TrangThai = "Đã Thanh Toán" };
             CTHDDTO cthd = new CTHDDTO();
 
             if (hdBUS.ValidateAddHDBan(hd) )
             {
-                int c;
+               
                 int a = hdBUS.ValidateGetMaHD();
                 foreach (DataGridViewRow row in dgvDH.Rows)
                 {
@@ -184,12 +214,13 @@ namespace App
                     cthd.DonGia = dongia;
                     cthdBUS.ValidateAddCTHD(cthd);
                 }
-                MessageBox.Show("Thanh toán thành công"+a);
+                MessageBox.Show("Thanh toán thành công");
+                return;
             }
             else
             {
                 MessageBox.Show("Thanh toán thất bại");
-                MessageBox.Show("Thanh toán thất bại" + hdBUS.ValidateAddHDBan(hd));
+                return;
             }
         }
 
@@ -199,6 +230,89 @@ namespace App
             int soluong = (int)txtSoluong.Value;
 
             txtTongTien.Text = (soluong * dongia).ToString();
+        }
+
+        private void txtTienNhan_Enter(object sender, EventArgs e)
+        {
+            if(txtTienNhan.Text == "0")
+            {
+                txtTienNhan.Text = "";
+            }
+        }
+
+        private void txtTienNhan_Leave(object sender, EventArgs e)
+        {
+            if(txtTienNhan.Text == "")
+            {
+                txtTienNhan.Text = "0";
+            }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            cbMa.Text = "1";
+            txtSoluong.Value = 0;
+            txtMKH.Text = "";
+            txtsdt.Text = "";
+            txtTenkh.Text = "";
+            txtTienNhan.Text = "0";
+            txtTongHD.Text = "0";
+            txtTongTien.Text = "0";
+            txtTienThua.Text = "0";
+            dgvDH.Rows.Clear();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if(dgvDH.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn sản phẩm để sửa");
+                return;
+            }
+            else
+            {
+                dgvDH.CurrentRow.Cells["colSoLuong"].Value = txtSoluong.Value;
+                dgvDH.CurrentRow.Cells["colTongTien"].Value = txtTongTien.Text;
+                tongtien += Convert.ToDouble(txtTongTien.Text);
+                txtTongHD.Text = tongtien.ToString();
+            }
+            txtSoluong.Value = 0;
+            txtTongTien.Text = "0";
+            cbMa.Text = "1";
+            dgvDH.ClearSelection();
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dgvDH.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn sản phẩm để xóa.");
+                return;
+            }
+            else
+            {
+                foreach (DataGridViewRow row in dgvDH.SelectedRows)
+                {
+                    dgvDH.Rows.Remove(row);
+                }
+                txtSoluong.Value = 0;
+                txtTongTien.Text = "0";
+                cbMa.Text = "1";
+                txtTongHD.Text = tongtien.ToString();
+            }
+        }
+
+        private void dgvDH_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvDH.SelectedRows.Count == 0)
+            {
+                return;
+            }
+            txtSoluong.Value = Convert.ToDecimal( dgvDH.CurrentRow.Cells["colSoLuong"].Value);
+            cbMa.Text=dgvDH.CurrentRow.Cells["colMaSP"].Value.ToString();
+            txtTongTien.Text = dgvDH.CurrentRow.Cells["colTongTien"].Value.ToString();
+            tongtien -= Convert.ToDouble(dgvDH.CurrentRow.Cells["colTongTien"].Value);
         }
     }
 }

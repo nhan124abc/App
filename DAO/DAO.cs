@@ -263,7 +263,21 @@ namespace DAO
                 }
             }
         }
-
+        public int GetMaKH(KHDTO user)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT top 1 MaKH from KhachHang where SoDienThoai=@sdt order by MaKH DESC";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@sdt", user.SDT);
+                    object result = cmd.ExecuteScalar();
+                    int maKH = result != DBNull.Value ? Convert.ToInt32(result) : 0; 
+                    return maKH;
+                }
+            }
+        }
         public bool AddKH(KHDTO user)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))

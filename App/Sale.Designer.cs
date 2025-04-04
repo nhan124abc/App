@@ -57,13 +57,13 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.gbInfo = new System.Windows.Forms.GroupBox();
             this.txtSoluong = new System.Windows.Forms.NumericUpDown();
@@ -114,6 +114,7 @@
             this.dgvDH.RowTemplate.Height = 24;
             this.dgvDH.Size = new System.Drawing.Size(805, 150);
             this.dgvDH.TabIndex = 0;
+            this.dgvDH.SelectionChanged += new System.EventHandler(this.dgvDH_SelectionChanged);
             // 
             // colMaSP
             // 
@@ -201,6 +202,8 @@
             this.txtTienNhan.Name = "txtTienNhan";
             this.txtTienNhan.Size = new System.Drawing.Size(185, 27);
             this.txtTienNhan.TabIndex = 14;
+            this.txtTienNhan.Enter += new System.EventHandler(this.txtTienNhan_Enter);
+            this.txtTienNhan.Leave += new System.EventHandler(this.txtTienNhan_Leave);
             // 
             // txtTongHD
             // 
@@ -248,6 +251,7 @@
             // 
             this.txtMKH.Location = new System.Drawing.Point(148, 33);
             this.txtMKH.Name = "txtMKH";
+            this.txtMKH.ReadOnly = true;
             this.txtMKH.Size = new System.Drawing.Size(185, 27);
             this.txtMKH.TabIndex = 9;
             // 
@@ -309,13 +313,13 @@
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.btnExit);
             this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.btnDelete);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.button6);
+            this.groupBox1.Controls.Add(this.btnRefresh);
+            this.groupBox1.Controls.Add(this.btnEdit);
             this.groupBox1.Controls.Add(this.button5);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(602, 155);
@@ -386,15 +390,16 @@
             this.label14.TabIndex = 6;
             this.label14.Text = "Thêm ";
             // 
-            // button2
+            // btnDelete
             // 
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(139, 40);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(62, 51);
-            this.button2.TabIndex = 1;
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Location = new System.Drawing.Point(139, 40);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(62, 51);
+            this.btnDelete.TabIndex = 1;
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // label6
             // 
@@ -436,25 +441,27 @@
             this.button3.TabIndex = 2;
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnRefresh
             // 
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(139, 142);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(62, 51);
-            this.button1.TabIndex = 0;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefresh.Location = new System.Drawing.Point(139, 142);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(62, 51);
+            this.btnRefresh.TabIndex = 0;
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
-            // button6
+            // btnEdit
             // 
-            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(256, 44);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(62, 51);
-            this.button6.TabIndex = 5;
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.Location = new System.Drawing.Point(256, 44);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(62, 51);
+            this.btnEdit.TabIndex = 5;
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // button5
             // 
@@ -659,13 +666,13 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.GroupBox gbInfo;
         private System.Windows.Forms.Label label20;

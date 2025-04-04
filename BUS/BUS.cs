@@ -78,6 +78,10 @@ namespace BUS
         {
             return khDAO.AddKH(kh);
         }
+        public int ValidateGetMaKH(KHDTO kh)
+        {
+            return khDAO.GetMaKH(kh);
+        }
     }
     public class HDBanBUS
     {   

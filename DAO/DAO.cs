@@ -14,8 +14,8 @@ namespace DAO
 
     public class UserDAO
     {
-        private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
-       // private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
+        //private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
+        private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
         public bool CheckLogin(UserDTO user)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -140,15 +140,15 @@ namespace DAO
 
 
 
-        private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
-       // private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
+        //private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
+        private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
         public DataTable LoadDataFlower()
 
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT MaHoa, TenHoa, Gia, SoLuongTon, MoTa, HSD FROM Hoa WHERE TrangThai = 1";
+                string query = "SELECT MaHoa, TenHoa, Gia, SoLuongTon, MoTa, HSD,HinhAnh FROM Hoa WHERE TrangThai = 1";
 
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -243,11 +243,31 @@ namespace DAO
                 }
             }
         }
+        public DataTable SearchFlower(HoaDTO dao)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "select * from Hoa where TenHoa LIKE @tenhoa";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@tenhoa", "%" + dao.TenHoa + "%");
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        DataTable ds = new DataTable();
+                        adapter.Fill(ds);
+                        return ds;
+                    }
+                }
+            }
+        }
+
 
     }
     public class KHDAO
     {
-        private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
+        //private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
+        private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
         public DataTable LoadDataKH(KHDTO user)
         {
             SqlConnection conn = new SqlConnection(connectionString);
@@ -297,7 +317,8 @@ namespace DAO
     }
     public class CTHDDAO
     {
-        private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
+        // private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
+        private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
         public bool AddCTHD(CTHDDTO cthd)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -329,7 +350,8 @@ namespace DAO
     }
     public class DONHANGDAO
     {
-        private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
+        // private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
+        private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
         public bool AddHD(HDBanDTO user)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))

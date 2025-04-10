@@ -48,5 +48,6 @@ namespace App
             mainForm.ShowDialog();
             this.Show();
         }
+
     }
 }

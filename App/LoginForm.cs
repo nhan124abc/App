@@ -64,8 +64,8 @@ namespace App
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -83,7 +83,6 @@ namespace App
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(228, 28);
             this.txtPassword.TabIndex = 1;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -126,18 +125,6 @@ namespace App
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox2.Location = new System.Drawing.Point(199, 203);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(143, 24);
-            this.checkBox2.TabIndex = 8;
-            this.checkBox2.Text = "Hiện Mật Khẩu";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.chkShowPassword_CheckedChanged);
-            // 
             // imageList1
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
@@ -153,6 +140,18 @@ namespace App
             this.imageList1.Images.SetKeyName(8, "refresh.jpg");
             this.imageList1.Images.SetKeyName(9, "return.jpg");
             this.imageList1.Images.SetKeyName(10, "exit.png");
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox2.Location = new System.Drawing.Point(199, 203);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(143, 24);
+            this.checkBox2.TabIndex = 8;
+            this.checkBox2.Text = "Hiện Mật Khẩu";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.chkShowPassword_CheckedChanged);
             // 
             // button2
             // 
@@ -207,5 +206,6 @@ namespace App
                 txtPassword.PasswordChar = '*'; // Ẩn mật khẩu
             }
         }
+
     }
 }

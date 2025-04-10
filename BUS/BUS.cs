@@ -66,6 +66,10 @@ namespace BUS
         {
             return hoaDAO.GetMaHoa(mahoa);
         }
+        public DataTable ValidateSearch(HoaDTO hoa)
+        {
+            return hoaDAO.SearchFlower(hoa);
+        }
     }
     public class KHBUS
     {

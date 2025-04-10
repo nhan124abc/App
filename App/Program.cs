@@ -17,7 +17,7 @@ namespace App
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new Sale());
+            Application.Run(new QLSP());
 
 
         }

@@ -28,6 +28,7 @@ namespace App
         }
         private void dgvFlowers_SelectionChanged(object sender, EventArgs e)
         {
+            pictureBox1.Image = Image.FromFile(dgvFlowers.CurrentRow.Cells["HinhAnh"].Value.ToString());
             txtIdFl.Text = dgvFlowers.CurrentRow.Cells["MaHoa"].Value.ToString();
             txtNameFl.Text = dgvFlowers.CurrentRow.Cells["TenHoa"].Value.ToString();
             txtQuantity.Text = dgvFlowers.CurrentRow.Cells["SoLuong"].Value.ToString();
@@ -125,6 +126,33 @@ namespace App
             else
             {
                 MessageBox.Show("Sửa thông tin hoa không thành công", "Thông báo", MessageBoxButtons.OK);
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            HoaDTO hoa = new HoaDTO { TenHoa = txtSearch.Text };
+            DataTable dt = hoaBUS.ValidateSearch(hoa);
+           
+
+            if(dt.Rows.Count==0)
+            {
+                MessageBox.Show("Không có hoa bạn cần tìm", "Thông báo", MessageBoxButtons.OK);
+                return;
+            }
+            else
+            {
+                dgvFlowers.DataSource = dt;
+            }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            if(txtSearch.Text == string.Empty)
+            {
+                dgvFlowers.DataSource = hoaBUS.LoadDataFlower();
+
+                btnRefresh_Click(sender, e);
             }
         }
     }

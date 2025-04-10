@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.btnLogOut = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btnQLNV = new System.Windows.Forms.Button();
@@ -38,66 +41,108 @@
             // 
             // btnLogOut
             // 
-            this.btnLogOut.Location = new System.Drawing.Point(554, 37);
+            this.btnLogOut.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogOut.ImageKey = "logout.png";
+            this.btnLogOut.ImageList = this.imageList1;
+            this.btnLogOut.Location = new System.Drawing.Point(559, 48);
             this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(110, 71);
+            this.btnLogOut.Size = new System.Drawing.Size(205, 152);
             this.btnLogOut.TabIndex = 0;
             this.btnLogOut.Text = "Đăng Xuất";
+            this.btnLogOut.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnLogOut.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnLogOut.UseVisualStyleBackColor = true;
             this.btnLogOut.Click += new System.EventHandler(this.btnLogout_Click);
             // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "bill.png");
+            this.imageList1.Images.SetKeyName(1, "employee.png");
+            this.imageList1.Images.SetKeyName(2, "product.png");
+            this.imageList1.Images.SetKeyName(3, "sale.png");
+            this.imageList1.Images.SetKeyName(4, "customer.png");
+            this.imageList1.Images.SetKeyName(5, "logout.png");
+            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(71, 37);
+            this.button1.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ImageIndex = 3;
+            this.button1.ImageList = this.imageList1;
+            this.button1.Location = new System.Drawing.Point(34, 48);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(103, 71);
+            this.button1.Size = new System.Drawing.Size(217, 152);
             this.button1.TabIndex = 1;
             this.button1.Text = "Bán Hàng";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.btnSale_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(216, 37);
+            this.button2.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ImageKey = "bill.png";
+            this.button2.ImageList = this.imageList1;
+            this.button2.Location = new System.Drawing.Point(295, 48);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(118, 71);
+            this.button2.Size = new System.Drawing.Size(209, 152);
             this.button2.TabIndex = 2;
             this.button2.Text = "Quản Lí Hóa Đơn";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button2.UseVisualStyleBackColor = true;
             // 
             // btnQLNV
             // 
-            this.btnQLNV.Location = new System.Drawing.Point(367, 37);
+            this.btnQLNV.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQLNV.ImageKey = "employee.png";
+            this.btnQLNV.ImageList = this.imageList1;
+            this.btnQLNV.Location = new System.Drawing.Point(559, 248);
             this.btnQLNV.Name = "btnQLNV";
-            this.btnQLNV.Size = new System.Drawing.Size(139, 71);
+            this.btnQLNV.Size = new System.Drawing.Size(205, 168);
             this.btnQLNV.TabIndex = 3;
             this.btnQLNV.Text = "Quản Lí Nhân Viên";
+            this.btnQLNV.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnQLNV.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnQLNV.UseVisualStyleBackColor = true;
             this.btnQLNV.Click += new System.EventHandler(this.btnQLNV_Click);
             // 
             // btnSP
             // 
-            this.btnSP.Location = new System.Drawing.Point(129, 226);
+            this.btnSP.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSP.ImageKey = "product.png";
+            this.btnSP.ImageList = this.imageList1;
+            this.btnSP.Location = new System.Drawing.Point(34, 248);
             this.btnSP.Name = "btnSP";
-            this.btnSP.Size = new System.Drawing.Size(139, 71);
+            this.btnSP.Size = new System.Drawing.Size(217, 168);
             this.btnSP.TabIndex = 4;
             this.btnSP.Text = "Quản Lí Sản Phẩm";
+            this.btnSP.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnSP.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnSP.UseVisualStyleBackColor = true;
             this.btnSP.Click += new System.EventHandler(this.btnSP_Click);
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(446, 226);
+            this.button5.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.ImageKey = "customer.png";
+            this.button5.ImageList = this.imageList1;
+            this.button5.Location = new System.Drawing.Point(295, 248);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(139, 71);
+            this.button5.Size = new System.Drawing.Size(209, 168);
             this.button5.TabIndex = 5;
             this.button5.Text = "Quản Lí Khách Hàng";
+            this.button5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button5.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.OldLace;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.btnSP);
@@ -119,6 +164,7 @@
         private System.Windows.Forms.Button btnQLNV;
         private System.Windows.Forms.Button btnSP;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }
 

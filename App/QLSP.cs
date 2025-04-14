@@ -155,5 +155,10 @@ namespace App
                 btnRefresh_Click(sender, e);
             }
         }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

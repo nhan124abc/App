@@ -52,9 +52,9 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.btnThanhToan = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnTinh = new System.Windows.Forms.Button();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.btnExit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
@@ -299,6 +299,22 @@
             this.btnThanhToan.UseVisualStyleBackColor = true;
             this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click);
             // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "search.png");
+            this.imageList1.Images.SetKeyName(1, "add.png");
+            this.imageList1.Images.SetKeyName(2, "insert.jpg");
+            this.imageList1.Images.SetKeyName(3, "refresh.png");
+            this.imageList1.Images.SetKeyName(4, "search.png");
+            this.imageList1.Images.SetKeyName(5, "delete.png");
+            this.imageList1.Images.SetKeyName(6, "edit.png");
+            this.imageList1.Images.SetKeyName(7, "print.png");
+            this.imageList1.Images.SetKeyName(8, "exit.png");
+            this.imageList1.Images.SetKeyName(9, "pay.png");
+            this.imageList1.Images.SetKeyName(10, "logout.png");
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnTinh);
@@ -330,21 +346,6 @@
             this.btnTinh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnTinh.UseVisualStyleBackColor = true;
             this.btnTinh.Click += new System.EventHandler(this.btnTinh_Click);
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "search.png");
-            this.imageList1.Images.SetKeyName(1, "add.png");
-            this.imageList1.Images.SetKeyName(2, "insert.jpg");
-            this.imageList1.Images.SetKeyName(3, "refresh.png");
-            this.imageList1.Images.SetKeyName(4, "search.png");
-            this.imageList1.Images.SetKeyName(5, "delete.png");
-            this.imageList1.Images.SetKeyName(6, "edit.png");
-            this.imageList1.Images.SetKeyName(7, "print.png");
-            this.imageList1.Images.SetKeyName(8, "exit.png");
-            this.imageList1.Images.SetKeyName(9, "pay.png");
             // 
             // btnExit
             // 

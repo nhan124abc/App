@@ -54,7 +54,7 @@
             this.btnThanhToan = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnTinh = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
@@ -73,6 +73,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDH)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -317,7 +318,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnTinh);
+            this.groupBox1.Controls.Add(this.btnAdd);
             this.groupBox1.Controls.Add(this.btnExit);
             this.groupBox1.Controls.Add(this.btnDelete);
             this.groupBox1.Controls.Add(this.btnThanhToan);
@@ -332,20 +333,20 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Chức Năng";
             // 
-            // btnTinh
+            // btnAdd
             // 
-            this.btnTinh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnTinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTinh.ImageKey = "add.png";
-            this.btnTinh.ImageList = this.imageList1;
-            this.btnTinh.Location = new System.Drawing.Point(33, 50);
-            this.btnTinh.Name = "btnTinh";
-            this.btnTinh.Size = new System.Drawing.Size(62, 51);
-            this.btnTinh.TabIndex = 9;
-            this.btnTinh.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnTinh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnTinh.UseVisualStyleBackColor = true;
-            this.btnTinh.Click += new System.EventHandler(this.btnTinh_Click);
+            this.btnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.ImageKey = "add.png";
+            this.btnAdd.ImageList = this.imageList1;
+            this.btnAdd.Location = new System.Drawing.Point(33, 50);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(62, 51);
+            this.btnAdd.TabIndex = 9;
+            this.btnAdd.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnExit
             // 
@@ -410,6 +411,7 @@
             this.btnPrint.Size = new System.Drawing.Size(62, 51);
             this.btnPrint.TabIndex = 4;
             this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // gbInfo
             // 
@@ -601,7 +603,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbMa;
-        private System.Windows.Forms.Button btnTinh;
+        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.NumericUpDown txtSoluong;
         private System.Windows.Forms.DataGridView dgvDH;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMaSP;
@@ -612,5 +614,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colKM;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

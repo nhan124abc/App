@@ -9,6 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Printing;
+using System.Windows.Forms;
+
 
 namespace App
 {
@@ -44,7 +47,17 @@ namespace App
             txtTongHD.Text = "0";
             txtTienNhan.Text = "0";
             txtTienThua.Text = "0";
-           
+
+            ToolTip toolTip1 = new ToolTip();
+            toolTip1.SetToolTip(this.btnAdd, "Thêm");
+            toolTip1.SetToolTip(this.btnDelete, "Xóa");
+            toolTip1.SetToolTip(this.btnEdit, "Chỉnh sửa"); 
+            toolTip1.SetToolTip(this.btnPrint, "In");
+            toolTip1.SetToolTip(this.btnRefresh, "Làm mới");
+            toolTip1.SetToolTip(this.btnThanhToan, "Thanh toán");
+            toolTip1.SetToolTip(this.btnExit, "Thoát");
+
+
         }
 
         private void cbMa_SelectedIndexChanged(object sender, EventArgs e)
@@ -98,8 +111,9 @@ namespace App
             
         }
 
-        private void btnTinh_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
+            
             if (dgvDH.SelectedRows.Count > 0)
             {
                 MessageBox.Show("Vui lòng chọn chức năng sửa. ");
@@ -186,6 +200,13 @@ namespace App
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
             KHDTO kh = new KHDTO { SDT = txtsdt.Text, TenKH = txtTenkh.Text };
+
+            if(dgvDH.DataSource == null)
+            {
+                MessageBox.Show("Bạn cần phải thêm sản phẩm", "Thông báo", MessageBoxButtons.OK);
+                return;
+            }
+
             if (KH==false)
             {
                 khBUS.ValidateAddKH(kh);
@@ -313,6 +334,24 @@ namespace App
             cbMa.Text=dgvDH.CurrentRow.Cells["colMaSP"].Value.ToString();
             txtTongTien.Text = dgvDH.CurrentRow.Cells["colTongTien"].Value.ToString();
             tongtien -= Convert.ToDouble(dgvDH.CurrentRow.Cells["colTongTien"].Value);
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            PrintDialog print = new PrintDialog();
+            print.AllowSomePages = true;
+            print.ShowHelp = true;
+
+            PrintDocument printDoc = new PrintDocument();
+            print.Document = printDoc;
+
+            if (print.ShowDialog() == DialogResult.OK)
+            {
+                string selectedPrinter = printDoc.PrinterSettings.PrinterName;
+                MessageBox.Show("Đã chọn máy in: " + selectedPrinter);
+            }
+
+
         }
     }
 }

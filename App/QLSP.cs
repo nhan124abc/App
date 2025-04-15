@@ -131,8 +131,8 @@ namespace App
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            HoaDTO hoa = new HoaDTO { TenHoa = txtSearch.Text };
-            DataTable dt = hoaBUS.ValidateSearch(hoa);
+            HoaDTO flower = new HoaDTO { TenHoa = txtSearch.Text };
+            DataTable dt = hoaBUS.ValidateSearch(flower);
            
 
             if(dt.Rows.Count==0)

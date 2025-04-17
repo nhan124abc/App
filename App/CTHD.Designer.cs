@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvID = new System.Windows.Forms.DataGridView();
             this.MaCTHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaHoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvID)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.Controls.Add(this.dgvID);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(43, 36);
             this.groupBox1.Name = "groupBox1";
@@ -50,24 +50,25 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Chi Tiết Hóa Đơn";
             // 
-            // dataGridView1
+            // dgvID
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvID.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvID.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaCTHD,
             this.MaHD,
             this.MaHoa,
             this.SoLuong,
             this.Gia});
-            this.dataGridView1.Location = new System.Drawing.Point(27, 42);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(657, 291);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvID.Location = new System.Drawing.Point(27, 42);
+            this.dgvID.Name = "dgvID";
+            this.dgvID.RowHeadersWidth = 51;
+            this.dgvID.RowTemplate.Height = 24;
+            this.dgvID.Size = new System.Drawing.Size(657, 291);
+            this.dgvID.TabIndex = 0;
             // 
             // MaCTHD
             // 
+            this.MaCTHD.DataPropertyName = "MaCTDH";
             this.MaCTHD.HeaderText = "Mã Chi Tiết hóa Đơn";
             this.MaCTHD.MinimumWidth = 6;
             this.MaCTHD.Name = "MaCTHD";
@@ -75,6 +76,7 @@
             // 
             // MaHD
             // 
+            this.MaHD.DataPropertyName = "MaDH";
             this.MaHD.HeaderText = "Mã Hóa Đơn";
             this.MaHD.MinimumWidth = 6;
             this.MaHD.Name = "MaHD";
@@ -82,6 +84,7 @@
             // 
             // MaHoa
             // 
+            this.MaHoa.DataPropertyName = "MaHoa";
             this.MaHoa.HeaderText = "Mã Hoa";
             this.MaHoa.MinimumWidth = 6;
             this.MaHoa.Name = "MaHoa";
@@ -89,6 +92,7 @@
             // 
             // SoLuong
             // 
+            this.SoLuong.DataPropertyName = "SoLuong";
             this.SoLuong.HeaderText = "Số Lượng";
             this.SoLuong.MinimumWidth = 6;
             this.SoLuong.Name = "SoLuong";
@@ -96,6 +100,7 @@
             // 
             // Gia
             // 
+            this.Gia.DataPropertyName = "Gia";
             this.Gia.HeaderText = "Giá";
             this.Gia.MinimumWidth = 6;
             this.Gia.Name = "Gia";
@@ -110,8 +115,9 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "CTHD";
             this.Text = "CTHD";
+            this.Load += new System.EventHandler(this.CTHD_Load);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvID)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -119,7 +125,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvID;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaCTHD;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaHD;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaHoa;

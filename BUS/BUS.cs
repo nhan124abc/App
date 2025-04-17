@@ -98,10 +98,10 @@ namespace BUS
         {
             return hdDAO.GetMAHD();
         }
-        //public DataTable LoadDataHDBan()
-        //{
-        //    return hdDAO.LoadDataHDBan();
-        //}
+        public DataTable LoadDataHDBan()
+        {
+            return hdDAO.LoadHD();
+        }
         //public bool ValidateEditHDBan(HDBanDTO hd)
         //{
         //    return hdDAO.EditHDBan(hd);
@@ -130,6 +130,10 @@ namespace BUS
         //{
         //    return cthdDAO.DeleteCTHD(cthd);
         //}
+        public DataTable LoadCTHDInput(CTHDDTO cthd)
+        {
+            return cthdDAO.LoadCTHDInput(cthd);
+        }
 
     }
 }

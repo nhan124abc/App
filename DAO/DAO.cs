@@ -134,6 +134,27 @@ namespace DAO
 
             }
         }
+
+        public DataTable SearchEmployee(UserDTO user)
+        {
+            using(SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "select * from NhanVien where TenNV like @tennv";
+                using ( SqlCommand cmd = new SqlCommand(query,conn))
+                {
+                    cmd.Parameters.AddWithValue("@tennv", "%" + user.TenNV + "%");
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        DataTable ds = new DataTable();
+                        adapter.Fill(ds);
+                        return ds;
+                    }
+                }
+            }
+        }
+
+         
     }
     public class HoaDAO
     {
@@ -172,7 +193,7 @@ namespace DAO
                 {
                     cmd.Parameters.AddWithValue("@mahoa",hoa);
                     object result = cmd.ExecuteScalar();
-                    int maHoa = result != DBNull.Value ? Convert.ToInt32(result) : 0; // Trả về 0 nếu là DBNull
+                    int maHoa = result != DBNull.Value ? Convert.ToInt32(result) : 0; 
                     return maHoa;
                 }
             }
@@ -243,7 +264,7 @@ namespace DAO
                 }
             }
         }
-        public DataTable SearchFlower(HoaDTO dao)
+        public DataTable SearchFlower(HoaDTO flowers)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -251,7 +272,7 @@ namespace DAO
                 string query = "select * from Hoa where TenHoa LIKE @tenhoa";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@tenhoa", "%" + dao.TenHoa + "%");
+                    cmd.Parameters.AddWithValue("@tenhoa", "%" + flowers.TenHoa + "%");
                     using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                     {
                         DataTable ds = new DataTable();

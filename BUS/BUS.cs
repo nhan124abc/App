@@ -39,6 +39,10 @@ namespace BUS
         {
             return userDAO.DeleteEmployee(user);
         }
+        public DataTable ValidateSearchEmployee(UserDTO user)
+        {
+            return userDAO.SearchEmployee(user);
+        }
 
     }
     public class HoaBUS

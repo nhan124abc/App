@@ -176,5 +176,32 @@ namespace App
             dgvNV.DataSource = dt;
         }
 
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            if(txtSearch.Text == string.Empty)
+            {
+                dgvNV.DataSource = userBUS.LoadNV();
+            }
+            btnReset_Click(sender, e);
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            UserDTO user = new UserDTO
+            {
+                TenNV = txtSearch.Text
+            };
+            DataTable dt = userBUS.ValidateSearchEmployee(user);
+
+            if(dt.Rows.Count == 0)
+            {
+                MessageBox.Show("Không có nhân viên bạn cần tìm!", "Thông báo", MessageBoxButtons.OK);
+                return;
+            }
+            else
+            {
+                dgvNV.DataSource = dt;
+            }
+        }
     }
 }

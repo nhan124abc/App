@@ -52,26 +52,7 @@ namespace App
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            //KHDTO kHDTO = new KHDTO
-            //{
-            //    MaKH = Convert.ToInt32(txtCC.Text)
-            //};
-
-            //if(KHBUS.ValidateDeleteKH(kHDTO))
-            //{
-            //    MessageBox.Show("Xóa khách hàng thành công", "Thông báo", MessageBoxButtons.OK);
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Xóa khách hàng không thành công", "Thông báo", MessageBoxButtons.OK);
-            //}
-
-            //txtCC.Text = "";
-            //txtCN.Text = "";
-            //txtNP.Text = "";
-
-            //DataTable dt = KHBUS.LoadDataKH();
-            //dgvInvoice.DataSource = dt;
+           
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

@@ -29,11 +29,12 @@ namespace App
         private void btnLogin_Click(object sender, EventArgs e)
         {
             UserDTO user = new UserDTO { Username = txtUsername.Text, Password = txtPassword.Text };
-            if (userBUS.ValidateLogin(user))
+            if (userBUS.ValidateLogin(user)!=0)
             {
-                if (userBUS.ValidateAdmin(user))
+                if (userBUS.ValidateAdmin(user) != 0)
                 {
-                    MainForm mainForm = new MainForm();
+                    int manv = userBUS.ValidateAdmin(user);
+                    MainForm mainForm = new MainForm(manv);
                     this.Hide();
                     mainForm.ShowDialog();
                     this.Close();

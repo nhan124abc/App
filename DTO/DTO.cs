@@ -50,4 +50,29 @@ namespace DTO
         public int TongTien { get; set; }
         public string TrangThai { get; set; }
     }
+    public class NhaCungCapDTO
+    {
+        public int MaNCC { get; set; }
+        public string TenNCC { get; set; }
+        public string DiaChi { get; set; }
+        public string Email { get; set; }
+        public string SDT { get; set; }
+    }
+    public class NhapHangDTO
+    {
+        public int MaHDN { get; set; }
+        public int MaNCC { get; set; }
+        public int MaNV { get; set; }
+        public DateTime NgayNhap { get; set; }
+        public float TongTien { get; set; }
+    }
+    public class CTHDNDTO
+    {
+        public int MaHDN { get; set; }
+        public int MaCTHDN { get; set; }
+        public int MaHoa { get; set; }
+        public int SoLuong { get; set; }
+        public DateTime NgayNhap { get; set; }
+        public int DonGia { get; set; }
+    }
 }

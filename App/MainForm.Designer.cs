@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.btnLogOut = new System.Windows.Forms.Button();
+            this.btnNhapHang = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -41,20 +41,20 @@
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.SuspendLayout();
             // 
-            // btnLogOut
+            // btnNhapHang
             // 
-            this.btnLogOut.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogOut.ImageKey = "importgoods.png";
-            this.btnLogOut.ImageList = this.imageList1;
-            this.btnLogOut.Location = new System.Drawing.Point(559, 121);
-            this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(205, 152);
-            this.btnLogOut.TabIndex = 0;
-            this.btnLogOut.Text = "Nhập Hàng";
-            this.btnLogOut.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnLogOut.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnLogOut.UseVisualStyleBackColor = true;
-            this.btnLogOut.Click += new System.EventHandler(this.btnLogout_Click);
+            this.btnNhapHang.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNhapHang.ImageKey = "importgoods.png";
+            this.btnNhapHang.ImageList = this.imageList1;
+            this.btnNhapHang.Location = new System.Drawing.Point(559, 121);
+            this.btnNhapHang.Name = "btnNhapHang";
+            this.btnNhapHang.Size = new System.Drawing.Size(205, 152);
+            this.btnNhapHang.TabIndex = 0;
+            this.btnNhapHang.Text = "Nhập Hàng";
+            this.btnNhapHang.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnNhapHang.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnNhapHang.UseVisualStyleBackColor = true;
+            this.btnNhapHang.Click += new System.EventHandler(this.btnNhapHang_Click);
             // 
             // imageList1
             // 
@@ -173,7 +173,7 @@
             this.Controls.Add(this.btnQLNV);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.btnLogOut);
+            this.Controls.Add(this.btnNhapHang);
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.ResumeLayout(false);
@@ -182,7 +182,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnLogOut;
+        private System.Windows.Forms.Button btnNhapHang;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnQLNV;

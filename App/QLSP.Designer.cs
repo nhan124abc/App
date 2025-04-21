@@ -31,20 +31,15 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QLSP));
             this.dgvFlowers = new System.Windows.Forms.DataGridView();
-            this.MaHoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenHoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GiaBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GiaNhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MoTa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.btnExit = new System.Windows.Forms.Button();
             this.btnInsert = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbHinhAnhHoa = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtNameFl = new System.Windows.Forms.TextBox();
             this.txtIdFl = new System.Windows.Forms.TextBox();
@@ -61,10 +56,14 @@
             this.btnThoat = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.MaHoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenHoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GiaBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MoTa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFlowers)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHinhAnhHoa)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -72,13 +71,13 @@
             // 
             // dgvFlowers
             // 
+            this.dgvFlowers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvFlowers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFlowers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaHoa,
             this.TenHoa,
             this.SoLuong,
             this.GiaBan,
-            this.GiaNhap,
             this.MoTa});
             this.dgvFlowers.Location = new System.Drawing.Point(26, 36);
             this.dgvFlowers.Name = "dgvFlowers";
@@ -87,53 +86,6 @@
             this.dgvFlowers.Size = new System.Drawing.Size(782, 196);
             this.dgvFlowers.TabIndex = 23;
             this.dgvFlowers.SelectionChanged += new System.EventHandler(this.dgvFlowers_SelectionChanged);
-            // 
-            // MaHoa
-            // 
-            this.MaHoa.DataPropertyName = "MaHoa";
-            this.MaHoa.HeaderText = "Mã Hoa";
-            this.MaHoa.MinimumWidth = 6;
-            this.MaHoa.Name = "MaHoa";
-            this.MaHoa.Width = 125;
-            // 
-            // TenHoa
-            // 
-            this.TenHoa.DataPropertyName = "TenHoa";
-            this.TenHoa.HeaderText = "Tên Hoa";
-            this.TenHoa.MinimumWidth = 6;
-            this.TenHoa.Name = "TenHoa";
-            this.TenHoa.Width = 125;
-            // 
-            // SoLuong
-            // 
-            this.SoLuong.DataPropertyName = "SoLuongTon";
-            this.SoLuong.HeaderText = "Số Lượng";
-            this.SoLuong.MinimumWidth = 6;
-            this.SoLuong.Name = "SoLuong";
-            this.SoLuong.Width = 125;
-            // 
-            // GiaBan
-            // 
-            this.GiaBan.DataPropertyName = "Gia";
-            this.GiaBan.HeaderText = "Giá Bán";
-            this.GiaBan.MinimumWidth = 6;
-            this.GiaBan.Name = "GiaBan";
-            this.GiaBan.Width = 125;
-            // 
-            // GiaNhap
-            // 
-            this.GiaNhap.HeaderText = "Giá Nhập";
-            this.GiaNhap.MinimumWidth = 6;
-            this.GiaNhap.Name = "GiaNhap";
-            this.GiaNhap.Width = 125;
-            // 
-            // MoTa
-            // 
-            this.MoTa.DataPropertyName = "MoTa";
-            this.MoTa.HeaderText = "Mô tả";
-            this.MoTa.MinimumWidth = 6;
-            this.MoTa.Name = "MoTa";
-            this.MoTa.Width = 125;
             // 
             // txtSearch
             // 
@@ -167,6 +119,17 @@
             this.btnSearch.TabIndex = 20;
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "add.png");
+            this.imageList1.Images.SetKeyName(1, "cancel.png");
+            this.imageList1.Images.SetKeyName(2, "edit.png");
+            this.imageList1.Images.SetKeyName(3, "exit.png");
+            this.imageList1.Images.SetKeyName(4, "refresh.png");
+            this.imageList1.Images.SetKeyName(5, "search.png");
             // 
             // btnExit
             // 
@@ -214,13 +177,14 @@
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // pictureBox1
+            // pbHinhAnhHoa
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(1058, 28);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(112, 120);
-            this.pictureBox1.TabIndex = 14;
-            this.pictureBox1.TabStop = false;
+            this.pbHinhAnhHoa.Location = new System.Drawing.Point(1058, 28);
+            this.pbHinhAnhHoa.Name = "pbHinhAnhHoa";
+            this.pbHinhAnhHoa.Size = new System.Drawing.Size(112, 120);
+            this.pbHinhAnhHoa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbHinhAnhHoa.TabIndex = 14;
+            this.pbHinhAnhHoa.TabStop = false;
             // 
             // groupBox1
             // 
@@ -388,17 +352,6 @@
             this.label7.Text = "Hình Ảnh";
             this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "add.png");
-            this.imageList1.Images.SetKeyName(1, "cancel.png");
-            this.imageList1.Images.SetKeyName(2, "edit.png");
-            this.imageList1.Images.SetKeyName(3, "exit.png");
-            this.imageList1.Images.SetKeyName(4, "refresh.png");
-            this.imageList1.Images.SetKeyName(5, "search.png");
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.btnInsert);
@@ -416,6 +369,41 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Chức Năng";
             // 
+            // MaHoa
+            // 
+            this.MaHoa.DataPropertyName = "MaHoa";
+            this.MaHoa.HeaderText = "Mã Hoa";
+            this.MaHoa.MinimumWidth = 6;
+            this.MaHoa.Name = "MaHoa";
+            // 
+            // TenHoa
+            // 
+            this.TenHoa.DataPropertyName = "TenHoa";
+            this.TenHoa.HeaderText = "Tên Hoa";
+            this.TenHoa.MinimumWidth = 6;
+            this.TenHoa.Name = "TenHoa";
+            // 
+            // SoLuong
+            // 
+            this.SoLuong.DataPropertyName = "SoLuongTon";
+            this.SoLuong.HeaderText = "Số Lượng";
+            this.SoLuong.MinimumWidth = 6;
+            this.SoLuong.Name = "SoLuong";
+            // 
+            // GiaBan
+            // 
+            this.GiaBan.DataPropertyName = "Gia";
+            this.GiaBan.HeaderText = "Giá Bán";
+            this.GiaBan.MinimumWidth = 6;
+            this.GiaBan.Name = "GiaBan";
+            // 
+            // MoTa
+            // 
+            this.MoTa.DataPropertyName = "MoTa";
+            this.MoTa.HeaderText = "Mô tả";
+            this.MoTa.MinimumWidth = 6;
+            this.MoTa.Name = "MoTa";
+            // 
             // QLSP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -427,12 +415,12 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pbHinhAnhHoa);
             this.Name = "QLSP";
             this.Text = "QLSP";
             this.Load += new System.EventHandler(this.QLSP_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFlowers)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHinhAnhHoa)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -453,7 +441,7 @@
         private System.Windows.Forms.Button btnInsert;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbHinhAnhHoa;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtPP;
         private System.Windows.Forms.TextBox txtSP;
@@ -468,15 +456,14 @@
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.TextBox txtNameFl;
         private System.Windows.Forms.TextBox txtIdFl;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaHoa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenHoa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SoLuong;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GiaBan;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GiaNhap;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MoTa;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaHoa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenHoa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoLuong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GiaBan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MoTa;
     }
 }

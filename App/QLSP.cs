@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,11 +29,19 @@ namespace App
         }
         private void dgvFlowers_SelectionChanged(object sender, EventArgs e)
         {
-            pictureBox1.Image = Image.FromFile(dgvFlowers.CurrentRow.Cells["HinhAnh"].Value.ToString());
+
+            string appPath = Directory.GetParent(Application.StartupPath).Parent.FullName;
+            
+            string folderPath = Path.Combine(appPath, "imghoa");
+            DataGridViewRow Row=dgvFlowers.CurrentRow;
+            pbHinhAnhHoa.Image = Image.FromFile(Path.Combine(folderPath, dgvFlowers.CurrentRow.Cells["HinhAnh"].Value.ToString()));
             txtIdFl.Text = dgvFlowers.CurrentRow.Cells["MaHoa"].Value.ToString();
             txtNameFl.Text = dgvFlowers.CurrentRow.Cells["TenHoa"].Value.ToString();
             txtQuantity.Text = dgvFlowers.CurrentRow.Cells["SoLuong"].Value.ToString();
-            txtSP.Text = dgvFlowers.CurrentRow.Cells["GiaBan"].Value.ToString();
+            txtSP.Text = Convert.ToInt32( dgvFlowers.CurrentRow.Cells["GiaBan"].Value).ToString();
+            txtPP.Text = (Convert.ToInt32(dgvFlowers.CurrentRow.Cells["GiaBan"].Value)-7000).ToString();
+            //int gia=Convert.ToDecimal(txtSP.Text)-7000;
+            //txtPP.Text = gia.ToString();
             txtDescribe.Text = dgvFlowers.CurrentRow.Cells["MoTa"].Value.ToString();
         }
 
@@ -77,6 +86,7 @@ namespace App
                 txtPP.Text = string.Empty;
                 txtQuantity.Text = string.Empty;
                 txtDescribe.Text = string.Empty;
+                pbHinhAnhHoa.Image = null;
 
             }
         }

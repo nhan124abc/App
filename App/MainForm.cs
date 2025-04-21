@@ -12,14 +12,15 @@ namespace App
 {
     public partial class MainForm : Form
     {
+        private int MaNV;   
         public MainForm()
         {
             InitializeComponent();
         }
-        private void btnLogout_Click(object sender, EventArgs e)
+        public MainForm(int MaNV)
         {
-           
-
+            InitializeComponent();
+            this.MaNV = MaNV;
         }
 
         private void btnSale_Click(object sender, EventArgs e)
@@ -60,6 +61,14 @@ namespace App
             this.Hide();
             loginForm.ShowDialog();
             this.Close();
+        }
+
+        private void btnNhapHang_Click(object sender, EventArgs e)
+        {
+            NH mainForm = new NH(MaNV);
+            this.Hide();
+            mainForm.ShowDialog();
+            this.Show();
         }
     }
 }

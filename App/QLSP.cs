@@ -77,7 +77,6 @@ namespace App
                 txtPP.Text = string.Empty;
                 txtQuantity.Text = string.Empty;
                 txtDescribe.Text = string.Empty;
-
             }
         }
 

@@ -30,7 +30,6 @@ namespace BUS
             return userDAO.CheckAdmin(user);
         }
 
-
         public bool ValidateAddEmployee(UserDTO user) 
         { 
             return userDAO.AddEmployee(user);
@@ -78,6 +77,10 @@ namespace BUS
     public class KHBUS
     {
         private KHDAO khDAO = new KHDAO();
+        public DataTable LoadDataKH()
+        {
+            return khDAO.LoadKH();
+        }
         public DataTable LoadDataKHInput(KHDTO kh)
         {
            return khDAO.LoadDataKH(kh);
@@ -90,6 +93,19 @@ namespace BUS
         {
             return khDAO.GetMaKH(kh);
         }
+        public bool ValidateEditKH(KHDTO kh)
+        {
+            return khDAO.EditKH(kh);
+        }
+        public DataTable ValadateSearchKH(KHDTO kh)
+        {
+            return khDAO.SearchKH(kh);
+        }
+
+        //public bool ValidateDeleteKH(KHDTO kh)
+        //{
+        //    return khDAO.DeleteKH(kh);
+        //}
     }
     public class HDBanBUS
     {   

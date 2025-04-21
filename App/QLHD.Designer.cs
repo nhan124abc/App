@@ -35,7 +35,7 @@
             this.txtCC = new System.Windows.Forms.TextBox();
             this.txtIC = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtDescribe = new System.Windows.Forms.TextBox();
+            this.txtToTal = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -51,7 +51,7 @@
             this.btnRefresh = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvBill = new System.Windows.Forms.DataGridView();
-            this.MaHoaDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaKH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayLap = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,7 +68,7 @@
             this.groupBox1.Controls.Add(this.txtCC);
             this.groupBox1.Controls.Add(this.txtIC);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.txtDescribe);
+            this.groupBox1.Controls.Add(this.txtToTal);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
@@ -118,14 +118,14 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Ngày Lập:";
             // 
-            // txtDescribe
+            // txtToTal
             // 
-            this.txtDescribe.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescribe.Location = new System.Drawing.Point(168, 217);
-            this.txtDescribe.Name = "txtDescribe";
-            this.txtDescribe.ReadOnly = true;
-            this.txtDescribe.Size = new System.Drawing.Size(302, 28);
-            this.txtDescribe.TabIndex = 12;
+            this.txtToTal.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtToTal.Location = new System.Drawing.Point(168, 217);
+            this.txtToTal.Name = "txtToTal";
+            this.txtToTal.ReadOnly = true;
+            this.txtToTal.Size = new System.Drawing.Size(302, 28);
+            this.txtToTal.TabIndex = 12;
             // 
             // label6
             // 
@@ -185,6 +185,7 @@
             this.button1.TabIndex = 26;
             this.button1.Text = "Thoát";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnInsert
             // 
@@ -267,6 +268,7 @@
             this.btnRefresh.TabIndex = 21;
             this.btnRefresh.Text = "Làm mới";
             this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // groupBox2
             // 
@@ -283,7 +285,7 @@
             // 
             this.dgvBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBill.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.MaHoaDon,
+            this.MaHD,
             this.MaKH,
             this.NgayLap,
             this.TongTien,
@@ -294,14 +296,15 @@
             this.dgvBill.RowTemplate.Height = 24;
             this.dgvBill.Size = new System.Drawing.Size(678, 388);
             this.dgvBill.TabIndex = 23;
+            this.dgvBill.SelectionChanged += new System.EventHandler(this.dgvBill_SelectionChanged);
             // 
-            // MaHoaDon
+            // MaHD
             // 
-            this.MaHoaDon.DataPropertyName = "MaDH";
-            this.MaHoaDon.HeaderText = "Mã Hóa Đơn";
-            this.MaHoaDon.MinimumWidth = 6;
-            this.MaHoaDon.Name = "MaHoaDon";
-            this.MaHoaDon.Width = 125;
+            this.MaHD.DataPropertyName = "MaDH";
+            this.MaHD.HeaderText = "Mã Hóa Đơn";
+            this.MaHD.MinimumWidth = 6;
+            this.MaHD.Name = "MaHD";
+            this.MaHD.Width = 125;
             // 
             // MaKH
             // 
@@ -361,7 +364,7 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtIC;
-        private System.Windows.Forms.TextBox txtDescribe;
+        private System.Windows.Forms.TextBox txtToTal;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -380,7 +383,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dgvBill;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaHoaDon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaHD;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaKH;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayLap;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongTien;

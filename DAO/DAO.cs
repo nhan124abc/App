@@ -15,15 +15,9 @@ namespace DAO
 
     public class UserDAO
     {
-<<<<<<< HEAD
         private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
         // private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
         public int  CheckLogin(UserDTO user)
-=======
-        //private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
-        private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
-        public bool CheckLogin(UserDTO user)
->>>>>>> 714c52903e7353aa6da1ffba2c7a4cd07aacf19a
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -136,14 +130,13 @@ namespace DAO
                     cmd.Parameters.AddWithValue("@Username", user.Username);
                     cmd.Parameters.AddWithValue("@Password", user.Password);
 
-<<<<<<< HEAD
+
                     object result = cmd.ExecuteScalar();
                     int maNV = result != DBNull.Value ? Convert.ToInt32(result) : 0;
                     return maNV;
-=======
-                    int count = (int)cmd.ExecuteScalar(); 
-                    return count > 0;
->>>>>>> 714c52903e7353aa6da1ffba2c7a4cd07aacf19a
+
+               
+
                 }
 
             }

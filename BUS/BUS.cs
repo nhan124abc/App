@@ -30,14 +30,10 @@ namespace BUS
             return userDAO.CheckAdmin(user);
         }
 
-<<<<<<< HEAD
+
 
         public bool ValidateAddEmployee(UserDTO user)
         {
-=======
-        public bool ValidateAddEmployee(UserDTO user) 
-        { 
->>>>>>> 714c52903e7353aa6da1ffba2c7a4cd07aacf19a
             return userDAO.AddEmployee(user);
         }
         public bool ValidateDeleteEmployee(UserDTO user)

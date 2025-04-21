@@ -86,8 +86,11 @@ namespace App
                 txtPP.Text = string.Empty;
                 txtQuantity.Text = string.Empty;
                 txtDescribe.Text = string.Empty;
+<<<<<<< HEAD
                 pbHinhAnhHoa.Image = null;
 
+=======
+>>>>>>> 714c52903e7353aa6da1ffba2c7a4cd07aacf19a
             }
         }
 

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -14,9 +15,15 @@ namespace DAO
 
     public class UserDAO
     {
+<<<<<<< HEAD
         private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
         // private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
         public int  CheckLogin(UserDTO user)
+=======
+        //private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
+        private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
+        public bool CheckLogin(UserDTO user)
+>>>>>>> 714c52903e7353aa6da1ffba2c7a4cd07aacf19a
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -129,9 +136,14 @@ namespace DAO
                     cmd.Parameters.AddWithValue("@Username", user.Username);
                     cmd.Parameters.AddWithValue("@Password", user.Password);
 
+<<<<<<< HEAD
                     object result = cmd.ExecuteScalar();
                     int maNV = result != DBNull.Value ? Convert.ToInt32(result) : 0;
                     return maNV;
+=======
+                    int count = (int)cmd.ExecuteScalar(); 
+                    return count > 0;
+>>>>>>> 714c52903e7353aa6da1ffba2c7a4cd07aacf19a
                 }
 
             }
@@ -160,18 +172,15 @@ namespace DAO
     }
     public class HoaDAO
     {
-
-
-
-        private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
-        //private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
+        //private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
+        private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
         public DataTable LoadDataFlower()
 
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT MaHoa, TenHoa, Gia, SoLuongTon, MoTa, HSD,HinhAnh FROM Hoa WHERE TrangThai = 1";
+                string query = "SELECT MaHoa, TenHoa, Gia, SoLuongTon, MoTa, HSD, HinhAnh FROM Hoa WHERE TrangThai = 1";
 
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -319,12 +328,27 @@ namespace DAO
     }
     public class KHDAO
     {
-        private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
-        //private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
+        //private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
+        private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
+        
+        public DataTable LoadKH()
+        {
+            SqlConnection conn = new SqlConnection(connectionString);
+            string query = "SELECT * FROM KhachHang";
+            using(SqlCommand cmd = new SqlCommand(query,conn))
+            {
+                using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                {
+                    DataTable ds = new DataTable();
+                    adapter.Fill(ds);
+                    return ds;
+                }
+            }
+        }
         public DataTable LoadDataKH(KHDTO user)
         {
             SqlConnection conn = new SqlConnection(connectionString);
-            string query = "SELECT * FROM KhachHang Where SoDienThoai=@sdt";
+            string query = "SELECT * FROM KhachHang Where SoDienThoai = @sdt";
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 cmd.Parameters.AddWithValue("@sdt", user.SDT);
@@ -341,7 +365,7 @@ namespace DAO
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT top 1 MaKH from KhachHang where SoDienThoai=@sdt order by MaKH DESC";
+                string query = "SELECT top 1 MaKH from KhachHang where SoDienThoai = @sdt order by MaKH DESC";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@sdt", user.SDT);
@@ -351,6 +375,7 @@ namespace DAO
                 }
             }
         }
+
         public bool AddKH(KHDTO user)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -367,11 +392,66 @@ namespace DAO
                 }
             }
         }
+
+        public bool EditKH(KHDTO user)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "update KhachHang set TenKH = @tenkh, SoDienThoai = @sdt where MaKH = @makh";
+                using(SqlCommand cmd = new SqlCommand(query,conn))
+                {
+                    cmd.Parameters.AddWithValue("@tenkh", user.TenKH);
+                    cmd.Parameters.AddWithValue("@sdt", user.SDT);
+                    cmd.Parameters.AddWithValue("@makh", user.MaKH);
+
+                    int count = cmd.ExecuteNonQuery();
+                    return count > 0;
+                }
+            }
+        }
+
+        public DataTable SearchKH(KHDTO user)
+        {
+            using(SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "select * from KhachHang where TenKH like @tenkh";
+                using( SqlCommand cmd = new SqlCommand(query,conn))
+                {
+                    cmd.Parameters.AddWithValue("@tenkh", "%" + user.TenKH + "%");
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        DataTable ds = new DataTable();
+                        adapter.Fill(ds);
+                        return ds;
+                    }
+                }
+            }
+        }
+
+        public bool CancelKH(KHDTO user)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "update KhachHang set TrangThai like N'Đã hủy' where MaKH = @makh";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@makh", user.MaKH);
+
+                    int count = cmd.ExecuteNonQuery();
+                    return count > 0;
+                }
+            }
+        }
+
+
     }
     public class CTHDDAO
     {
-        private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
-        //private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
+        //private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
+        private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
         public bool AddCTHD(CTHDDTO cthd)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -409,7 +489,6 @@ namespace DAO
                     return dt;
 
 
-
                 }
 
 
@@ -424,8 +503,8 @@ namespace DAO
     }
     public class DONHANGDAO
     {
-        private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
-        //private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
+        //private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
+        private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
         public bool AddHD(HDBanDTO user)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))

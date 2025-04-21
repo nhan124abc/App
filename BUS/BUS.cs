@@ -12,7 +12,7 @@ namespace BUS
     public class UserBUS
     {
         private UserDAO userDAO = new UserDAO();
-        public bool ValidateLogin(UserDTO user)
+        public int ValidateLogin(UserDTO user)
         {
             return userDAO.CheckLogin(user);
         }
@@ -25,13 +25,19 @@ namespace BUS
             return userDAO.LoadNV();
         }
 
-        public bool ValidateAdmin(UserDTO user)
+        public int ValidateAdmin(UserDTO user)
         {
             return userDAO.CheckAdmin(user);
         }
 
+<<<<<<< HEAD
+
+        public bool ValidateAddEmployee(UserDTO user)
+        {
+=======
         public bool ValidateAddEmployee(UserDTO user) 
         { 
+>>>>>>> 714c52903e7353aa6da1ffba2c7a4cd07aacf19a
             return userDAO.AddEmployee(user);
         }
         public bool ValidateDeleteEmployee(UserDTO user)
@@ -51,7 +57,10 @@ namespace BUS
         {
             return hoaDAO.LoadDataFlower();
         }
-
+        public DataTable LoadDataFlowerInput(HoaDTO hoa)
+        {
+            return hoaDAO.LoadDataFlowerinput(hoa);
+        }
         public bool AddDataFlower(HoaDTO fl)
         {
             return hoaDAO.AddFlower(fl);
@@ -69,6 +78,14 @@ namespace BUS
         {
             return hoaDAO.GetMaHoa(mahoa);
         }
+        public int GetMaHoa(string hoa)
+        {
+            return hoaDAO.GetMaHoa(hoa);
+        }
+        public bool ValidateCheckFlower(string hoa)
+        {
+            return hoaDAO.CheckFlower(hoa);
+        }
         public DataTable ValidateSearch(HoaDTO hoa)
         {
             return hoaDAO.SearchFlower(hoa);
@@ -83,7 +100,7 @@ namespace BUS
         }
         public DataTable LoadDataKHInput(KHDTO kh)
         {
-           return khDAO.LoadDataKH(kh);
+            return khDAO.LoadDataKH(kh);
         }
         public bool ValidateAddKH(KHDTO kh)
         {
@@ -108,7 +125,7 @@ namespace BUS
         //}
     }
     public class HDBanBUS
-    {   
+    {
         private DONHANGDAO hdDAO = new DONHANGDAO();
         public bool ValidateAddHDBan(HDBanDTO hd)
         {
@@ -155,5 +172,53 @@ namespace BUS
             return cthdDAO.LoadCTHDInput(cthd);
         }
 
+    }
+    public class NCCBUS
+    {
+        private NhaCungCapDAO nccDAO = new NhaCungCapDAO();
+        public DataTable LoadDataNCC()
+        {
+            return nccDAO.LoadNCC();
+        }
+        //public bool ValidateAddNCC(NhaCungCapDTO ncc)
+        //{
+        //    return nccDAO.AddNCC(ncc);
+        //}
+        //public bool ValidateEditNCC(NhaCungCapDTO ncc)
+        //{
+        //    return nccDAO.EditNCC(ncc);
+        //}
+        //public bool ValidateDeleteNCC(NhaCungCapDTO ncc)
+        //{
+        //    return nccDAO.DeleteNCC(ncc);
+        //}
+    }
+    public class NhapHangBUS
+    {
+        private NhapHangDAO nhDAO = new NhapHangDAO();
+        public bool ValidateAddNhapHang(NhapHangDTO nh)
+        {
+            return nhDAO.AddHDN(nh);
+        }
+        public int ValidateGetMaHDN()
+        {
+            return nhDAO.GetMAHDN();
+        }
+        //public DataTable LoadDataNhapHang()
+        //{
+        //    return nhDAO.LoadNhapHang();
+        //}
+    }
+    public class CTHDNBUS
+    {
+        private CTHDNDAO cthdnDAO = new CTHDNDAO();
+        public bool ValidateAddCTHDN(CTHDNDTO cthdn)
+        {
+            return cthdnDAO.AddCTHDN(cthdn);
+        }
+        //public DataTable LoadDataCTHDN()
+        //{
+        //    return cthdnDAO.LoadCTHDN();
+        //}
     }
 }

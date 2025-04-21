@@ -15,20 +15,27 @@ namespace DAO
 
     public class UserDAO
     {
+<<<<<<< HEAD
+        private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
+        // private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
+        public int  CheckLogin(UserDTO user)
+=======
         //private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
         private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
         public bool CheckLogin(UserDTO user)
+>>>>>>> 714c52903e7353aa6da1ffba2c7a4cd07aacf19a
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT COUNT(*) FROM NhanVien WHERE TenTK=@Username AND MK=@Password";
+                string query = "SELECT MaNV FROM NhanVien WHERE TenTK=@Username AND MK=@Password";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@Username", user.Username);
                     cmd.Parameters.AddWithValue("@Password", user.Password);
-                    int count = (int)cmd.ExecuteScalar();
-                    return count > 0;
+                    object result = cmd.ExecuteScalar();
+                    int maNV = result != DBNull.Value ? Convert.ToInt32(result) : 0;
+                    return maNV;
                 }
             }
         }
@@ -58,32 +65,32 @@ namespace DAO
         public DataTable LoadNV()
         {
 
-                string query = "SELECT MaNV, TenNV, ChucVu, SoDienThoai, Email, DiaChi, " + "CASE WHEN GioiTinh = 1 THEN N'Nam' ELSE N'Nữ' END AS GioiTinh," + "NgaySinh,TenTK,MK FROM NhanVien";
-                SqlConnection conn = new SqlConnection(connectionString);
-                conn.Open();
-                SqlCommand cmd = new SqlCommand(query, conn);
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-                return dt;
+            string query = "SELECT MaNV, TenNV, ChucVu, SoDienThoai, Email, DiaChi, " + "CASE WHEN GioiTinh = 1 THEN N'Nam' ELSE N'Nữ' END AS GioiTinh," + "NgaySinh,TenTK,MK FROM NhanVien";
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(query, conn);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            return dt;
         }
-            //public bool CheckAdmin(UserDTO user)
-            //{
-            //    SqlConnection conn = new SqlConnection(connectionString);
-            //    conn.Open();
-            //    string query = "SELECT COUNT(*) FROM NhanVien WHERE TenTK=@Username AND MK=@Password AND ChucVu=N'Quản Lý'";
-            //    using (SqlCommand cmd = new SqlCommand(query, conn))
-            //        {
-            //            cmd.Parameters.AddWithValue("@Username", user.Username);
-            //            cmd.Parameters.AddWithValue("@Password", user.Password);
-            //            int count = (int)cmd.ExecuteScalar();
-            //            return count > 0;
-            //        }
+        //public bool CheckAdmin(UserDTO user)
+        //{
+        //    SqlConnection conn = new SqlConnection(connectionString);
+        //    conn.Open();
+        //    string query = "SELECT COUNT(*) FROM NhanVien WHERE TenTK=@Username AND MK=@Password AND ChucVu=N'Quản Lý'";
+        //    using (SqlCommand cmd = new SqlCommand(query, conn))
+        //        {
+        //            cmd.Parameters.AddWithValue("@Username", user.Username);
+        //            cmd.Parameters.AddWithValue("@Password", user.Password);
+        //            int count = (int)cmd.ExecuteScalar();
+        //            return count > 0;
+        //        }
 
-            //}
+        //}
 
         public bool AddEmployee(UserDTO user)
-         {
+        {
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
             string query = "insert into NhanVien(TenNV, ChucVu, SoDienThoai, Email, TenTK, MK, DiaChi, GioiTinh, NgaySinh) values(@tennv, @chucvu, @sdt, @email, @tentk, @matkhau, @diachi, @gioitinh, @ngsinh)";
@@ -102,7 +109,7 @@ namespace DAO
                 return count > 0;
             }
         }
-        
+
         public bool DeleteEmployee(UserDTO user)
         {
             SqlConnection conn = new SqlConnection(connectionString);
@@ -117,20 +124,26 @@ namespace DAO
 
         }
 
-        public bool CheckAdmin(UserDTO user)
+        public int CheckAdmin(UserDTO user)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT COUNT(*) FROM NhanVien WHERE TenTK=@Username AND MK=@Password AND LTRIM(RTRIM(ChucVu)) = N'Quản Lý'";
+                string query = "SELECT MaNV FROM NhanVien WHERE TenTK=@Username AND MK=@Password AND LTRIM(RTRIM(ChucVu)) = N'Quản Lý'";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@Username", user.Username);
                     cmd.Parameters.AddWithValue("@Password", user.Password);
 
+<<<<<<< HEAD
+                    object result = cmd.ExecuteScalar();
+                    int maNV = result != DBNull.Value ? Convert.ToInt32(result) : 0;
+                    return maNV;
+=======
                     int count = (int)cmd.ExecuteScalar(); 
                     return count > 0;
+>>>>>>> 714c52903e7353aa6da1ffba2c7a4cd07aacf19a
                 }
 
             }
@@ -138,11 +151,11 @@ namespace DAO
 
         public DataTable SearchEmployee(UserDTO user)
         {
-            using(SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
                 string query = "select * from NhanVien where TenNV like @tennv";
-                using ( SqlCommand cmd = new SqlCommand(query,conn))
+                using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@tennv", "%" + user.TenNV + "%");
                     using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
@@ -155,7 +168,7 @@ namespace DAO
             }
         }
 
-         
+
     }
     public class HoaDAO
     {
@@ -189,9 +202,24 @@ namespace DAO
                 string query = "SELECT top 1 MaHoa from Hoa where MaHoa=@mahoa order by MaHoa DESC";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@mahoa",hoa);
+                    cmd.Parameters.AddWithValue("@mahoa", hoa);
                     object result = cmd.ExecuteScalar();
-                    int maHoa = result != DBNull.Value ? Convert.ToInt32(result) : 0; 
+                    int maHoa = result != DBNull.Value ? Convert.ToInt32(result) : 0;
+                    return maHoa;
+                }
+            }
+        }
+        public int GetMaHoa(string hoa)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT Top 1 MaHoa FROM Hoa WHERE TenHoa LIKE @tenhoa ORDER BY MaHoa DESC";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@tenhoa", "%" + hoa + "%");
+                    object result = cmd.ExecuteScalar();
+                    int maHoa = result != DBNull.Value ? Convert.ToInt32(result) : 0;
                     return maHoa;
                 }
             }
@@ -205,7 +233,6 @@ namespace DAO
                 string query = "SELECT * FROM Hoa WHERE MaHoa=@Mahoa AND TenHoa=@tenhoa";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@Mahoa", hoa.MaHoa);
                     cmd.Parameters.AddWithValue("@tenhoa", hoa.TenHoa);
 
                     using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
@@ -218,14 +245,30 @@ namespace DAO
                 }
             }
         }
+        public bool CheckFlower(string hoa)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT COUNT(*) FROM Hoa WHERE TenHoa=@tenhoa";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@tenhoa", hoa);
+                    int count = (int)cmd.ExecuteScalar();
+                    return count > 0;
+                }
+            }
+        }
         public bool AddFlower(HoaDTO flowers)
         {
             SqlConnection connection = new SqlConnection(connectionString);
-            string query = "insert into Hoa (TenHoa, MoTa) values (@tenhoa, @mota)";
+            connection.Open();
+            string query = "insert into Hoa (TenHoa, MoTa,HinhAnh) values (@tenhoa, @mota,@hinhanh)";
             using (SqlCommand cmd = new SqlCommand(query, connection))
             {
                 cmd.Parameters.AddWithValue("@tenhoa", flowers.TenHoa);
                 cmd.Parameters.AddWithValue("@mota", flowers.MoTa);
+                cmd.Parameters.AddWithValue("@hinhanh", flowers.HinhAnh);
                 int count = (int)cmd.ExecuteNonQuery();
                 return count > 0;
             }
@@ -327,7 +370,7 @@ namespace DAO
                 {
                     cmd.Parameters.AddWithValue("@sdt", user.SDT);
                     object result = cmd.ExecuteScalar();
-                    int maKH = result != DBNull.Value ? Convert.ToInt32(result) : 0; 
+                    int maKH = result != DBNull.Value ? Convert.ToInt32(result) : 0;
                     return maKH;
                 }
             }
@@ -423,7 +466,7 @@ namespace DAO
                     cmd.Parameters.AddWithValue("@mahoa", cthd.MaHoa);
                     cmd.Parameters.AddWithValue("@soluong", cthd.SoLuong);
                     cmd.Parameters.AddWithValue("@dongia", cthd.DonGia);
-                   
+
 
                     int count = (int)cmd.ExecuteNonQuery();
                     return count > 0;
@@ -433,10 +476,12 @@ namespace DAO
         }
         public DataTable LoadCTHDInput(CTHDDTO cthd)
         {
-            using (SqlConnection conn = new SqlConnection(connectionString)) { 
-            conn.Open();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
                 string query = "Select * from ChiTietDonHang where MaDH=@madh";
-                using (SqlCommand cmd = new SqlCommand(query, conn)) {
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
                     cmd.Parameters.AddWithValue("@madh", cthd.MaHD);
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
@@ -445,8 +490,8 @@ namespace DAO
 
 
                 }
-            
-            
+
+
             }
         }
 
@@ -472,7 +517,7 @@ namespace DAO
                     cmd.Parameters.AddWithValue("@ngayban", user.NgayBan);
                     cmd.Parameters.AddWithValue("@tongtien", user.TongTien);
                     cmd.Parameters.AddWithValue("@trangthai", user.TrangThai);
-                    int count=(int)cmd.ExecuteNonQuery();
+                    int count = (int)cmd.ExecuteNonQuery();
                     return count > 0;
                 }
                 //string query1 = "SELECT SCOPE_IDENTITY() AS MaHD;";
@@ -494,7 +539,7 @@ namespace DAO
                 {
                     object result = cmd.ExecuteScalar();
                     int maHD = result != DBNull.Value ? Convert.ToInt32(result) : 0; // Trả về 0 nếu là DBNull
-                    
+
                     return maHD;
                 }
             }
@@ -511,6 +556,89 @@ namespace DAO
             return dt;
         }
 
+    }
+    public class NhaCungCapDAO
+    {
+        private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
+        //private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
+        public DataTable LoadNCC()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT MaNCC,TenNCC FROM NhaCungCap";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        DataTable ds = new DataTable();
+                        adapter.Fill(ds);
+                        return ds;
+                    }
+                }
+            }
+        }
+    }
+    public class CTHDNDAO
+    {
+        private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
+        //private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
+        public bool AddCTHDN(CTHDNDTO cthdn)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                string query = "INSERT INTO ChiTietNhapHang (MaNH, MaHoa, SoLuong, GiaNhap,NgayNhap) VALUES(@mahdn, @mahoa, @soluong, @dongia,@ngaynhap)";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@mahdn", cthdn.MaHDN);
+                    cmd.Parameters.AddWithValue("@mahoa", cthdn.MaHoa);
+                    cmd.Parameters.AddWithValue("@soluong", cthdn.SoLuong);
+                    cmd.Parameters.AddWithValue("@dongia", cthdn.DonGia);
+                    cmd.Parameters.AddWithValue("@ngaynhap", cthdn.NgayNhap);
+                    int count = (int)cmd.ExecuteNonQuery();
+                    return count > 0;
+                }
+            }
+        }
+    }
+    public class NhapHangDAO
+    {
+        private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
+        //private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
+        public bool AddHDN(NhapHangDTO NH)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "INSERT INTO NhapHang VALUES(@mancc,@manv,@ngaynhap,@tongtien)";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@mancc", NH.MaNCC);
+                    cmd.Parameters.AddWithValue("@manv", NH.MaNV);
+                    cmd.Parameters.AddWithValue("@ngaynhap", NH.NgayNhap);
+                    cmd.Parameters.AddWithValue("@tongtien", NH.TongTien);
+                    int count = (int)cmd.ExecuteNonQuery();
+                    return count > 0;
+                }
+            }
+        }
+        public int GetMAHDN()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT top 1 MaNH from NhapHang order by MaNH DESC";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    object result = cmd.ExecuteScalar();
+                    int maHDN = result != DBNull.Value ? Convert.ToInt32(result) : 0; // Trả về 0 nếu là DBNull
+
+                    return maHDN;
+                }
+            }
+        }
     }
 } 
 

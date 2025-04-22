@@ -65,5 +65,13 @@ namespace App
                 txtToTal.Text = "";
             }
         }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            Sale sale = new Sale();
+            this.Hide();
+            sale.ShowDialog();
+            this.Show();
+        }
     }
 }

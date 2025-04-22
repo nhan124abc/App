@@ -86,6 +86,10 @@ namespace BUS
         {
             return hoaDAO.SearchFlower(hoa);
         }
+        public bool ValidateUpdateSL(HoaDTO hoa)
+        {
+            return hoaDAO.UpdateFlower(hoa);
+        }
     }
     public class KHBUS
     {

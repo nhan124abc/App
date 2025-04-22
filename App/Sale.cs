@@ -201,7 +201,7 @@ namespace App
         {
             KHDTO kh = new KHDTO { SDT = txtsdt.Text, TenKH = txtTenkh.Text };
 
-            if(dgvDH.DataSource == null)
+            if(dgvDH.RowCount<=1)
             {
                 MessageBox.Show("Bạn cần phải thêm sản phẩm", "Thông báo", MessageBoxButtons.OK);
                 return;
@@ -214,7 +214,7 @@ namespace App
             int MAKH=khBUS.ValidateGetMaKH(kh);
             HDBanDTO hd = new HDBanDTO { MaKH = MAKH, NgayBan = DateTime.Now, TongTien = Convert.ToInt32(txtTongHD.Text), TrangThai = "Đã Thanh Toán" };
             CTHDDTO cthd = new CTHDDTO();
-
+            HoaDTO hoa = new HoaDTO();
             if (hdBUS.ValidateAddHDBan(hd) )
             {
                
@@ -234,6 +234,9 @@ namespace App
                     int dongia = Convert.ToInt32(row.Cells["colDonGia"].Value);
                     cthd.DonGia = dongia;
                     cthdBUS.ValidateAddCTHD(cthd);
+                    hoa.MaHoa = mahoa;
+                    hoa.SoLuong = soluong;
+                    hoaBUS.ValidateUpdateSL(hoa);
                 }
                 MessageBox.Show("Thanh toán thành công");
                 return;

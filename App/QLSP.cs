@@ -78,7 +78,7 @@ namespace App
         {
             dgvFlowers.ClearSelection();
 
-            if(dgvFlowers.CurrentRow.Selected == false)
+            if (dgvFlowers.CurrentRow != null && dgvFlowers.CurrentRow.Selected == false)
             {
                 txtIdFl.Text = string.Empty;
                 txtNameFl.Text = string.Empty;
@@ -86,11 +86,9 @@ namespace App
                 txtPP.Text = string.Empty;
                 txtQuantity.Text = string.Empty;
                 txtDescribe.Text = string.Empty;
-
                 pbHinhAnhHoa.Image = null;
-
-
             }
+
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

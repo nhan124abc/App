@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvCTNH = new System.Windows.Forms.DataGridView();
             this.MaCTNH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaNH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaHoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -37,12 +37,12 @@
             this.GiaNhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayNhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCTNH)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.Controls.Add(this.dgvCTNH);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(44, 47);
             this.groupBox1.Name = "groupBox1";
@@ -51,22 +51,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Chi Tiết Nhập Hàng";
             // 
-            // dataGridView1
+            // dgvCTNH
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvCTNH.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCTNH.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaCTNH,
             this.MaNH,
             this.MaHoa,
             this.SoLuong,
             this.GiaNhap,
             this.NgayNhap});
-            this.dataGridView1.Location = new System.Drawing.Point(27, 42);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(800, 291);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvCTNH.Location = new System.Drawing.Point(27, 42);
+            this.dgvCTNH.Name = "dgvCTNH";
+            this.dgvCTNH.RowHeadersWidth = 51;
+            this.dgvCTNH.RowTemplate.Height = 24;
+            this.dgvCTNH.Size = new System.Drawing.Size(800, 291);
+            this.dgvCTNH.TabIndex = 0;
             // 
             // MaCTNH
             // 
@@ -110,6 +110,7 @@
             // 
             // NgayNhap
             // 
+            this.NgayNhap.DataPropertyName = "NgayNhap";
             this.NgayNhap.HeaderText = "Ngày Nhập";
             this.NgayNhap.MinimumWidth = 6;
             this.NgayNhap.Name = "NgayNhap";
@@ -124,8 +125,9 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "CTNH";
             this.Text = "CTNH";
+            this.Load += new System.EventHandler(this.CTNH_Load);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCTNH)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -133,7 +135,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvCTNH;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaCTNH;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaNH;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaHoa;

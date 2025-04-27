@@ -19,6 +19,7 @@ namespace App
         public QLSP()
         {
             InitializeComponent();
+            dgvFlowers.AllowUserToAddRows = false;
         }
         private void QLSP_Load(object sender, EventArgs e)
         {
@@ -29,11 +30,13 @@ namespace App
         }
         private void dgvFlowers_SelectionChanged(object sender, EventArgs e)
         {
-
+            if(dgvFlowers.CurrentRow != null && dgvFlowers.CurrentRow.Selected == false)
+            {
+                return;
+            }
+            if (dgvFlowers.CurrentRow != null && dgvFlowers.CurrentRow.Cells["HinhAnh"].Value !=null) {
             string appPath = Directory.GetParent(Application.StartupPath).Parent.FullName;
-            
             string folderPath = Path.Combine(appPath, "imghoa");
-            DataGridViewRow Row=dgvFlowers.CurrentRow;
             pbHinhAnhHoa.Image = Image.FromFile(Path.Combine(folderPath, dgvFlowers.CurrentRow.Cells["HinhAnh"].Value.ToString()));
             txtIdFl.Text = dgvFlowers.CurrentRow.Cells["MaHoa"].Value.ToString();
             txtNameFl.Text = dgvFlowers.CurrentRow.Cells["TenHoa"].Value.ToString();
@@ -43,30 +46,35 @@ namespace App
             //int gia=Convert.ToDecimal(txtSP.Text)-7000;
             //txtPP.Text = gia.ToString();
             txtDescribe.Text = dgvFlowers.CurrentRow.Cells["MoTa"].Value.ToString();
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            HoaDTO flowers = new HoaDTO()
-            {
-                TenHoa = txtNameFl.Text,
-                MoTa = txtDescribe.Text
-            };
+            NH nH = new NH();
+            this.Hide();
+            nH.ShowDialog();
+            this.Show();
+            //HoaDTO flowers = new HoaDTO()
+            //{
+            //    TenHoa = txtNameFl.Text,
+            //    MoTa = txtDescribe.Text
+            //};
 
-            if (hoaBUS.AddDataFlower(flowers))
-            {
-                MessageBox.Show("Thêm hoa thành công", "Thông báo", MessageBoxButtons.OK);
-            }
-            else
-            {
-                MessageBox.Show("Thêm hoa không thành công", "Thông báo", MessageBoxButtons.OK);
-            }
+            //if (hoaBUS.AddDataFlower(flowers))
+            //{
+            //    MessageBox.Show("Thêm hoa thành công", "Thông báo", MessageBoxButtons.OK);
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Thêm hoa không thành công", "Thông báo", MessageBoxButtons.OK);
+            //}
 
-            txtNameFl.Text = string.Empty;
-            txtDescribe.Text = string.Empty;
+            //txtNameFl.Text = string.Empty;
+            //txtDescribe.Text = string.Empty;
 
-            DataTable dt = hoaBUS.LoadDataFlower();
-            dgvFlowers.DataSource = dt;
+            //DataTable dt = hoaBUS.LoadDataFlower();
+            //dgvFlowers.DataSource = dt;
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -93,6 +101,11 @@ namespace App
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (dgvFlowers.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn hoa cần hủy", "Thông báo", MessageBoxButtons.OK);
+                return;
+            }
             HoaDTO flowers = new HoaDTO()
             {
                 MaHoa = Convert.ToInt32(txtIdFl.Text)
@@ -120,6 +133,11 @@ namespace App
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
+            if(dgvFlowers.SelectedRows.Count== 0)
+            {
+                MessageBox.Show("Vui lòng chọn hoa cần sửa", "Thông báo", MessageBoxButtons.OK);
+                return;
+            }
             HoaDTO flowers = new HoaDTO()
             {
                 MaHoa= Convert.ToInt32(txtIdFl.Text),

@@ -30,13 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NH));
-            this.btnInsert = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.btnRefresh = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnNhapHang = new System.Windows.Forms.Button();
             this.lblpath = new System.Windows.Forms.Label();
             this.pbHA = new System.Windows.Forms.PictureBox();
             this.txtTenHoa = new System.Windows.Forms.TextBox();
@@ -63,7 +64,6 @@
             this.NgayNhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colHA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colMota = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnNhapHang = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbHA)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupSL)).BeginInit();
@@ -71,16 +71,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhapHang)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnInsert
+            // btnEdit
             // 
-            this.btnInsert.BackColor = System.Drawing.Color.Wheat;
-            this.btnInsert.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInsert.Location = new System.Drawing.Point(988, 198);
-            this.btnInsert.Name = "btnInsert";
-            this.btnInsert.Size = new System.Drawing.Size(75, 28);
-            this.btnInsert.TabIndex = 18;
-            this.btnInsert.Text = "Sửa";
-            this.btnInsert.UseVisualStyleBackColor = false;
+            this.btnEdit.BackColor = System.Drawing.Color.Wheat;
+            this.btnEdit.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.Location = new System.Drawing.Point(988, 198);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(75, 28);
+            this.btnEdit.TabIndex = 18;
+            this.btnEdit.Text = "Sửa";
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnAdd
             // 
@@ -105,6 +106,7 @@
             this.btnDelete.TabIndex = 17;
             this.btnDelete.Text = "Xóa";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnThoat
             // 
@@ -134,6 +136,7 @@
             this.btnRefresh.TabIndex = 21;
             this.btnRefresh.Text = "Làm mới";
             this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // groupBox1
             // 
@@ -145,7 +148,7 @@
             this.groupBox1.Controls.Add(this.RtxtMota);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.btnThoat);
-            this.groupBox1.Controls.Add(this.btnInsert);
+            this.groupBox1.Controls.Add(this.btnEdit);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.btnDelete);
             this.groupBox1.Controls.Add(this.btnRefresh);
@@ -168,6 +171,18 @@
             this.groupBox1.TabIndex = 32;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Hóa Đơn Bán Hàng";
+            // 
+            // btnNhapHang
+            // 
+            this.btnNhapHang.BackColor = System.Drawing.Color.Wheat;
+            this.btnNhapHang.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNhapHang.Location = new System.Drawing.Point(1090, 35);
+            this.btnNhapHang.Name = "btnNhapHang";
+            this.btnNhapHang.Size = new System.Drawing.Size(101, 28);
+            this.btnNhapHang.TabIndex = 49;
+            this.btnNhapHang.Text = "Nhập Hàng";
+            this.btnNhapHang.UseVisualStyleBackColor = false;
+            this.btnNhapHang.Click += new System.EventHandler(this.btnNhapHang_Click);
             // 
             // lblpath
             // 
@@ -369,6 +384,7 @@
             this.dgvNhapHang.RowTemplate.Height = 24;
             this.dgvNhapHang.Size = new System.Drawing.Size(935, 183);
             this.dgvNhapHang.TabIndex = 23;
+            this.dgvNhapHang.SelectionChanged += new System.EventHandler(this.dgvNhapHang_SelectionChanged);
             // 
             // colTenhoa
             // 
@@ -406,18 +422,6 @@
             this.colMota.MinimumWidth = 6;
             this.colMota.Name = "colMota";
             // 
-            // btnNhapHang
-            // 
-            this.btnNhapHang.BackColor = System.Drawing.Color.Wheat;
-            this.btnNhapHang.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNhapHang.Location = new System.Drawing.Point(1090, 35);
-            this.btnNhapHang.Name = "btnNhapHang";
-            this.btnNhapHang.Size = new System.Drawing.Size(101, 28);
-            this.btnNhapHang.TabIndex = 49;
-            this.btnNhapHang.Text = "Nhập Hàng";
-            this.btnNhapHang.UseVisualStyleBackColor = false;
-            this.btnNhapHang.Click += new System.EventHandler(this.btnNhapHang_Click);
-            // 
             // NH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -441,7 +445,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btnInsert;
+        private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnThoat;

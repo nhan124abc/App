@@ -55,7 +55,7 @@ namespace App
             this.Show();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnLogout_Click(object sender, EventArgs e)
         {
             LoginForm loginForm = new LoginForm();
             this.Hide();
@@ -66,6 +66,22 @@ namespace App
         private void btnNhapHang_Click(object sender, EventArgs e)
         {
             NH mainForm = new NH(MaNV);
+            this.Hide();
+            mainForm.ShowDialog();
+            this.Show();
+        }
+
+        private void btnQLKH_Click(object sender, EventArgs e)
+        {
+            QLKH mainForm = new QLKH();
+            this.Hide();
+            mainForm.ShowDialog();
+            this.Show();
+        }
+
+        private void btnQLHDNhap_Click(object sender, EventArgs e)
+        {
+            QLHDNhap mainForm = new QLHDNhap();
             this.Hide();
             mainForm.ShowDialog();
             this.Show();

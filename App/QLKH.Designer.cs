@@ -51,7 +51,6 @@
             this.MaKH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenKH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -247,12 +246,12 @@
             // 
             // dgvInvoice
             // 
+            this.dgvInvoice.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvInvoice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvInvoice.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaKH,
             this.TenKH,
-            this.SDT,
-            this.TrangThai});
+            this.SDT});
             this.dgvInvoice.Location = new System.Drawing.Point(33, 36);
             this.dgvInvoice.Name = "dgvInvoice";
             this.dgvInvoice.RowHeadersWidth = 51;
@@ -267,7 +266,6 @@
             this.MaKH.HeaderText = "Mã Khách Hàng";
             this.MaKH.MinimumWidth = 6;
             this.MaKH.Name = "MaKH";
-            this.MaKH.Width = 125;
             // 
             // TenKH
             // 
@@ -275,7 +273,6 @@
             this.TenKH.HeaderText = "Tên Khách Hàng";
             this.TenKH.MinimumWidth = 6;
             this.TenKH.Name = "TenKH";
-            this.TenKH.Width = 125;
             // 
             // SDT
             // 
@@ -283,15 +280,6 @@
             this.SDT.HeaderText = "Số Điện Thoại";
             this.SDT.MinimumWidth = 6;
             this.SDT.Name = "SDT";
-            this.SDT.Width = 125;
-            // 
-            // TrangThai
-            // 
-            this.TrangThai.DataPropertyName = "TrangThai";
-            this.TrangThai.HeaderText = "Trạng Thái";
-            this.TrangThai.MinimumWidth = 6;
-            this.TrangThai.Name = "TrangThai";
-            this.TrangThai.Width = 125;
             // 
             // QLKH
             // 
@@ -338,6 +326,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MaKH;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenKH;
         private System.Windows.Forms.DataGridViewTextBoxColumn SDT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TrangThai;
     }
 }

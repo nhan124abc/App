@@ -28,6 +28,7 @@ namespace App
         {
             InitializeComponent();
             manv = 1;
+            dgvNhapHang.AllowUserToAddRows = false;
         }
         public NH(int manv)
         {
@@ -63,6 +64,17 @@ namespace App
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            
+            if (string.IsNullOrWhiteSpace(txtTenHoa.Text) || string.IsNullOrWhiteSpace(txtGiaNhap.Text) || nupSL.Value <= 0||pbHA.Image==null|| string.IsNullOrWhiteSpace(RtxtMota.Text))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin hoa.");
+                return;
+            }
+            string appPath = Directory.GetParent(Application.StartupPath).Parent.FullName;
+            string folderPath = Path.Combine(appPath, "imghoa");
+            string fileName = Path.GetFileName(lblpath.Text);
+            string destinationFilePath = Path.Combine(folderPath, fileName);
+            File.Copy(lblpath.Text, destinationFilePath, true);
             HoaDTO hoa = new HoaDTO()
             {
                 TenHoa = txtTenHoa.Text
@@ -104,6 +116,14 @@ namespace App
             {
                 dgvNhapHang.Rows.Add(txtTenHoa.Text, nupSL.Value, txtGiaNhap.Text, dtpNNH.Text, Path.GetFileName(lblpath.Text), RtxtMota.Text);
             }
+            dgvNhapHang.ClearSelection();
+            txtTenHoa.Text=string.Empty;
+            txtGiaNhap.Text = string.Empty;
+            nupSL.Value = 0;
+             pbHA.Image = null;
+            lblpath.Text = string.Empty;
+            RtxtMota.Text = string.Empty;
+
         }
         private void pbHA_Click(object sender, EventArgs e)
         {
@@ -120,56 +140,164 @@ namespace App
 
         private void btnNhapHang_Click(object sender, EventArgs e)
         {
-
-            string appPath = Directory.GetParent(Application.StartupPath).Parent.FullName;
-            string folderPath = Path.Combine(appPath, "imghoa");
-            string fileName = Path.GetFileName(lblpath.Text);
-            string destinationFilePath = Path.Combine(folderPath, fileName);
-            File.Copy(lblpath.Text, destinationFilePath, true);
+            if(dgvNhapHang.RowCount< 2)
+            {
+                MessageBox.Show("Vui lòng thêm hoa vào danh sách trước khi nhập hàng.");
+                return;
+            }
 
             NHang.MaNCC = Convert.ToInt32(cbNCC.SelectedValue);
             NHang.MaNV = manv;
             NHang.NgayNhap = dtpNNH.Value;
             float.TryParse(txtTotal.Text, out float total);
             NHang.TongTien = total;
+            
             if (nhBUS.ValidateAddNhapHang(NHang)){
                 int mahdn = nhBUS.ValidateGetMaHDN();
+                HoaDTO hoa = new HoaDTO();
                 foreach (DataGridViewRow row in dgvNhapHang.Rows)
                 {
                     if (row.Cells["colTenHoa"].Value == null)
                     {
+                        
                         break;
                     }
-                    
-                        if (!hoaBUS.ValidateCheckFlower(txtTenHoa.Text))
-                        {
-                            //int mahoa = hoaBUS.GetMaHoa(txtTenHoa.Text);
-                            HoaDTO hoa = new HoaDTO
-                            {
-                                TenHoa = row.Cells["colTenHoa"].Value.ToString(),
-                                MoTa = row.Cells["colMoTa"].Value.ToString(),
-                                HinhAnh = row.Cells["colHA"].Value.ToString(),
-                            };
+
+                        int flag = 0;
+                    if (hoaBUS.ValidateCheckFlower(row.Cells["colTenHoa"].Value.ToString())==false)
+                    {
+                        //int mahoa = hoaBUS.GetMaHoa(txtTenHoa.Text);
+
+
+                        hoa.TenHoa = row.Cells["colTenHoa"].Value.ToString();
+                        hoa.MoTa = row.Cells["colMoTa"].Value.ToString();
+                        hoa.HinhAnh = row.Cells["colHA"].Value.ToString();
+                        hoa.DonGia = Convert.ToInt32(row.Cells["colGiaNhap"].Value) + 7000;
+                        hoa.SoLuong = Convert.ToInt32(row.Cells["colSL"].Value);
                             hoaBUS.AddDataFlower(hoa);
-                            File.Copy(lblpath.Text, destinationFilePath, true);
-
-                        }
+                        flag = 1;
+                    }
                         ctnhDTO.MaHDN = mahdn;
-
+                   
                         string tenhoa = row.Cells["colTenHoa"].Value.ToString();
-                    int a = hoaBUS.GetMaHoa(tenhoa);
-                    MessageBox.Show(a.ToString());
+                        int a = hoaBUS.GetMaHoa(tenhoa);
                         ctnhDTO.MaHoa = hoaBUS.GetMaHoa(tenhoa);
                         ctnhDTO.SoLuong = Convert.ToInt32(row.Cells["colSL"].Value);
                         ctnhDTO.DonGia = Convert.ToInt32(row.Cells["colGiaNhap"].Value);
                         ctnhDTO.NgayNhap = dtpNNH.Value;
                         ctnhBUS.ValidateAddCTHDN(ctnhDTO);
-                    
-                   
+                        hoa.MaHoa = a;  
+                        hoa.SoLuong= Convert.ToInt32(row.Cells["colSL"].Value);
+                        hoa.HinhAnh = row.Cells["colHA"].Value.ToString();
+                        hoa.DonGia = Convert.ToInt32(row.Cells["colGiaNhap"].Value) + 7000;
+                        if (flag == 0)
+                        {
+                        hoaBUS.ValidateUpdateSLNH(hoa); 
+                         }
+                        
+                        
                 }
-                
+
+
             } 
+            btnRefresh_Click(sender, e);
+            dgvNhapHang.Rows.Clear();
         }
 
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            txtTenHoa.Clear();
+            txtGiaNhap.Clear();
+            nupSL.Value = 0;
+            lblpath.Text = string.Empty;
+            pbHA.Image = null;
+            RtxtMota.Clear();
+            
+            txtTotal.Clear();
+            tongtien = 0;
+
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (dgvNhapHang.SelectedRows.Count==0)
+            {
+                MessageBox.Show("Vui lòng chọn hàng để sửa", "Thông báo", MessageBoxButtons.OK);
+                return;
+            }
+            DataGridViewRow selectedRow = dgvNhapHang.CurrentRow;
+            if (selectedRow != null)
+            {
+                selectedRow.Cells["colTenHoa"].Value = txtTenHoa.Text;
+                selectedRow.Cells["colSL"].Value = nupSL.Value;
+                selectedRow.Cells["colGiaNhap"].Value = txtGiaNhap.Text;
+                selectedRow.Cells["NgayNhap"].Value = dtpNNH.Value.ToString("dd/MM/yyyy");
+                selectedRow.Cells["colHA"].Value = Path.GetFileName(lblpath.Text);
+                selectedRow.Cells["colMoTa"].Value = RtxtMota.Text;
+            }
+            dgvNhapHang.ClearSelection();
+            txtTenHoa.Text = string.Empty;
+            txtGiaNhap.Text = string.Empty;
+            nupSL.Value = 0;
+            pbHA.Image = null;
+            lblpath.Text = string.Empty;
+            RtxtMota.Text = string.Empty;
+        }
+
+        private void dgvNhapHang_SelectionChanged(object sender, EventArgs e)
+        {
+           
+                if (dgvNhapHang.CurrentRow == null) return; 
+
+                txtTenHoa.Text= dgvNhapHang.CurrentRow.Cells["colTenHoa"].Value.ToString();
+                nupSL.Value= Convert.ToDecimal(dgvNhapHang.CurrentRow.Cells["colSL"].Value);
+                txtGiaNhap.Text= dgvNhapHang.CurrentRow.Cells["colGiaNhap"].Value.ToString() ;
+               
+                lblpath.Text = dgvNhapHang.CurrentRow.Cells["colHA"].Value.ToString();
+                dtpNNH.Value = DateTime.Now;
+                //Convert.ToDateTime(dgvNhapHang.CurrentRow.Cells["NgayNhap"].Value);
+                RtxtMota.Text = dgvNhapHang.CurrentRow.Cells["colMoTa"].Value.ToString();
+                string imagePath = Path.Combine(Directory.GetParent(Application.StartupPath).Parent.FullName, "imghoa", dgvNhapHang.CurrentRow.Cells["colHA"].Value.ToString());
+                if (File.Exists(imagePath))
+                {
+                    pbHA.Image = Image.FromFile(imagePath);
+                }
+                else
+                {
+                    pbHA.Image = null;
+                }
+            
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dgvNhapHang.SelectedRows.Count > 0)
+            {
+                tongtien= tongtien-Convert.ToInt32(dgvNhapHang.CurrentRow.Cells["colGiaNhap"].Value) * Convert.ToInt32(dgvNhapHang.CurrentRow.Cells["colSL"].Value);
+                
+                foreach (DataGridViewRow row in dgvNhapHang.SelectedRows)
+                {
+                    
+                        dgvNhapHang.Rows.Remove(row);
+                    
+                }
+                dgvNhapHang.ClearSelection();
+                txtTotal.Text = tongtien.ToString();
+                txtTenHoa.Text = string.Empty;
+                txtGiaNhap.Text = string.Empty;
+                nupSL.Value = 0;
+                pbHA.Image = null;
+                lblpath.Text = string.Empty;
+                RtxtMota.Text = string.Empty;
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn hàng để xóa.");
+            }
+           
+        }
+
+     
     }
 }

@@ -81,6 +81,12 @@
     <Compile Include="QLHD.Designer.cs">
       <DependentUpon>QLHD.cs</DependentUpon>
     </Compile>
+    <Compile Include="QLHDNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QLHDNhap.Designer.cs">
+      <DependentUpon>QLHDNhap.cs</DependentUpon>
+    </Compile>
     <Compile Include="QLKH.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +138,9 @@
     </Compile>
     <EmbeddedResource Include="QLHD.resx">
       <DependentUpon>QLHD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QLHDNhap.resx">
+      <DependentUpon>QLHDNhap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QLKH.resx">
       <DependentUpon>QLKH.cs</DependentUpon>

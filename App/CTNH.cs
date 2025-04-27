@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BUS;
+using DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,23 @@ namespace App
 {
     public partial class CTNH : Form
     {
+
+        private NhapHangDTO nhapHangDTO = new NhapHangDTO();
+        private CTHDNBUS ctnhBUS = new CTHDNBUS();
+        public CTNH(NhapHangDTO nh)
+        {
+            nhapHangDTO = nh;
+            InitializeComponent();
+            dgvCTNH.AllowUserToAddRows = false;
+        }
         public CTNH()
         {
             InitializeComponent();
+        }
+
+        private void CTNH_Load(object sender, EventArgs e)
+        {
+            dgvCTNH.DataSource = ctnhBUS.LoadCTHDNInput(nhapHangDTO);
         }
     }
 }

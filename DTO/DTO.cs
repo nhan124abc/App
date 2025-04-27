@@ -65,6 +65,7 @@ namespace DTO
         public int MaNV { get; set; }
         public DateTime NgayNhap { get; set; }
         public float TongTien { get; set; }
+        public string TrangThai { get; set; }
     }
     public class CTHDNDTO
     {

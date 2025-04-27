@@ -36,9 +36,10 @@
             this.button2 = new System.Windows.Forms.Button();
             this.btnQLNV = new System.Windows.Forms.Button();
             this.btnSP = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnQLKH = new System.Windows.Forms.Button();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
+            this.btnQLHDNhap = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnNhapHang
@@ -127,33 +128,34 @@
             this.btnSP.UseVisualStyleBackColor = true;
             this.btnSP.Click += new System.EventHandler(this.btnSP_Click);
             // 
-            // button5
+            // btnQLKH
             // 
-            this.button5.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ImageKey = "customer.png";
-            this.button5.ImageList = this.imageList1;
-            this.button5.Location = new System.Drawing.Point(295, 323);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(209, 168);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "Quản Lí Khách Hàng";
-            this.button5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnQLKH.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQLKH.ImageKey = "customer.png";
+            this.btnQLKH.ImageList = this.imageList1;
+            this.btnQLKH.Location = new System.Drawing.Point(295, 323);
+            this.btnQLKH.Name = "btnQLKH";
+            this.btnQLKH.Size = new System.Drawing.Size(209, 168);
+            this.btnQLKH.TabIndex = 5;
+            this.btnQLKH.Text = "Quản Lí Khách Hàng";
+            this.btnQLKH.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnQLKH.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnQLKH.UseVisualStyleBackColor = true;
+            this.btnQLKH.Click += new System.EventHandler(this.btnQLKH_Click);
             // 
-            // button3
+            // btnLogout
             // 
-            this.button3.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ImageKey = "logout.png";
-            this.button3.ImageList = this.imageList2;
-            this.button3.Location = new System.Drawing.Point(675, 34);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(89, 60);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Đăng Xuất";
-            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnLogout.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.ImageKey = "logout.png";
+            this.btnLogout.ImageList = this.imageList2;
+            this.btnLogout.Location = new System.Drawing.Point(675, 34);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(89, 60);
+            this.btnLogout.TabIndex = 6;
+            this.btnLogout.Text = "Đăng Xuất";
+            this.btnLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // imageList2
             // 
@@ -161,14 +163,29 @@
             this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList2.Images.SetKeyName(0, "logout.png");
             // 
+            // btnQLHDNhap
+            // 
+            this.btnQLHDNhap.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQLHDNhap.ImageKey = "logout.png";
+            this.btnQLHDNhap.ImageList = this.imageList2;
+            this.btnQLHDNhap.Location = new System.Drawing.Point(106, 34);
+            this.btnQLHDNhap.Name = "btnQLHDNhap";
+            this.btnQLHDNhap.Size = new System.Drawing.Size(89, 60);
+            this.btnQLHDNhap.TabIndex = 7;
+            this.btnQLHDNhap.Text = "Đăng Xuất";
+            this.btnQLHDNhap.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnQLHDNhap.UseVisualStyleBackColor = true;
+            this.btnQLHDNhap.Click += new System.EventHandler(this.btnQLHDNhap_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.OldLace;
             this.ClientSize = new System.Drawing.Size(800, 518);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.btnQLHDNhap);
+            this.Controls.Add(this.btnLogout);
+            this.Controls.Add(this.btnQLKH);
             this.Controls.Add(this.btnSP);
             this.Controls.Add(this.btnQLNV);
             this.Controls.Add(this.button2);
@@ -187,10 +204,11 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnQLNV;
         private System.Windows.Forms.Button btnSP;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnQLKH;
         private System.Windows.Forms.ImageList imageList1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.ImageList imageList2;
+        private System.Windows.Forms.Button btnQLHDNhap;
     }
 }
 

@@ -19,6 +19,7 @@ namespace App
         public CTHD()
         {
             InitializeComponent();
+            dgvID.AllowUserToAddRows = false;
         }
         public CTHD(CTHDDTO cTHDDTO)
         {

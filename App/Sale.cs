@@ -27,6 +27,7 @@ namespace App
         public Sale()
         {
             InitializeComponent();
+            dgvDH.AllowUserToAddRows = false;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -200,8 +201,11 @@ namespace App
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
             KHDTO kh = new KHDTO { SDT = txtsdt.Text, TenKH = txtTenkh.Text };
-
-            if(dgvDH.RowCount<=1)
+            if(string.IsNullOrEmpty(txtTienNhan.Text)) { 
+                MessageBox.Show("Vui lòng nhập thông tin tiền khách hàng đưa ");
+                return;
+            }
+            if (dgvDH.RowCount==0)
             {
                 MessageBox.Show("Bạn cần phải thêm sản phẩm", "Thông báo", MessageBoxButtons.OK);
                 return;

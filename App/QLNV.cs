@@ -18,6 +18,7 @@ namespace App
         public QLNV()
         {
             InitializeComponent();
+            dgvNV.AllowUserToAddRows = false;
         }
 
         private void QLNV_Load(object sender, EventArgs e)
@@ -36,6 +37,10 @@ namespace App
 
         private void dgvNV_SelectionChanged(object sender, EventArgs e)
         {
+            if(dgvNV.CurrentRow != null && dgvNV.CurrentRow.Selected == false)
+            {
+                return;
+            }
             txtMaNV.Text= dgvNV.CurrentRow.Cells["MaNV"].Value.ToString();
             txtHoten.Text = dgvNV.CurrentRow.Cells["TenNV"].Value.ToString();
             txtQuyenhan.Text = dgvNV.CurrentRow.Cells["QuyenHan"].Value.ToString();
@@ -77,6 +82,12 @@ namespace App
 
         private void btnEditNV_Click(object sender, EventArgs e)
         {
+            if (dgvNV.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn nhân viên cần sửa", "Thông báo", MessageBoxButtons.OK);
+                return;
+            }
+                
             UserDTO user = new UserDTO
             {
                 TenNV = txtHoten.Text,
@@ -114,6 +125,11 @@ namespace App
 
         private void btnThem_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtHoten.Text) || string.IsNullOrEmpty(txtQuyenhan.Text) || string.IsNullOrEmpty(txtSdt.Text) || string.IsNullOrEmpty(txtEmail.Text) || string.IsNullOrEmpty(txtTK.Text) || string.IsNullOrEmpty(txtMK.Text) || string.IsNullOrEmpty(txtDiachi.Text))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK);
+                return;
+            };
             UserDTO user = new UserDTO
             {
                 TenNV = txtHoten.Text,
@@ -150,6 +166,11 @@ namespace App
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
+            if (dgvNV.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn nhân viên cần xóa", "Thông báo", MessageBoxButtons.OK);
+                return;
+            }
             UserDTO user = new UserDTO
             {
                 MaNV = Convert.ToInt32(txtMaNV.Text)

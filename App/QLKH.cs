@@ -18,6 +18,8 @@ namespace App
         public QLKH()
         {
             InitializeComponent();
+            dgvInvoice.AllowUserToAddRows = false;
+
         }
 
         private void QLKH_Load(object sender, EventArgs e)
@@ -34,6 +36,8 @@ namespace App
 
         private void dgvInvoice_SelectionChanged(object sender, EventArgs e)
         {
+            if (dgvInvoice.CurrentRow == null)
+                return;
             txtCC.Text = dgvInvoice.CurrentRow.Cells["MaKH"].Value.ToString();
             txtCN.Text = dgvInvoice.CurrentRow.Cells["TenKH"].Value.ToString();
             txtNP.Text = dgvInvoice.CurrentRow.Cells["SDT"].Value.ToString();
@@ -42,21 +46,40 @@ namespace App
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             dgvInvoice.ClearSelection();
-            if(dgvInvoice.CurrentRow.Selected ==  false)
-            {
-                txtCC.Text = "";
-                txtCN.Text = "";
-                txtNP.Text = "";
-            }
+            txtCC.Text = "";
+            txtCN.Text = "";
+            txtNP.Text = "";
+            
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-           
+            if (dgvInvoice.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn khách hàng để hủy", "Thông báo", MessageBoxButtons.OK);
+                return;
+            }
+            int MaKH = Convert.ToInt32(dgvInvoice.CurrentRow.Cells["MaKH"].Value);
+            KHDTO khDTO = new KHDTO { MaKH = MaKH };
+            if (KHBUS.ValidateCancelKH(khDTO))
+            {
+                MessageBox.Show("Hủy khách hàng thành công", "Thông báo", MessageBoxButtons.OK);
+            }
+            else
+            {
+                MessageBox.Show("Hủy khách hàng không thành công", "Thông báo", MessageBoxButtons.OK);
+            }
+            QLKH_Load(sender, e);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtCN.Text) || string.IsNullOrEmpty(txtNP.Text))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK);
+                return;
+            }
             KHDTO khDTO = new KHDTO
             {
                 TenKH = txtCN.Text,
@@ -81,6 +104,11 @@ namespace App
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            if (dgvInvoice.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn khách hàng để sửa", "Thông báo", MessageBoxButtons.OK);
+                return;
+            }
             KHDTO khDTO = new KHDTO
             {
                 MaKH = Convert.ToInt32(txtCC.Text),

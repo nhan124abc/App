@@ -195,7 +195,7 @@ namespace DAO
                 string query = "SELECT top 1 MaHoa from Hoa where MaHoa=@mahoa order by MaHoa DESC";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@mahoa", hoa);
+                    cmd.Parameters.AddWithValue("@mahoa", "%"+hoa+"%");
                     object result = cmd.ExecuteScalar();
                     int maHoa = result != DBNull.Value ? Convert.ToInt32(result) : 0;
                     return maHoa;
@@ -207,7 +207,7 @@ namespace DAO
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT Top 1 MaHoa FROM Hoa WHERE TenHoa LIKE @tenhoa ORDER BY MaHoa DESC";
+                string query = "SELECT top 1 MaHoa from Hoa where TenHoa like @tenhoa order by MaHoa DESC";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@tenhoa", "%" + hoa + "%");
@@ -243,10 +243,10 @@ namespace DAO
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT COUNT(*) FROM Hoa WHERE TenHoa=@tenhoa";
+                string query = "SELECT count(*) FROM Hoa WHERE TenHoa like @tenhoa and TrangThai=1";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@tenhoa", hoa);
+                    cmd.Parameters.AddWithValue("@tenhoa", "%"+hoa+"%");
                     int count = (int)cmd.ExecuteScalar();
                     return count > 0;
                 }
@@ -256,12 +256,14 @@ namespace DAO
         {
             SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
-            string query = "insert into Hoa (TenHoa, MoTa,HinhAnh) values (@tenhoa, @mota,@hinhanh)";
+            string query = "insert into Hoa (TenHoa, MoTa,HinhAnh,Gia,SoLuongTon) values (@tenhoa, @mota,@hinhanh,@dongia,@soluong)";
             using (SqlCommand cmd = new SqlCommand(query, connection))
             {
                 cmd.Parameters.AddWithValue("@tenhoa", flowers.TenHoa);
                 cmd.Parameters.AddWithValue("@mota", flowers.MoTa);
                 cmd.Parameters.AddWithValue("@hinhanh", flowers.HinhAnh);
+                cmd.Parameters.AddWithValue("@dongia", flowers.DonGia);
+                cmd.Parameters.AddWithValue("@soluong", flowers.SoLuong);
                 int count = (int)cmd.ExecuteNonQuery();
                 return count > 0;
             }
@@ -303,7 +305,7 @@ namespace DAO
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "select * from Hoa where TenHoa LIKE @tenhoa";
+                string query = "select MaHoa, TenHoa, Gia, SoLuongTon, MoTa, HSD, HinhAnh from Hoa where TenHoa LIKE @tenhoa and TrangThai=1";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@tenhoa", "%" + flowers.TenHoa + "%");
@@ -331,6 +333,23 @@ namespace DAO
                 }
             }
         }
+        public bool UpdateFlowerNH(HoaDTO flowers)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "update Hoa set SoLuongTon = SoLuongTon+@soluong , HinhAnh=@hinhanh ,Gia=@gia where MaHoa = @mahoa";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@soluong", flowers.SoLuong);
+                    cmd.Parameters.AddWithValue("@mahoa", flowers.MaHoa);
+                    cmd.Parameters.AddWithValue("@hinhanh", flowers.HinhAnh);
+                    cmd.Parameters.AddWithValue("@gia", flowers.DonGia);
+                    int count = (int)cmd.ExecuteNonQuery();
+                    return count > 0;
+                }
+            }
+        }
 
     }
     public class KHDAO
@@ -341,7 +360,7 @@ namespace DAO
         public DataTable LoadKH()
         {
             SqlConnection conn = new SqlConnection(connectionString);
-            string query = "SELECT * FROM KhachHang";
+            string query = "SELECT MaKH,TenKH,SoDienThoai FROM KhachHang where TrangThai=1";
             using(SqlCommand cmd = new SqlCommand(query,conn))
             {
                 using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
@@ -355,7 +374,7 @@ namespace DAO
         public DataTable LoadDataKH(KHDTO user)
         {
             SqlConnection conn = new SqlConnection(connectionString);
-            string query = "SELECT * FROM KhachHang Where SoDienThoai = @sdt";
+            string query = "SELECT MaKH,TenKH,SoDienThoai FROM KhachHang Where SoDienThoai = @sdt and TrangThai=1";
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 cmd.Parameters.AddWithValue("@sdt", user.SDT);
@@ -372,7 +391,7 @@ namespace DAO
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT top 1 MaKH from KhachHang where SoDienThoai = @sdt order by MaKH DESC";
+                string query = "SELECT top 1 MaKH from KhachHang where SoDienThoai = @sdt and TrangThai=1 order by MaKH DESC";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@sdt", user.SDT);
@@ -388,7 +407,7 @@ namespace DAO
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "INSERT INTO KhachHang VALUES(@ten,@sdt)";
+                string query = "INSERT INTO KhachHang VALUES(@ten,@sdt,1)";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@ten", user.TenKH);
@@ -423,7 +442,7 @@ namespace DAO
             using(SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "select * from KhachHang where TenKH like @tenkh";
+                string query = "select MaKH,TenKH,SoDienThoai from KhachHang where TenKH like @tenkh and TrangThai=1";
                 using( SqlCommand cmd = new SqlCommand(query,conn))
                 {
                     cmd.Parameters.AddWithValue("@tenkh", "%" + user.TenKH + "%");
@@ -442,7 +461,7 @@ namespace DAO
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "update KhachHang set TrangThai like N'Đã hủy' where MaKH = @makh";
+                string query = "update KhachHang set TrangThai =0 where MaKH = @makh";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@makh", user.MaKH);
@@ -609,6 +628,22 @@ namespace DAO
                 }
             }
         }
+        public DataTable LoadCTHDNInput(NhapHangDTO nh)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "Select * from ChiTietNhapHang where MaNH=@madhn";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@madhn", nh.MaHDN);
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    return dt;
+                }
+            }
+        }
     }
     public class NhapHangDAO
     {
@@ -619,7 +654,7 @@ namespace DAO
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "INSERT INTO NhapHang VALUES(@mancc,@manv,@ngaynhap,@tongtien)";
+                string query = "INSERT INTO NhapHang VALUES(@mancc,@manv,@ngaynhap,@tongtien,'Thành Công')";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@mancc", NH.MaNCC);
@@ -643,6 +678,32 @@ namespace DAO
                     int maHDN = result != DBNull.Value ? Convert.ToInt32(result) : 0; // Trả về 0 nếu là DBNull
 
                     return maHDN;
+                }
+            }
+        }
+        public DataTable LoadHDN()
+        {
+            string query = "SELECT * FROM NhapHang";
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(query, conn);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            return dt;
+        }
+        public bool CancelHDN(NhapHangDTO nh)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "update NhapHang set TrangThai = N'Đã hủy' where MaNH = @manh";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@manh", nh.MaHDN);
+
+                    int count = cmd.ExecuteNonQuery();
+                    return count > 0;
                 }
             }
         }

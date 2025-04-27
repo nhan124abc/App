@@ -90,6 +90,10 @@ namespace BUS
         {
             return hoaDAO.UpdateFlower(hoa);
         }
+        public bool ValidateUpdateSLNH(HoaDTO hoa)
+        {
+            return hoaDAO.UpdateFlowerNH(hoa);
+        }
     }
     public class KHBUS
     {
@@ -119,10 +123,10 @@ namespace BUS
             return khDAO.SearchKH(kh);
         }
 
-        //public bool ValidateDeleteKH(KHDTO kh)
-        //{
-        //    return khDAO.DeleteKH(kh);
-        //}
+        public bool ValidateCancelKH(KHDTO kh)
+        {
+            return khDAO.CancelKH(kh);
+        }
     }
     public class HDBanBUS
     {
@@ -204,10 +208,14 @@ namespace BUS
         {
             return nhDAO.GetMAHDN();
         }
-        //public DataTable LoadDataNhapHang()
-        //{
-        //    return nhDAO.LoadNhapHang();
-        //}
+        public DataTable LoadDataNhapHang()
+        {
+            return nhDAO.LoadHDN();
+        }
+        public bool CancelNhapHang(NhapHangDTO nh)
+        {
+            return nhDAO.CancelHDN(nh);
+        }
     }
     public class CTHDNBUS
     {
@@ -220,5 +228,9 @@ namespace BUS
         //{
         //    return cthdnDAO.LoadCTHDN();
         //}
+        public DataTable LoadCTHDNInput(NhapHangDTO nh)
+        {
+            return cthdnDAO.LoadCTHDNInput(nh);
+        }
     }
 }

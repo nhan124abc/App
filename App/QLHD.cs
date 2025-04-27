@@ -19,6 +19,7 @@ namespace App
         public QLHD()
         {
             InitializeComponent();
+            dgvBill.AllowUserToAddRows = false;
         }
 
         private void btnVID_Click(object sender, EventArgs e)
@@ -39,9 +40,15 @@ namespace App
             dt = HDBUS.LoadDataHDBan();
             dgvBill.DataSource = dt;
         }
+        
 
         private void dgvBill_SelectionChanged(object sender, EventArgs e)
         {
+            
+           if(dgvBill.CurrentRow != null && dgvBill.CurrentRow.Selected == false)
+            {
+                return;
+            }
             txtIC.Text = dgvBill.CurrentRow.Cells["MaHD"].Value.ToString();
             txtCC.Text = dgvBill.CurrentRow.Cells["MaKH"].Value.ToString(); 
             dateTimePicker1.Value = Convert.ToDateTime(dgvBill.CurrentRow.Cells["NgayLap"].Value);

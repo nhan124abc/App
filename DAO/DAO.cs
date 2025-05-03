@@ -407,7 +407,7 @@ namespace DAO
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "INSERT INTO KhachHang VALUES(@ten,@sdt,1)";
+                string query = "INSERT INTO KhachHang (TenKH,SoDienThoai,TrangThai)VALUES(@ten,@sdt,1)";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@ten", user.TenKH);
@@ -424,7 +424,7 @@ namespace DAO
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "update KhachHang set TenKH = @tenkh, SoDienThoai = @sdt where MaKH = @makh";
+                string query = "update KhachHang set TenKH = @tenkh, SoDienThoai = @sdt where MaKH = @makh and TrangThai=1";
                 using(SqlCommand cmd = new SqlCommand(query,conn))
                 {
                     cmd.Parameters.AddWithValue("@tenkh", user.TenKH);
@@ -581,6 +581,46 @@ namespace DAO
             adapter.Fill(dt);
             return dt;
         }
+        public Double GetTotalPrice(string loaiLoc, DateTime ngay)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "";
+
+                if (loaiLoc == "Ngày")
+                {
+                    query = "SELECT SUM(TongTien) FROM DonHang WHERE CAST(NgayDatHang AS DATE) = @ngay";
+                }
+                else if (loaiLoc == "Tháng")
+                {
+                    query = "SELECT SUM(TongTien) FROM DonHang WHERE MONTH(NgayDatHang) = @thang AND YEAR(NgayDatHang) = @nam";
+                }
+                else if (loaiLoc == "Năm")
+                {
+                    query = "SELECT SUM(TongTien) FROM DonHang WHERE YEAR(NgayDatHang) = @nam";
+                }
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    if (loaiLoc == "Ngày")
+                        cmd.Parameters.AddWithValue("@ngay", ngay.Date);
+                    else if (loaiLoc == "Tháng")
+                    {
+                        cmd.Parameters.AddWithValue("@thang", ngay.Month);
+                        cmd.Parameters.AddWithValue("@nam", ngay.Year);
+                    }
+                    else if (loaiLoc == "Năm")
+                    {
+                        cmd.Parameters.AddWithValue("@nam", ngay.Year);
+                    }
+
+                    object result = cmd.ExecuteScalar();
+                    double totalPrice = result != DBNull.Value ? Convert.ToDouble(result) : 0;
+                    return totalPrice;
+                }
+            }
+        }
 
     }
     public class NhaCungCapDAO
@@ -706,6 +746,47 @@ namespace DAO
                     return count > 0;
                 }
             }
+        }
+        public double GetTotal(string loaiLoc, DateTime ngay)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "";
+
+                if (loaiLoc == "Ngày")
+                {
+                    query = "SELECT SUM(TongTien) FROM NhapHang WHERE CAST(NgayNhap AS DATE) = @ngay";
+                }
+                else if (loaiLoc == "Tháng")
+                {
+                    query = "SELECT SUM(TongTien) FROM NhapHang WHERE MONTH(NgayNhap) = @thang AND YEAR(NgayNhap) = @nam";
+                }
+                else if (loaiLoc == "Năm")
+                {
+                    query = "SELECT SUM(TongTien) FROM NhapHang WHERE YEAR(NgayNhap) = @nam";
+                }
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    if (loaiLoc == "Ngày")
+                        cmd.Parameters.AddWithValue("@ngay", ngay.Date);
+                    else if (loaiLoc == "Tháng")
+                    {
+                        cmd.Parameters.AddWithValue("@thang", ngay.Month);
+                        cmd.Parameters.AddWithValue("@nam", ngay.Year);
+                    }
+                    else if (loaiLoc == "Năm")
+                    {
+                        cmd.Parameters.AddWithValue("@nam", ngay.Year);
+                    }
+
+                    object result = cmd.ExecuteScalar();
+                    double totalPrice = result != DBNull.Value ? Convert.ToDouble(result) : 0;
+                    return totalPrice;
+                }
+            }
+
         }
     }
 } 

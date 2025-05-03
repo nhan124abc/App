@@ -86,5 +86,13 @@ namespace App
             mainForm.ShowDialog();
             this.Show();
         }
+
+        private void btnThongKe_Click(object sender, EventArgs e)
+        {
+            ThongKe thongKe = new ThongKe();
+            this.Hide();
+            thongKe.ShowDialog();
+            this.Show();
+        }
     }
 }

@@ -41,7 +41,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.btnInsert = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnVID = new System.Windows.Forms.Button();
@@ -160,7 +159,6 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.button1);
-            this.groupBox3.Controls.Add(this.btnInsert);
             this.groupBox3.Controls.Add(this.btnAdd);
             this.groupBox3.Controls.Add(this.btnCancel);
             this.groupBox3.Controls.Add(this.btnVID);
@@ -179,24 +177,13 @@
             // 
             this.button1.BackColor = System.Drawing.Color.Wheat;
             this.button1.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(408, 43);
+            this.button1.Location = new System.Drawing.Point(369, 43);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 28);
             this.button1.TabIndex = 26;
             this.button1.Text = "Thoát";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btnInsert
-            // 
-            this.btnInsert.BackColor = System.Drawing.Color.Wheat;
-            this.btnInsert.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInsert.Location = new System.Drawing.Point(200, 43);
-            this.btnInsert.Name = "btnInsert";
-            this.btnInsert.Size = new System.Drawing.Size(75, 28);
-            this.btnInsert.TabIndex = 18;
-            this.btnInsert.Text = "Sửa";
-            this.btnInsert.UseVisualStyleBackColor = false;
             // 
             // btnAdd
             // 
@@ -215,9 +202,9 @@
             // 
             this.btnCancel.BackColor = System.Drawing.Color.Wheat;
             this.btnCancel.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(103, 43);
+            this.btnCancel.Location = new System.Drawing.Point(113, 43);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 28);
+            this.btnCancel.Size = new System.Drawing.Size(93, 28);
             this.btnCancel.TabIndex = 17;
             this.btnCancel.Text = "Hủy";
             this.btnCancel.UseVisualStyleBackColor = false;
@@ -263,7 +250,7 @@
             // 
             this.btnRefresh.BackColor = System.Drawing.Color.Wheat;
             this.btnRefresh.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefresh.Location = new System.Drawing.Point(298, 43);
+            this.btnRefresh.Location = new System.Drawing.Point(247, 43);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(91, 28);
             this.btnRefresh.TabIndex = 21;
@@ -373,7 +360,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.TextBox txtCC;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button btnInsert;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnVID;

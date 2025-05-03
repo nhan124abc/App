@@ -80,5 +80,7 @@ namespace App
             sale.ShowDialog();
             this.Show();
         }
+
+      
     }
 }

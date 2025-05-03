@@ -40,6 +40,7 @@
             this.btnLogout = new System.Windows.Forms.Button();
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.btnQLHDNhap = new System.Windows.Forms.Button();
+            this.btnThongKe = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnNhapHang
@@ -177,12 +178,27 @@
             this.btnQLHDNhap.UseVisualStyleBackColor = true;
             this.btnQLHDNhap.Click += new System.EventHandler(this.btnQLHDNhap_Click);
             // 
+            // btnThongKe
+            // 
+            this.btnThongKe.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThongKe.ImageKey = "logout.png";
+            this.btnThongKe.ImageList = this.imageList2;
+            this.btnThongKe.Location = new System.Drawing.Point(376, 34);
+            this.btnThongKe.Name = "btnThongKe";
+            this.btnThongKe.Size = new System.Drawing.Size(89, 60);
+            this.btnThongKe.TabIndex = 8;
+            this.btnThongKe.Text = "Đăng Xuất";
+            this.btnThongKe.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnThongKe.UseVisualStyleBackColor = true;
+            this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.OldLace;
             this.ClientSize = new System.Drawing.Size(800, 518);
+            this.Controls.Add(this.btnThongKe);
             this.Controls.Add(this.btnQLHDNhap);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnQLKH);
@@ -209,6 +225,7 @@
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.ImageList imageList2;
         private System.Windows.Forms.Button btnQLHDNhap;
+        private System.Windows.Forms.Button btnThongKe;
     }
 }
 

@@ -201,7 +201,7 @@ namespace App
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
             KHDTO kh = new KHDTO { SDT = txtsdt.Text, TenKH = txtTenkh.Text };
-            if(string.IsNullOrEmpty(txtTienNhan.Text)) { 
+            if((txtTienNhan.Text=="0")) { 
                 MessageBox.Show("Vui lòng nhập thông tin tiền khách hàng đưa ");
                 return;
             }
@@ -232,7 +232,6 @@ namespace App
                     cthd.MaHD = a;
                    int mahoa = Convert.ToInt32(row.Cells["colMaSP"].Value);
                     cthd.MaHoa = mahoa;
-                    MessageBox.Show("MaHoa: " + cthd.MaHoa);
                     int soluong = Convert.ToInt32(row.Cells["colSoLuong"].Value);
                     cthd.SoLuong =soluong;
                     int dongia = Convert.ToInt32(row.Cells["colDonGia"].Value);
@@ -241,6 +240,7 @@ namespace App
                     hoa.MaHoa = mahoa;
                     hoa.SoLuong = soluong;
                     hoaBUS.ValidateUpdateSL(hoa);
+                    txtTienThua.Text = (Convert.ToDouble(txtTienNhan.Text) - Convert.ToDouble(txtTongHD.Text)).ToString();
                 }
                 MessageBox.Show("Thanh toán thành công");
                 return;

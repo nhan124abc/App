@@ -151,6 +151,10 @@ namespace BUS
         //{
         //    return hdDAO.DeleteHDBan(hd);
         //}
+        public double GetTotal(string s,DateTime a)
+        {
+            return hdDAO.GetTotalPrice( s, a);
+        }
     }
     public class CTHDBUS
     {
@@ -215,6 +219,10 @@ namespace BUS
         public bool CancelNhapHang(NhapHangDTO nh)
         {
             return nhDAO.CancelHDN(nh);
+        }
+        public double GetTotalNhapHang(string s, DateTime a)
+        {
+            return nhDAO.GetTotal(s, a);
         }
     }
     public class CTHDNBUS

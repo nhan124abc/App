@@ -111,6 +111,12 @@
     <Compile Include="Sale.Designer.cs">
       <DependentUpon>Sale.cs</DependentUpon>
     </Compile>
+    <Compile Include="ThongKe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThongKe.Designer.cs">
+      <DependentUpon>ThongKe.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CTHD.resx">
       <DependentUpon>CTHD.cs</DependentUpon>
     </EmbeddedResource>
@@ -153,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sale.resx">
       <DependentUpon>Sale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThongKe.resx">
+      <DependentUpon>ThongKe.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -433,7 +433,7 @@
             // cbTen
             // 
             this.cbTen.FormattingEnabled = true;
-            this.cbTen.Location = new System.Drawing.Point(147, 93);
+            this.cbTen.Location = new System.Drawing.Point(122, 93);
             this.cbTen.Name = "cbTen";
             this.cbTen.Size = new System.Drawing.Size(140, 28);
             this.cbTen.TabIndex = 8;
@@ -441,7 +441,7 @@
             // 
             // txtDonGia
             // 
-            this.txtDonGia.Location = new System.Drawing.Point(492, 93);
+            this.txtDonGia.Location = new System.Drawing.Point(362, 93);
             this.txtDonGia.Name = "txtDonGia";
             this.txtDonGia.ReadOnly = true;
             this.txtDonGia.Size = new System.Drawing.Size(140, 28);
@@ -461,7 +461,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(377, 97);
+            this.label4.Location = new System.Drawing.Point(285, 97);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 18);
             this.label4.TabIndex = 3;

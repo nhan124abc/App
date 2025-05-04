@@ -62,8 +62,6 @@ namespace App
             toolTip1.SetToolTip(this.btnRefresh, "Làm mới");
             toolTip1.SetToolTip(this.btnThanhToan, "Thanh toán");
             toolTip1.SetToolTip(this.btnExit, "Thoát");
-
-
         }
 
         private void cbMa_SelectedIndexChanged(object sender, EventArgs e)
@@ -133,13 +131,12 @@ namespace App
                 MessageBox.Show("Vui lòng nhập thông tin khách hàng");
                 return;
             }
-            int.TryParse(cbMa.SelectedValue.ToString(), out int maHoa);
-            DataTable dt = hoaBUS.LoadDataFlower();
-            int data = dt.Rows.Count > 0 ? Convert.ToInt32(dt.Rows[0]["SoLuongTon"]) : 0;
+            int.TryParse(cbTen.SelectedValue.ToString(), out int maHoa);
+            int dt = hoaBUS.LoadDataFlowerInput(maHoa);
             int soluong = (int)txtSoluong.Value;
-            if (soluong > data)
+            if (soluong > dt)
             {
-                MessageBox.Show("Số lượng hoa chỉ còn " + data);
+                MessageBox.Show("Số lượng hoa chỉ còn " + dt);
                 return;
             }
             else

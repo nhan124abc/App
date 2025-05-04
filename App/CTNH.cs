@@ -32,5 +32,14 @@ namespace App
         {
             dgvCTNH.DataSource = ctnhBUS.LoadCTHDNInput(nhapHangDTO);
         }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có muốn thoát không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.OK)
+            {
+                this.Close();
+            }
+        }
     }
 }

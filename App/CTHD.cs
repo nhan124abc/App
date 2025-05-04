@@ -33,5 +33,14 @@ namespace App
             dt=chitietBUS.LoadCTHDInput(chitiet);
             dgvID.DataSource = dt;
         }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có muốn thoát không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.OK)
+            {
+                this.Close();
+            }
+        }
     }
 }

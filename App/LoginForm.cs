@@ -189,7 +189,11 @@ namespace App
        
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult result = MessageBox.Show("Bạn có muốn thoát không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.OK)
+            {
+                this.Close();
+            }
         }
 
         private void LoginForm_Load(object sender, EventArgs e)

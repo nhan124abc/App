@@ -86,5 +86,15 @@ namespace App
             cTNH.ShowDialog();
             this.Show();
         }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -75,7 +75,7 @@
             // 
             this.btnEdit.BackColor = System.Drawing.Color.Wheat;
             this.btnEdit.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(988, 198);
+            this.btnEdit.Location = new System.Drawing.Point(1001, 87);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 28);
             this.btnEdit.TabIndex = 18;
@@ -88,7 +88,7 @@
             this.btnAdd.BackColor = System.Drawing.Color.Wheat;
             this.btnAdd.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnAdd.Location = new System.Drawing.Point(988, 15);
+            this.btnAdd.Location = new System.Drawing.Point(1001, 27);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 28);
             this.btnAdd.TabIndex = 16;
@@ -100,9 +100,9 @@
             // 
             this.btnDelete.BackColor = System.Drawing.Color.Wheat;
             this.btnDelete.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(988, 75);
+            this.btnDelete.Location = new System.Drawing.Point(1100, 27);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 28);
+            this.btnDelete.Size = new System.Drawing.Size(101, 28);
             this.btnDelete.TabIndex = 17;
             this.btnDelete.Text = "Xóa";
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -112,7 +112,7 @@
             // 
             this.btnThoat.BackColor = System.Drawing.Color.Wheat;
             this.btnThoat.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThoat.Location = new System.Drawing.Point(1116, 152);
+            this.btnThoat.Location = new System.Drawing.Point(1001, 154);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(75, 28);
             this.btnThoat.TabIndex = 25;
@@ -130,9 +130,9 @@
             // 
             this.btnRefresh.BackColor = System.Drawing.Color.Wheat;
             this.btnRefresh.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefresh.Location = new System.Drawing.Point(988, 152);
+            this.btnRefresh.Location = new System.Drawing.Point(1100, 87);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(91, 28);
+            this.btnRefresh.Size = new System.Drawing.Size(101, 28);
             this.btnRefresh.TabIndex = 21;
             this.btnRefresh.Text = "Làm mới";
             this.btnRefresh.UseVisualStyleBackColor = false;
@@ -176,7 +176,7 @@
             // 
             this.btnNhapHang.BackColor = System.Drawing.Color.Wheat;
             this.btnNhapHang.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNhapHang.Location = new System.Drawing.Point(1090, 35);
+            this.btnNhapHang.Location = new System.Drawing.Point(1100, 154);
             this.btnNhapHang.Name = "btnNhapHang";
             this.btnNhapHang.Size = new System.Drawing.Size(101, 28);
             this.btnNhapHang.TabIndex = 49;
@@ -188,18 +188,18 @@
             // 
             this.lblpath.AutoSize = true;
             this.lblpath.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblpath.Location = new System.Drawing.Point(854, 160);
+            this.lblpath.Location = new System.Drawing.Point(857, 157);
             this.lblpath.Name = "lblpath";
-            this.lblpath.Size = new System.Drawing.Size(40, 20);
+            this.lblpath.Size = new System.Drawing.Size(80, 20);
             this.lblpath.TabIndex = 48;
-            this.lblpath.Text = "path";
+            this.lblpath.Text = "Hình Ảnh";
             this.lblpath.Visible = false;
             // 
             // pbHA
             // 
             this.pbHA.BackColor = System.Drawing.Color.Peru;
             this.pbHA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbHA.Location = new System.Drawing.Point(845, 27);
+            this.pbHA.Location = new System.Drawing.Point(835, 27);
             this.pbHA.Name = "pbHA";
             this.pbHA.Size = new System.Drawing.Size(123, 113);
             this.pbHA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

@@ -38,7 +38,6 @@
             this.btnSP = new System.Windows.Forms.Button();
             this.btnQLKH = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
-            this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.btnQLHDNhap = new System.Windows.Forms.Button();
             this.btnThongKe = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -48,7 +47,7 @@
             this.btnNhapHang.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNhapHang.ImageKey = "importgoods.png";
             this.btnNhapHang.ImageList = this.imageList1;
-            this.btnNhapHang.Location = new System.Drawing.Point(559, 121);
+            this.btnNhapHang.Location = new System.Drawing.Point(559, 246);
             this.btnNhapHang.Name = "btnNhapHang";
             this.btnNhapHang.Size = new System.Drawing.Size(205, 152);
             this.btnNhapHang.TabIndex = 0;
@@ -68,13 +67,16 @@
             this.imageList1.Images.SetKeyName(3, "sale.png");
             this.imageList1.Images.SetKeyName(4, "customer.png");
             this.imageList1.Images.SetKeyName(5, "importgoods.png");
+            this.imageList1.Images.SetKeyName(6, "diagram.png");
+            this.imageList1.Images.SetKeyName(7, "logout.png");
+            this.imageList1.Images.SetKeyName(8, "purchaseorder.png");
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ImageIndex = 3;
             this.button1.ImageList = this.imageList1;
-            this.button1.Location = new System.Drawing.Point(34, 121);
+            this.button1.Location = new System.Drawing.Point(34, 246);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(217, 152);
             this.button1.TabIndex = 1;
@@ -89,7 +91,7 @@
             this.button2.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ImageKey = "bill.png";
             this.button2.ImageList = this.imageList1;
-            this.button2.Location = new System.Drawing.Point(295, 121);
+            this.button2.Location = new System.Drawing.Point(305, 246);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(209, 152);
             this.button2.TabIndex = 2;
@@ -104,7 +106,7 @@
             this.btnQLNV.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQLNV.ImageKey = "employee.png";
             this.btnQLNV.ImageList = this.imageList1;
-            this.btnQLNV.Location = new System.Drawing.Point(559, 323);
+            this.btnQLNV.Location = new System.Drawing.Point(559, 446);
             this.btnQLNV.Name = "btnQLNV";
             this.btnQLNV.Size = new System.Drawing.Size(205, 168);
             this.btnQLNV.TabIndex = 3;
@@ -119,7 +121,7 @@
             this.btnSP.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSP.ImageKey = "product.png";
             this.btnSP.ImageList = this.imageList1;
-            this.btnSP.Location = new System.Drawing.Point(34, 323);
+            this.btnSP.Location = new System.Drawing.Point(34, 446);
             this.btnSP.Name = "btnSP";
             this.btnSP.Size = new System.Drawing.Size(217, 168);
             this.btnSP.TabIndex = 4;
@@ -134,7 +136,7 @@
             this.btnQLKH.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQLKH.ImageKey = "customer.png";
             this.btnQLKH.ImageList = this.imageList1;
-            this.btnQLKH.Location = new System.Drawing.Point(295, 323);
+            this.btnQLKH.Location = new System.Drawing.Point(305, 446);
             this.btnQLKH.Name = "btnQLKH";
             this.btnQLKH.Size = new System.Drawing.Size(209, 168);
             this.btnQLKH.TabIndex = 5;
@@ -146,48 +148,42 @@
             // 
             // btnLogout
             // 
-            this.btnLogout.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.ImageKey = "logout.png";
-            this.btnLogout.ImageList = this.imageList2;
-            this.btnLogout.Location = new System.Drawing.Point(675, 34);
+            this.btnLogout.ImageList = this.imageList1;
+            this.btnLogout.Location = new System.Drawing.Point(559, 53);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(89, 60);
+            this.btnLogout.Size = new System.Drawing.Size(205, 152);
             this.btnLogout.TabIndex = 6;
             this.btnLogout.Text = "Đăng Xuất";
             this.btnLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
-            // imageList2
-            // 
-            this.imageList2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList2.ImageStream")));
-            this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList2.Images.SetKeyName(0, "logout.png");
-            // 
             // btnQLHDNhap
             // 
-            this.btnQLHDNhap.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQLHDNhap.ImageKey = "logout.png";
-            this.btnQLHDNhap.ImageList = this.imageList2;
-            this.btnQLHDNhap.Location = new System.Drawing.Point(106, 34);
+            this.btnQLHDNhap.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQLHDNhap.ImageKey = "purchaseorder.png";
+            this.btnQLHDNhap.ImageList = this.imageList1;
+            this.btnQLHDNhap.Location = new System.Drawing.Point(34, 53);
             this.btnQLHDNhap.Name = "btnQLHDNhap";
-            this.btnQLHDNhap.Size = new System.Drawing.Size(89, 60);
+            this.btnQLHDNhap.Size = new System.Drawing.Size(217, 152);
             this.btnQLHDNhap.TabIndex = 7;
-            this.btnQLHDNhap.Text = "Đăng Xuất";
+            this.btnQLHDNhap.Text = "Quản Lí Hóa Đơn Nhập Hàng";
             this.btnQLHDNhap.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnQLHDNhap.UseVisualStyleBackColor = true;
             this.btnQLHDNhap.Click += new System.EventHandler(this.btnQLHDNhap_Click);
             // 
             // btnThongKe
             // 
-            this.btnThongKe.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThongKe.ImageKey = "logout.png";
-            this.btnThongKe.ImageList = this.imageList2;
-            this.btnThongKe.Location = new System.Drawing.Point(376, 34);
+            this.btnThongKe.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThongKe.ImageKey = "diagram.png";
+            this.btnThongKe.ImageList = this.imageList1;
+            this.btnThongKe.Location = new System.Drawing.Point(305, 53);
             this.btnThongKe.Name = "btnThongKe";
-            this.btnThongKe.Size = new System.Drawing.Size(89, 60);
+            this.btnThongKe.Size = new System.Drawing.Size(209, 152);
             this.btnThongKe.TabIndex = 8;
-            this.btnThongKe.Text = "Đăng Xuất";
+            this.btnThongKe.Text = "Thống Kê";
             this.btnThongKe.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnThongKe.UseVisualStyleBackColor = true;
             this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click);
@@ -197,7 +193,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.OldLace;
-            this.ClientSize = new System.Drawing.Size(800, 518);
+            this.ClientSize = new System.Drawing.Size(800, 626);
             this.Controls.Add(this.btnThongKe);
             this.Controls.Add(this.btnQLHDNhap);
             this.Controls.Add(this.btnLogout);
@@ -223,7 +219,6 @@
         private System.Windows.Forms.Button btnQLKH;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Button btnLogout;
-        private System.Windows.Forms.ImageList imageList2;
         private System.Windows.Forms.Button btnQLHDNhap;
         private System.Windows.Forms.Button btnThongKe;
     }

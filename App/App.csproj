@@ -67,6 +67,12 @@
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="NCC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NCC.Designer.cs">
+      <DependentUpon>NCC.cs</DependentUpon>
+    </Compile>
     <Compile Include="NH.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +134,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NCC.resx">
+      <DependentUpon>NCC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NH.resx">
       <DependentUpon>NH.cs</DependentUpon>

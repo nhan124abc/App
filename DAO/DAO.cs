@@ -203,24 +203,20 @@ namespace DAO
                 }
             }
         }
-        public DataTable LoadDataFlowerinput(HoaDTO hoa)
+        public int LoadDataFlowerinput(int hoa)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
 
-                string query = "SELECT * FROM Hoa WHERE MaHoa=@Mahoa AND TenHoa=@tenhoa";
+                string query = "SELECT top 1 SoLuongTon FROM Hoa WHERE MaHoa=@Mahoa ";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@tenhoa", hoa.TenHoa);
+                    cmd.Parameters.AddWithValue("@Mahoa", hoa);
 
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
-                    {
-                        DataTable ds = new DataTable();
-
-                        adapter.Fill(ds);
-                        return ds;
-                    }
+                    object result = cmd.ExecuteScalar();
+                    int sl = result != DBNull.Value ? Convert.ToInt32(result) : 0;
+                    return sl;
                 }
             }
         }
@@ -621,9 +617,93 @@ namespace DAO
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT MaNCC,TenNCC FROM NhaCungCap";
+                string query = "SELECT MaNCC,TenNCC FROM NhaCungCap where TrangThai=1";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        DataTable ds = new DataTable();
+                        adapter.Fill(ds);
+                        return ds;
+                    }
+                }
+            }
+        }
+        public DataTable LoadNCCAll()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT MaNCC,TenNCC,DiaChi,SoDienThoai,Email FROM NhaCungCap where TrangThai = 1";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        DataTable ds = new DataTable();
+                        adapter.Fill(ds);
+                        return ds;
+                    }
+                }
+            }
+        }
+        public bool AddNCC(NhaCungCapDTO ncc)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "INSERT INTO NhaCungCap (TenNCC, DiaChi, SoDienThoai, Email, TrangThai) VALUES(@tenncc, @diachi, @sdt, @email, 1)";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@tenncc", ncc.TenNCC);
+                    cmd.Parameters.AddWithValue("@diachi", ncc.DiaChi);
+                    cmd.Parameters.AddWithValue("@sdt", ncc.SDT);
+                    cmd.Parameters.AddWithValue("@email", ncc.Email);
+                    int count = (int)cmd.ExecuteNonQuery();
+                    return count > 0;
+                }
+            }
+        }
+        public bool EditNCC(NhaCungCapDTO ncc) {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "update NhaCungCap SET TenNCC =@tenncc ,DiaChi=@diachi,SoDienThoai =@sdt,Email=@email where MaNCC=@mancc";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@tenncc", ncc.TenNCC);
+                    cmd.Parameters.AddWithValue("@mancc", ncc.MaNCC);
+                    cmd.Parameters.AddWithValue("@diachi", ncc.DiaChi);
+                    cmd.Parameters.AddWithValue("@sdt", ncc.SDT);
+                    cmd.Parameters.AddWithValue("@email", ncc.Email);
+                    int count = (int)cmd.ExecuteNonQuery();
+                    return count > 0;
+                }
+            }
+
+        }
+        public bool CancelNCC(NhaCungCapDTO ncc)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "update NhaCungCap set TrangThai = 0 where MaNCC = @mancc";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@mancc", ncc.MaNCC);
+                    int count = cmd.ExecuteNonQuery();
+                    return count > 0;
+                }
+            }
+        }
+        public DataTable SearchNCC(NhaCungCapDTO ncc)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "select MaNCC,TenNCC,DiaChi,SoDienThoai,Email from NhaCungCap where TenNCC like @tenncc and TrangThai=1";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@tenncc", "%" + ncc.TenNCC + "%");
                     using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                     {
                         DataTable ds = new DataTable();
@@ -745,15 +825,15 @@ namespace DAO
 
                 if (loaiLoc == "Ngày")
                 {
-                    query = "SELECT SUM(TongTien) FROM NhapHang WHERE CAST(NgayNhap AS DATE) = @ngay";
+                    query = "SELECT SUM(TongTien) FROM NhapHang WHERE CAST(NgayNhap AS DATE) = @ngay and TrangThai like N'Thành Công'";
                 }
                 else if (loaiLoc == "Tháng")
                 {
-                    query = "SELECT SUM(TongTien) FROM NhapHang WHERE MONTH(NgayNhap) = @thang AND YEAR(NgayNhap) = @nam";
+                    query = "SELECT SUM(TongTien) FROM NhapHang WHERE MONTH(NgayNhap) = @thang AND YEAR(NgayNhap) = @nam and TrangThai like N'Thành Công'";
                 }
                 else if (loaiLoc == "Năm")
                 {
-                    query = "SELECT SUM(TongTien) FROM NhapHang WHERE YEAR(NgayNhap) = @nam";
+                    query = "SELECT SUM(TongTien) FROM NhapHang WHERE YEAR(NgayNhap) = @nam and TrangThai like N'Thành Công'";
                 }
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))

@@ -94,5 +94,13 @@ namespace App
             thongKe.ShowDialog();
             this.Show();
         }
+
+        private void btnNCC_Click(object sender, EventArgs e)
+        {
+            NCC mainForm = new NCC();
+            this.Hide();
+            mainForm.ShowDialog();
+            this.Show();
+        }
     }
 }

@@ -53,7 +53,7 @@ namespace BUS
         {
             return hoaDAO.LoadDataFlower();
         }
-        public DataTable LoadDataFlowerInput(HoaDTO hoa)
+        public int LoadDataFlowerInput(int hoa)
         {
             return hoaDAO.LoadDataFlowerinput(hoa);
         }
@@ -171,6 +171,25 @@ namespace BUS
         public DataTable LoadDataNCC()
         {
             return nccDAO.LoadNCC();
+        }
+        public bool ValidateAddNCC(NhaCungCapDTO ncc)
+        {
+            return nccDAO.AddNCC(ncc);
+        }
+        public bool ValidateEditNCC(NhaCungCapDTO ncc)
+        {
+            return nccDAO.EditNCC(ncc);
+        }
+        public bool ValidateCancelNCC(NhaCungCapDTO ncc)
+        {
+            return nccDAO.CancelNCC(ncc);
+        }
+        public DataTable LoadNCCall() {
+            return nccDAO.LoadNCCAll();
+        }
+        public DataTable ValidateSearchNCC(NhaCungCapDTO ncc)
+        {
+            return nccDAO.SearchNCC(ncc);
         }
     }
     public class NhapHangBUS

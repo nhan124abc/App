@@ -40,6 +40,7 @@
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnQLHDNhap = new System.Windows.Forms.Button();
             this.btnThongKe = new System.Windows.Forms.Button();
+            this.btnNCC = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnNhapHang
@@ -47,7 +48,7 @@
             this.btnNhapHang.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNhapHang.ImageKey = "importgoods.png";
             this.btnNhapHang.ImageList = this.imageList1;
-            this.btnNhapHang.Location = new System.Drawing.Point(559, 246);
+            this.btnNhapHang.Location = new System.Drawing.Point(816, 53);
             this.btnNhapHang.Name = "btnNhapHang";
             this.btnNhapHang.Size = new System.Drawing.Size(205, 152);
             this.btnNhapHang.TabIndex = 0;
@@ -106,7 +107,7 @@
             this.btnQLNV.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQLNV.ImageKey = "employee.png";
             this.btnQLNV.ImageList = this.imageList1;
-            this.btnQLNV.Location = new System.Drawing.Point(559, 446);
+            this.btnQLNV.Location = new System.Drawing.Point(559, 246);
             this.btnQLNV.Name = "btnQLNV";
             this.btnQLNV.Size = new System.Drawing.Size(205, 168);
             this.btnQLNV.TabIndex = 3;
@@ -121,7 +122,7 @@
             this.btnSP.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSP.ImageKey = "product.png";
             this.btnSP.ImageList = this.imageList1;
-            this.btnSP.Location = new System.Drawing.Point(34, 446);
+            this.btnSP.Location = new System.Drawing.Point(305, 433);
             this.btnSP.Name = "btnSP";
             this.btnSP.Size = new System.Drawing.Size(217, 168);
             this.btnSP.TabIndex = 4;
@@ -136,7 +137,7 @@
             this.btnQLKH.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQLKH.ImageKey = "customer.png";
             this.btnQLKH.ImageList = this.imageList1;
-            this.btnQLKH.Location = new System.Drawing.Point(305, 446);
+            this.btnQLKH.Location = new System.Drawing.Point(816, 246);
             this.btnQLKH.Name = "btnQLKH";
             this.btnQLKH.Size = new System.Drawing.Size(209, 168);
             this.btnQLKH.TabIndex = 5;
@@ -188,12 +189,23 @@
             this.btnThongKe.UseVisualStyleBackColor = true;
             this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click);
             // 
+            // btnNCC
+            // 
+            this.btnNCC.Location = new System.Drawing.Point(617, 504);
+            this.btnNCC.Name = "btnNCC";
+            this.btnNCC.Size = new System.Drawing.Size(75, 23);
+            this.btnNCC.TabIndex = 9;
+            this.btnNCC.Text = "btnNCC";
+            this.btnNCC.UseVisualStyleBackColor = true;
+            this.btnNCC.Click += new System.EventHandler(this.btnNCC_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.OldLace;
-            this.ClientSize = new System.Drawing.Size(800, 626);
+            this.ClientSize = new System.Drawing.Size(1088, 626);
+            this.Controls.Add(this.btnNCC);
             this.Controls.Add(this.btnThongKe);
             this.Controls.Add(this.btnQLHDNhap);
             this.Controls.Add(this.btnLogout);
@@ -221,6 +233,7 @@
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Button btnQLHDNhap;
         private System.Windows.Forms.Button btnThongKe;
+        private System.Windows.Forms.Button btnNCC;
     }
 }
 

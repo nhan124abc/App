@@ -31,6 +31,11 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QLSP));
             this.dgvFlowers = new System.Windows.Forms.DataGridView();
+            this.MaHoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenHoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GiaBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MoTa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -57,11 +62,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.MaHoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenHoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GiaBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MoTa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFlowers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHinhAnhHoa)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -86,6 +86,41 @@
             this.dgvFlowers.Size = new System.Drawing.Size(782, 196);
             this.dgvFlowers.TabIndex = 23;
             this.dgvFlowers.SelectionChanged += new System.EventHandler(this.dgvFlowers_SelectionChanged);
+            // 
+            // MaHoa
+            // 
+            this.MaHoa.DataPropertyName = "MaHoa";
+            this.MaHoa.HeaderText = "Mã Hoa";
+            this.MaHoa.MinimumWidth = 6;
+            this.MaHoa.Name = "MaHoa";
+            // 
+            // TenHoa
+            // 
+            this.TenHoa.DataPropertyName = "TenHoa";
+            this.TenHoa.HeaderText = "Tên Hoa";
+            this.TenHoa.MinimumWidth = 6;
+            this.TenHoa.Name = "TenHoa";
+            // 
+            // SoLuong
+            // 
+            this.SoLuong.DataPropertyName = "SoLuongTon";
+            this.SoLuong.HeaderText = "Số Lượng";
+            this.SoLuong.MinimumWidth = 6;
+            this.SoLuong.Name = "SoLuong";
+            // 
+            // GiaBan
+            // 
+            this.GiaBan.DataPropertyName = "Gia";
+            this.GiaBan.HeaderText = "Giá Bán";
+            this.GiaBan.MinimumWidth = 6;
+            this.GiaBan.Name = "GiaBan";
+            // 
+            // MoTa
+            // 
+            this.MoTa.DataPropertyName = "MoTa";
+            this.MoTa.HeaderText = "Mô tả";
+            this.MoTa.MinimumWidth = 6;
+            this.MoTa.Name = "MoTa";
             // 
             // txtSearch
             // 
@@ -247,6 +282,7 @@
             this.txtSP.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSP.Location = new System.Drawing.Point(109, 200);
             this.txtSP.Name = "txtSP";
+            this.txtSP.ReadOnly = true;
             this.txtSP.Size = new System.Drawing.Size(159, 28);
             this.txtSP.TabIndex = 10;
             // 
@@ -255,6 +291,7 @@
             this.txtQuantity.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtQuantity.Location = new System.Drawing.Point(109, 152);
             this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.ReadOnly = true;
             this.txtQuantity.Size = new System.Drawing.Size(159, 28);
             this.txtQuantity.TabIndex = 9;
             // 
@@ -368,41 +405,6 @@
             this.groupBox3.TabIndex = 28;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Chức Năng";
-            // 
-            // MaHoa
-            // 
-            this.MaHoa.DataPropertyName = "MaHoa";
-            this.MaHoa.HeaderText = "Mã Hoa";
-            this.MaHoa.MinimumWidth = 6;
-            this.MaHoa.Name = "MaHoa";
-            // 
-            // TenHoa
-            // 
-            this.TenHoa.DataPropertyName = "TenHoa";
-            this.TenHoa.HeaderText = "Tên Hoa";
-            this.TenHoa.MinimumWidth = 6;
-            this.TenHoa.Name = "TenHoa";
-            // 
-            // SoLuong
-            // 
-            this.SoLuong.DataPropertyName = "SoLuongTon";
-            this.SoLuong.HeaderText = "Số Lượng";
-            this.SoLuong.MinimumWidth = 6;
-            this.SoLuong.Name = "SoLuong";
-            // 
-            // GiaBan
-            // 
-            this.GiaBan.DataPropertyName = "Gia";
-            this.GiaBan.HeaderText = "Giá Bán";
-            this.GiaBan.MinimumWidth = 6;
-            this.GiaBan.Name = "GiaBan";
-            // 
-            // MoTa
-            // 
-            this.MoTa.DataPropertyName = "MoTa";
-            this.MoTa.HeaderText = "Mô tả";
-            this.MoTa.MinimumWidth = 6;
-            this.MoTa.Name = "MoTa";
             // 
             // QLSP
             // 

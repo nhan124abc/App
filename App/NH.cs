@@ -233,6 +233,7 @@ namespace App
                 selectedRow.Cells["colHA"].Value = Path.GetFileName(lblpath.Text);
                 selectedRow.Cells["colMoTa"].Value = RtxtMota.Text;
             }
+            MessageBox.Show("Sửa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             dgvNhapHang.ClearSelection();
             txtTenHoa.Text = string.Empty;
             txtGiaNhap.Text = string.Empty;
@@ -279,6 +280,7 @@ namespace App
                         dgvNhapHang.Rows.Remove(row);
                     
                 }
+                MessageBox.Show("Xóa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dgvNhapHang.ClearSelection();
                 txtTotal.Text = tongtien.ToString();
                 txtTenHoa.Text = string.Empty;

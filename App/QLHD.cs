@@ -85,6 +85,27 @@ namespace App
             this.Show();
         }
 
-      
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            if (dgvBill.CurrentRow != null)
+            {
+                int MaHD = Convert.ToInt32(dgvBill.CurrentRow.Cells["MaHD"].Value);
+                HDBanDTO hDBanDTO = new HDBanDTO { MaHD = MaHD };
+                if (HDBUS.ValidatecancelHDBan(hDBanDTO))
+                {
+                    MessageBox.Show("Hủy hóa đơn thành công");
+                    QLHD_Load(sender, e);
+                }
+                else
+                {
+                    MessageBox.Show("Hủy hóa đơn không thành công");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn hóa đơn để hủy");
+            }
+
+        }
     }
 }

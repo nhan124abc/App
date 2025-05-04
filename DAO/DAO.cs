@@ -15,8 +15,8 @@ namespace DAO
 
     public class UserDAO
     {
-        //private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
-        private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
+        private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
+       // private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
         public int  CheckLogin(UserDTO user)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -68,20 +68,6 @@ namespace DAO
             adapter.Fill(dt);
             return dt;
         }
-        //public bool CheckAdmin(UserDTO user)
-        //{
-        //    SqlConnection conn = new SqlConnection(connectionString);
-        //    conn.Open();
-        //    string query = "SELECT COUNT(*) FROM NhanVien WHERE TenTK=@Username AND MK=@Password AND ChucVu=N'Quản Lý'";
-        //    using (SqlCommand cmd = new SqlCommand(query, conn))
-        //        {
-        //            cmd.Parameters.AddWithValue("@Username", user.Username);
-        //            cmd.Parameters.AddWithValue("@Password", user.Password);
-        //            int count = (int)cmd.ExecuteScalar();
-        //            return count > 0;
-        //        }
-
-        //}
 
         public bool AddEmployee(UserDTO user)
         {
@@ -165,8 +151,8 @@ namespace DAO
     }
     public class HoaDAO
     {
-        //private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
-        private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
+        private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
+        //private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
         public DataTable LoadDataFlower()
 
         {
@@ -354,8 +340,8 @@ namespace DAO
     }
     public class KHDAO
     {
-        //private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
-        private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
+        private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
+        //private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
         
         public DataTable LoadKH()
         {
@@ -476,8 +462,8 @@ namespace DAO
     }
     public class CTHDDAO
     {
-       // private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
-       private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
+       private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
+       //private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
         public bool AddCTHD(CTHDDTO cthd)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -521,16 +507,11 @@ namespace DAO
             }
         }
 
-
-
-
-        //public bool InsertFlower(HoaDTO flowers)
-
     }
     public class DONHANGDAO
     {
-        //private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
-        private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
+        private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
+        //private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
         public bool AddHD(HDBanDTO user)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -546,13 +527,6 @@ namespace DAO
                     int count = (int)cmd.ExecuteNonQuery();
                     return count > 0;
                 }
-                //string query1 = "SELECT SCOPE_IDENTITY() AS MaHD;";
-                //using (SqlCommand cmd1 = new SqlCommand(query1, conn))
-                //{
-                //    object result = cmd1.ExecuteScalar();
-                //    int maHD = Convert.ToInt32(result);
-                //    return maHD;
-                //}
             }
         }
         public int GetMAHD()
@@ -581,6 +555,21 @@ namespace DAO
             adapter.Fill(dt);
             return dt;
         }
+        public bool CancelHD(HDBanDTO hd)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "update DonHang set TrangThai = N'Đã hủy' where MaDH = @madh";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@madh", hd.MaHD);
+
+                    int count = cmd.ExecuteNonQuery();
+                    return count > 0;
+                }
+            }
+        }
         public Double GetTotalPrice(string loaiLoc, DateTime ngay)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -590,15 +579,15 @@ namespace DAO
 
                 if (loaiLoc == "Ngày")
                 {
-                    query = "SELECT SUM(TongTien) FROM DonHang WHERE CAST(NgayDatHang AS DATE) = @ngay";
+                    query = "SELECT SUM(TongTien) FROM DonHang WHERE CAST(NgayDatHang AS DATE) = @ngay and TrangThai like N'Đã Thanh Toán'";
                 }
                 else if (loaiLoc == "Tháng")
                 {
-                    query = "SELECT SUM(TongTien) FROM DonHang WHERE MONTH(NgayDatHang) = @thang AND YEAR(NgayDatHang) = @nam";
+                    query = "SELECT SUM(TongTien) FROM DonHang WHERE MONTH(NgayDatHang) = @thang AND YEAR(NgayDatHang) = @nam and TrangThai like N'Đã Thanh Toán'";
                 }
                 else if (loaiLoc == "Năm")
                 {
-                    query = "SELECT SUM(TongTien) FROM DonHang WHERE YEAR(NgayDatHang) = @nam";
+                    query = "SELECT SUM(TongTien) FROM DonHang WHERE YEAR(NgayDatHang) = @nam and TrangThai like N'Đã Thanh Toán'";
                 }
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -625,8 +614,8 @@ namespace DAO
     }
     public class NhaCungCapDAO
     {
-        //private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
-        private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
+        private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
+        //private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
         public DataTable LoadNCC()
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -647,8 +636,8 @@ namespace DAO
     }
     public class CTHDNDAO
     {
-        //private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
-        private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
+        private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
+        //private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
         public bool AddCTHDN(CTHDNDTO cthdn)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -687,8 +676,8 @@ namespace DAO
     }
     public class NhapHangDAO
     {
-        //private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
-        private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
+        private string connectionString = "Data Source=DESKTOP-4EFMBF6;Initial Catalog=CuaHangHoa;Integrated Security=True;Encrypt=False";
+        //private string connectionString = "Data Source=NHU-PHAM\\SQLEXPRESS;Initial Catalog=CuaHangHoa;Integrated Security=True";
         public bool AddHDN(NhapHangDTO NH)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))

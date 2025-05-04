@@ -140,7 +140,7 @@ namespace App
 
         private void btnNhapHang_Click(object sender, EventArgs e)
         {
-            if(dgvNhapHang.RowCount< 2)
+            if(dgvNhapHang.RowCount < 1)
             {
                 MessageBox.Show("Vui lòng thêm hoa vào danh sách trước khi nhập hàng.");
                 return;
@@ -192,14 +192,11 @@ namespace App
                         hoa.DonGia = Convert.ToInt32(row.Cells["colGiaNhap"].Value) + 7000;
                         if (flag == 0)
                         {
-                        hoaBUS.ValidateUpdateSLNH(hoa); 
-                         }
-                        
-                        
+                            hoaBUS.ValidateUpdateSLNH(hoa); 
+                        }
                 }
-
-
-            } 
+            }
+            MessageBox.Show("Nhập hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             btnRefresh_Click(sender, e);
             dgvNhapHang.Rows.Clear();
         }

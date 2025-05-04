@@ -221,6 +221,7 @@
             this.btnSearch.Size = new System.Drawing.Size(30, 28);
             this.btnSearch.TabIndex = 20;
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // label6
             // 
@@ -239,6 +240,7 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(269, 28);
             this.txtSearch.TabIndex = 22;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // btnRefresh
             // 
@@ -359,6 +361,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.OldLace;
             this.ClientSize = new System.Drawing.Size(1244, 511);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);

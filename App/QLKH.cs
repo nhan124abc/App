@@ -31,7 +31,11 @@ namespace App
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult result = MessageBox.Show("Bạn có muốn thoát không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.OK)
+            {
+                this.Close();
+            }
         }
 
         private void dgvInvoice_SelectionChanged(object sender, EventArgs e)

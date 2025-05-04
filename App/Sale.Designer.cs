@@ -32,12 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sale));
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgvDH = new System.Windows.Forms.DataGridView();
-            this.colMaSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTenSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTongTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colKM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label19 = new System.Windows.Forms.Label();
             this.txtTienNhan = new System.Windows.Forms.TextBox();
@@ -64,7 +58,7 @@
             this.txtSoluong = new System.Windows.Forms.NumericUpDown();
             this.cbMa = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.txtKM = new System.Windows.Forms.TextBox();
             this.txtTongTien = new System.Windows.Forms.TextBox();
             this.cbTen = new System.Windows.Forms.ComboBox();
             this.txtDonGia = new System.Windows.Forms.TextBox();
@@ -74,6 +68,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.colMaSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTenSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTongTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDH)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -86,7 +85,7 @@
             // 
             this.groupBox3.Controls.Add(this.dgvDH);
             this.groupBox3.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(81, 492);
+            this.groupBox3.Location = new System.Drawing.Point(81, 530);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(905, 212);
             this.groupBox3.TabIndex = 7;
@@ -95,14 +94,14 @@
             // 
             // dgvDH
             // 
+            this.dgvDH.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDH.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDH.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colMaSP,
             this.colTenSP,
             this.colSoLuong,
             this.colDonGia,
-            this.colTongTien,
-            this.colKM});
+            this.colTongTien});
             this.dgvDH.Location = new System.Drawing.Point(53, 41);
             this.dgvDH.Name = "dgvDH";
             this.dgvDH.RowHeadersWidth = 51;
@@ -111,58 +110,13 @@
             this.dgvDH.TabIndex = 0;
             this.dgvDH.SelectionChanged += new System.EventHandler(this.dgvDH_SelectionChanged);
             // 
-            // colMaSP
-            // 
-            this.colMaSP.DataPropertyName = "MaSP";
-            this.colMaSP.HeaderText = "Mã Sản Phẩm";
-            this.colMaSP.MinimumWidth = 6;
-            this.colMaSP.Name = "colMaSP";
-            this.colMaSP.Width = 125;
-            // 
-            // colTenSP
-            // 
-            this.colTenSP.DataPropertyName = "TenSP";
-            this.colTenSP.HeaderText = "Tên Sản Phẩm";
-            this.colTenSP.MinimumWidth = 6;
-            this.colTenSP.Name = "colTenSP";
-            this.colTenSP.Width = 125;
-            // 
-            // colSoLuong
-            // 
-            this.colSoLuong.DataPropertyName = "SoLuong";
-            this.colSoLuong.HeaderText = "Số Lượng";
-            this.colSoLuong.MinimumWidth = 6;
-            this.colSoLuong.Name = "colSoLuong";
-            this.colSoLuong.Width = 125;
-            // 
-            // colDonGia
-            // 
-            this.colDonGia.DataPropertyName = "Gia";
-            this.colDonGia.HeaderText = "Đơn Giá";
-            this.colDonGia.MinimumWidth = 6;
-            this.colDonGia.Name = "colDonGia";
-            this.colDonGia.Width = 125;
-            // 
-            // colTongTien
-            // 
-            this.colTongTien.DataPropertyName = "TongTien";
-            this.colTongTien.HeaderText = "Tổng Tiền";
-            this.colTongTien.MinimumWidth = 6;
-            this.colTongTien.Name = "colTongTien";
-            this.colTongTien.Width = 125;
-            // 
-            // colKM
-            // 
-            this.colKM.HeaderText = "Khuyến Mãi";
-            this.colKM.MinimumWidth = 6;
-            this.colKM.Name = "colKM";
-            this.colKM.Width = 125;
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label19);
             this.groupBox2.Controls.Add(this.txtTienNhan);
+            this.groupBox2.Controls.Add(this.label20);
             this.groupBox2.Controls.Add(this.txtTongHD);
+            this.groupBox2.Controls.Add(this.txtKM);
             this.groupBox2.Controls.Add(this.txtTienThua);
             this.groupBox2.Controls.Add(this.txtsdt);
             this.groupBox2.Controls.Add(this.txtTenkh);
@@ -175,7 +129,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(134, 155);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(444, 331);
+            this.groupBox2.Size = new System.Drawing.Size(444, 377);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Khách Hàng";
@@ -417,8 +371,6 @@
             // 
             this.gbInfo.Controls.Add(this.txtSoluong);
             this.gbInfo.Controls.Add(this.cbMa);
-            this.gbInfo.Controls.Add(this.label20);
-            this.gbInfo.Controls.Add(this.textBox11);
             this.gbInfo.Controls.Add(this.txtTongTien);
             this.gbInfo.Controls.Add(this.cbTen);
             this.gbInfo.Controls.Add(this.txtDonGia);
@@ -456,18 +408,19 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(523, 97);
+            this.label20.Location = new System.Drawing.Point(18, 339);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(93, 18);
             this.label20.TabIndex = 11;
             this.label20.Text = "Khuyến Mãi: ";
             // 
-            // textBox11
+            // txtKM
             // 
-            this.textBox11.Location = new System.Drawing.Point(634, 93);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(140, 28);
-            this.textBox11.TabIndex = 10;
+            this.txtKM.Location = new System.Drawing.Point(148, 335);
+            this.txtKM.Name = "txtKM";
+            this.txtKM.ReadOnly = true;
+            this.txtKM.Size = new System.Drawing.Size(185, 28);
+            this.txtKM.TabIndex = 10;
             // 
             // txtTongTien
             // 
@@ -480,7 +433,7 @@
             // cbTen
             // 
             this.cbTen.FormattingEnabled = true;
-            this.cbTen.Location = new System.Drawing.Point(122, 93);
+            this.cbTen.Location = new System.Drawing.Point(147, 93);
             this.cbTen.Name = "cbTen";
             this.cbTen.Size = new System.Drawing.Size(140, 28);
             this.cbTen.TabIndex = 8;
@@ -488,7 +441,7 @@
             // 
             // txtDonGia
             // 
-            this.txtDonGia.Location = new System.Drawing.Point(362, 88);
+            this.txtDonGia.Location = new System.Drawing.Point(492, 93);
             this.txtDonGia.Name = "txtDonGia";
             this.txtDonGia.ReadOnly = true;
             this.txtDonGia.Size = new System.Drawing.Size(140, 28);
@@ -508,7 +461,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(285, 97);
+            this.label4.Location = new System.Drawing.Point(377, 97);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 18);
             this.label4.TabIndex = 3;
@@ -528,7 +481,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(6, 97);
+            this.label2.Location = new System.Drawing.Point(10, 97);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(110, 18);
             this.label2.TabIndex = 1;
@@ -544,12 +497,47 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Mã Sản Phẩm: ";
             // 
+            // colMaSP
+            // 
+            this.colMaSP.DataPropertyName = "MaSP";
+            this.colMaSP.HeaderText = "Mã Sản Phẩm";
+            this.colMaSP.MinimumWidth = 6;
+            this.colMaSP.Name = "colMaSP";
+            // 
+            // colTenSP
+            // 
+            this.colTenSP.DataPropertyName = "TenSP";
+            this.colTenSP.HeaderText = "Tên Sản Phẩm";
+            this.colTenSP.MinimumWidth = 6;
+            this.colTenSP.Name = "colTenSP";
+            // 
+            // colSoLuong
+            // 
+            this.colSoLuong.DataPropertyName = "SoLuong";
+            this.colSoLuong.HeaderText = "Số Lượng";
+            this.colSoLuong.MinimumWidth = 6;
+            this.colSoLuong.Name = "colSoLuong";
+            // 
+            // colDonGia
+            // 
+            this.colDonGia.DataPropertyName = "Gia";
+            this.colDonGia.HeaderText = "Đơn Giá";
+            this.colDonGia.MinimumWidth = 6;
+            this.colDonGia.Name = "colDonGia";
+            // 
+            // colTongTien
+            // 
+            this.colTongTien.DataPropertyName = "TongTien";
+            this.colTongTien.HeaderText = "Tổng Tiền";
+            this.colTongTien.MinimumWidth = 6;
+            this.colTongTien.Name = "colTongTien";
+            // 
             // Sale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.OldLace;
-            this.ClientSize = new System.Drawing.Size(1081, 716);
+            this.ClientSize = new System.Drawing.Size(1081, 737);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -593,7 +581,7 @@
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.GroupBox gbInfo;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox txtKM;
         private System.Windows.Forms.TextBox txtTongTien;
         private System.Windows.Forms.ComboBox cbTen;
         private System.Windows.Forms.TextBox txtDonGia;
@@ -606,14 +594,13 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.NumericUpDown txtSoluong;
         private System.Windows.Forms.DataGridView dgvDH;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMaSP;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTenSP;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSoLuong;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDonGia;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTongTien;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colKM;
-        private System.Windows.Forms.ImageList imageList1;
-        private System.Windows.Forms.Button btnPrint;
-        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

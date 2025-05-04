@@ -143,14 +143,10 @@ namespace BUS
         {
             return hdDAO.LoadHD();
         }
-        //public bool ValidateEditHDBan(HDBanDTO hd)
-        //{
-        //    return hdDAO.EditHDBan(hd);
-        //}
-        //public bool ValidateDeleteHDBan(HDBanDTO hd)
-        //{
-        //    return hdDAO.DeleteHDBan(hd);
-        //}
+        public bool ValidatecancelHDBan(HDBanDTO hd)
+        {
+            return hdDAO.CancelHD(hd);
+        }
         public double GetTotal(string s,DateTime a)
         {
             return hdDAO.GetTotalPrice( s, a);
@@ -163,18 +159,6 @@ namespace BUS
         {
             return cthdDAO.AddCTHD(cthd);
         }
-        //public DataTable LoadDataCTHD()
-        //{
-        //    return cthdDAO.LoadDataCTHD();
-        //}
-        //public bool ValidateEditCTHD(CTHDDTO cthd)
-        //{
-        //    return cthdDAO.EditCTHD(cthd);
-        //}
-        //public bool ValidateDeleteCTHD(CTHDDTO cthd)
-        //{
-        //    return cthdDAO.DeleteCTHD(cthd);
-        //}
         public DataTable LoadCTHDInput(CTHDDTO cthd)
         {
             return cthdDAO.LoadCTHDInput(cthd);
@@ -188,18 +172,6 @@ namespace BUS
         {
             return nccDAO.LoadNCC();
         }
-        //public bool ValidateAddNCC(NhaCungCapDTO ncc)
-        //{
-        //    return nccDAO.AddNCC(ncc);
-        //}
-        //public bool ValidateEditNCC(NhaCungCapDTO ncc)
-        //{
-        //    return nccDAO.EditNCC(ncc);
-        //}
-        //public bool ValidateDeleteNCC(NhaCungCapDTO ncc)
-        //{
-        //    return nccDAO.DeleteNCC(ncc);
-        //}
     }
     public class NhapHangBUS
     {
@@ -232,10 +204,6 @@ namespace BUS
         {
             return cthdnDAO.AddCTHDN(cthdn);
         }
-        //public DataTable LoadDataCTHDN()
-        //{
-        //    return cthdnDAO.LoadCTHDN();
-        //}
         public DataTable LoadCTHDNInput(NhapHangDTO nh)
         {
             return cthdnDAO.LoadCTHDNInput(nh);

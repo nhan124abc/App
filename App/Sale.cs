@@ -52,6 +52,7 @@ namespace App
             txtTongHD.Text = "0";
             txtTienNhan.Text = "0";
             txtTienThua.Text = "0";
+            txtKM.Text = "0";
 
             ToolTip toolTip1 = new ToolTip();
             toolTip1.SetToolTip(this.btnAdd, "Thêm");
@@ -182,7 +183,17 @@ namespace App
             {
                 dgvDH.Rows.Add(cbTen.SelectedValue.ToString(), cbMa.SelectedValue.ToString(), txtSoluong.Value, txtDonGia.Text, tongTienHoa.ToString());
             }
-
+            if (tongtien > 500000)
+            {
+                double khuyenmai = (tongtien * 5) / 100;
+                txtKM.Text = khuyenmai.ToString();
+                tongtien -= khuyenmai;
+            }
+            else
+            {
+                txtKM.Text = "0";
+            }
+                MessageBox.Show("Thêm thành công");
             txtTongHD.Text = tongtien.ToString();
             txtSoluong.Value = 0;
             txtTongTien.Text = "0";
@@ -364,5 +375,7 @@ namespace App
 
 
         }
+
+       
     }
 }

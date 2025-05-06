@@ -117,7 +117,6 @@ namespace App
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            
             if (dgvDH.SelectedRows.Count > 0)
             {
                 MessageBox.Show("Vui lòng chọn chức năng sửa. ");

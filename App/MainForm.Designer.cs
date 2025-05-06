@@ -46,9 +46,10 @@
             // btnNhapHang
             // 
             this.btnNhapHang.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNhapHang.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnNhapHang.ImageKey = "importgoods.png";
             this.btnNhapHang.ImageList = this.imageList1;
-            this.btnNhapHang.Location = new System.Drawing.Point(816, 53);
+            this.btnNhapHang.Location = new System.Drawing.Point(576, 311);
             this.btnNhapHang.Name = "btnNhapHang";
             this.btnNhapHang.Size = new System.Drawing.Size(205, 152);
             this.btnNhapHang.TabIndex = 0;
@@ -69,15 +70,16 @@
             this.imageList1.Images.SetKeyName(4, "customer.png");
             this.imageList1.Images.SetKeyName(5, "importgoods.png");
             this.imageList1.Images.SetKeyName(6, "diagram.png");
-            this.imageList1.Images.SetKeyName(7, "logout.png");
-            this.imageList1.Images.SetKeyName(8, "purchaseorder.png");
+            this.imageList1.Images.SetKeyName(7, "purchaseorder.png");
+            this.imageList1.Images.SetKeyName(8, "delivery-truck.png");
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button1.ImageIndex = 3;
             this.button1.ImageList = this.imageList1;
-            this.button1.Location = new System.Drawing.Point(34, 246);
+            this.button1.Location = new System.Drawing.Point(34, 311);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(217, 152);
             this.button1.TabIndex = 1;
@@ -90,9 +92,10 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button2.ImageKey = "bill.png";
             this.button2.ImageList = this.imageList1;
-            this.button2.Location = new System.Drawing.Point(305, 246);
+            this.button2.Location = new System.Drawing.Point(305, 311);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(209, 152);
             this.button2.TabIndex = 2;
@@ -107,7 +110,7 @@
             this.btnQLNV.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQLNV.ImageKey = "employee.png";
             this.btnQLNV.ImageList = this.imageList1;
-            this.btnQLNV.Location = new System.Drawing.Point(559, 246);
+            this.btnQLNV.Location = new System.Drawing.Point(305, 506);
             this.btnQLNV.Name = "btnQLNV";
             this.btnQLNV.Size = new System.Drawing.Size(205, 168);
             this.btnQLNV.TabIndex = 3;
@@ -122,7 +125,7 @@
             this.btnSP.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSP.ImageKey = "product.png";
             this.btnSP.ImageList = this.imageList1;
-            this.btnSP.Location = new System.Drawing.Point(305, 433);
+            this.btnSP.Location = new System.Drawing.Point(34, 506);
             this.btnSP.Name = "btnSP";
             this.btnSP.Size = new System.Drawing.Size(217, 168);
             this.btnSP.TabIndex = 4;
@@ -137,7 +140,7 @@
             this.btnQLKH.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQLKH.ImageKey = "customer.png";
             this.btnQLKH.ImageList = this.imageList1;
-            this.btnQLKH.Location = new System.Drawing.Point(816, 246);
+            this.btnQLKH.Location = new System.Drawing.Point(576, 506);
             this.btnQLKH.Name = "btnQLKH";
             this.btnQLKH.Size = new System.Drawing.Size(209, 168);
             this.btnQLKH.TabIndex = 5;
@@ -149,28 +152,31 @@
             // 
             // btnLogout
             // 
+            this.btnLogout.BackColor = System.Drawing.Color.Wheat;
             this.btnLogout.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.ImageKey = "logout.png";
             this.btnLogout.ImageList = this.imageList1;
-            this.btnLogout.Location = new System.Drawing.Point(559, 53);
+            this.btnLogout.Location = new System.Drawing.Point(663, 31);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(205, 152);
+            this.btnLogout.Size = new System.Drawing.Size(118, 41);
             this.btnLogout.TabIndex = 6;
             this.btnLogout.Text = "Đăng Xuất";
             this.btnLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.UseVisualStyleBackColor = false;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // btnQLHDNhap
             // 
             this.btnQLHDNhap.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQLHDNhap.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnQLHDNhap.ImageKey = "purchaseorder.png";
             this.btnQLHDNhap.ImageList = this.imageList1;
-            this.btnQLHDNhap.Location = new System.Drawing.Point(34, 53);
+            this.btnQLHDNhap.Location = new System.Drawing.Point(34, 107);
             this.btnQLHDNhap.Name = "btnQLHDNhap";
             this.btnQLHDNhap.Size = new System.Drawing.Size(217, 152);
             this.btnQLHDNhap.TabIndex = 7;
             this.btnQLHDNhap.Text = "Quản Lí Hóa Đơn Nhập Hàng";
+            this.btnQLHDNhap.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnQLHDNhap.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnQLHDNhap.UseVisualStyleBackColor = true;
             this.btnQLHDNhap.Click += new System.EventHandler(this.btnQLHDNhap_Click);
@@ -178,24 +184,32 @@
             // btnThongKe
             // 
             this.btnThongKe.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThongKe.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnThongKe.ImageKey = "diagram.png";
             this.btnThongKe.ImageList = this.imageList1;
-            this.btnThongKe.Location = new System.Drawing.Point(305, 53);
+            this.btnThongKe.Location = new System.Drawing.Point(305, 107);
             this.btnThongKe.Name = "btnThongKe";
             this.btnThongKe.Size = new System.Drawing.Size(209, 152);
             this.btnThongKe.TabIndex = 8;
             this.btnThongKe.Text = "Thống Kê";
+            this.btnThongKe.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnThongKe.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnThongKe.UseVisualStyleBackColor = true;
             this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click);
             // 
             // btnNCC
             // 
-            this.btnNCC.Location = new System.Drawing.Point(617, 504);
+            this.btnNCC.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNCC.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnNCC.ImageKey = "delivery-truck.png";
+            this.btnNCC.ImageList = this.imageList1;
+            this.btnNCC.Location = new System.Drawing.Point(576, 107);
             this.btnNCC.Name = "btnNCC";
-            this.btnNCC.Size = new System.Drawing.Size(75, 23);
+            this.btnNCC.Size = new System.Drawing.Size(205, 152);
             this.btnNCC.TabIndex = 9;
-            this.btnNCC.Text = "btnNCC";
+            this.btnNCC.Text = "Quản Lí Nhà Cung Cấp";
+            this.btnNCC.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnNCC.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnNCC.UseVisualStyleBackColor = true;
             this.btnNCC.Click += new System.EventHandler(this.btnNCC_Click);
             // 
@@ -204,7 +218,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.OldLace;
-            this.ClientSize = new System.Drawing.Size(1088, 626);
+            this.ClientSize = new System.Drawing.Size(904, 704);
             this.Controls.Add(this.btnNCC);
             this.Controls.Add(this.btnThongKe);
             this.Controls.Add(this.btnQLHDNhap);

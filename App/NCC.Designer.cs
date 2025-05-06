@@ -31,6 +31,11 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NCC));
             this.dgvNCC = new System.Windows.Forms.DataGridView();
+            this.MaNCC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenNCC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.diachi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -52,11 +57,6 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnRefresh = new System.Windows.Forms.Button();
-            this.MaNCC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenNCC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.diachi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNCC)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -80,6 +80,41 @@
             this.dgvNCC.Size = new System.Drawing.Size(572, 333);
             this.dgvNCC.TabIndex = 23;
             this.dgvNCC.SelectionChanged += new System.EventHandler(this.dgvNCC_SelectionChanged);
+            // 
+            // MaNCC
+            // 
+            this.MaNCC.DataPropertyName = "MaNCC";
+            this.MaNCC.HeaderText = "Mã Nhà Cung Cấp";
+            this.MaNCC.MinimumWidth = 6;
+            this.MaNCC.Name = "MaNCC";
+            // 
+            // TenNCC
+            // 
+            this.TenNCC.DataPropertyName = "TenNCC";
+            this.TenNCC.HeaderText = "Tên Nhà Cung Cấp";
+            this.TenNCC.MinimumWidth = 6;
+            this.TenNCC.Name = "TenNCC";
+            // 
+            // SDT
+            // 
+            this.SDT.DataPropertyName = "SoDienThoai";
+            this.SDT.HeaderText = "Số Điện Thoại";
+            this.SDT.MinimumWidth = 6;
+            this.SDT.Name = "SDT";
+            // 
+            // email
+            // 
+            this.email.DataPropertyName = "Email";
+            this.email.HeaderText = "Email";
+            this.email.MinimumWidth = 6;
+            this.email.Name = "email";
+            // 
+            // diachi
+            // 
+            this.diachi.DataPropertyName = "DiaChi";
+            this.diachi.HeaderText = "Địa Chỉ";
+            this.diachi.MinimumWidth = 6;
+            this.diachi.Name = "diachi";
             // 
             // groupBox2
             // 
@@ -163,17 +198,17 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(80, 252);
+            this.label5.Location = new System.Drawing.Point(103, 252);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(50, 20);
+            this.label5.Size = new System.Drawing.Size(59, 20);
             this.label5.TabIndex = 4;
-            this.label5.Text = "Email";
+            this.label5.Text = "Email: ";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(80, 200);
+            this.label4.Location = new System.Drawing.Point(93, 200);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 20);
             this.label4.TabIndex = 3;
@@ -294,6 +329,7 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(269, 28);
             this.txtSearch.TabIndex = 22;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // btnRefresh
             // 
@@ -307,46 +343,12 @@
             this.btnRefresh.UseVisualStyleBackColor = false;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
-            // MaNCC
-            // 
-            this.MaNCC.DataPropertyName = "MaNCC";
-            this.MaNCC.HeaderText = "Mã Nhà Cung Cấp";
-            this.MaNCC.MinimumWidth = 6;
-            this.MaNCC.Name = "MaNCC";
-            // 
-            // TenNCC
-            // 
-            this.TenNCC.DataPropertyName = "TenNCC";
-            this.TenNCC.HeaderText = "Tên Nhà Cung Cấp";
-            this.TenNCC.MinimumWidth = 6;
-            this.TenNCC.Name = "TenNCC";
-            // 
-            // SDT
-            // 
-            this.SDT.DataPropertyName = "SoDienThoai";
-            this.SDT.HeaderText = "Số Điện Thoại";
-            this.SDT.MinimumWidth = 6;
-            this.SDT.Name = "SDT";
-            // 
-            // email
-            // 
-            this.email.DataPropertyName = "Email";
-            this.email.HeaderText = "Email";
-            this.email.MinimumWidth = 6;
-            this.email.Name = "email";
-            // 
-            // diachi
-            // 
-            this.diachi.DataPropertyName = "DiaChi";
-            this.diachi.HeaderText = "Địa Chỉ";
-            this.diachi.MinimumWidth = 6;
-            this.diachi.Name = "diachi";
-            // 
             // NCC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1205, 497);
+            this.BackColor = System.Drawing.Color.OldLace;
+            this.ClientSize = new System.Drawing.Size(1205, 521);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
